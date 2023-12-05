@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" />
+
+        <title>👨‍💻 | Creating A Blog</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/styles.css">
+    </head>
+
+    <body>
+        <nav>
+    <a href="/"><header>HARVINDER ARJUN SINGH</header></a>
+    <a class="link" href="/about">about</a>
+</nav>
+        <article class="blog-post">
+    <figure>
+    <img class="hero" src="/assets/blog-images/2023-12-05/inception.png" />
+</figure>
+<h1 id="creating-a-blog">CREATING A BLOG</h1>
+<p>So I wanted somewhere to write about the projects or random stuff I was doing, so I decided to create a blog (in 2023… 🤮). I like designing my own stuff from ground up and then making it from scratch, so I wasn’t going to use wix or any other website builder.</p>
+
+<figure>
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/figma.png" />
+    <figcaption>my figma board</figcaption>
+</figure>
+
+<h2 id="designing-with-figma">DESIGNING WITH FIGMA</h2>
+<p>My first step for something like this was to get on Figma (<a href="https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta">please don’t get aquired</a>) and just start designing.</p>
+<figure>
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/yuck.png" />
+    <figcaption>the first design. disgusting. inferior. yuck.</figcaption>
+</figure>
+<p>Of course, not every design is perfect. I usually begin by picking colors (<a href="https://coolors.co/">coolors</a> is nice), then going for typography (google fonts). Rinse repeat until I get a design that I like.</p>
+
+<h2 id="building-it-like-the-forefathers-intended">building it like the forefathers intended</h2>
+<p>I intentionally aimed on building the site entirely on HTML &amp; CSS and serving it on a simple http server to make it as lightweight as possible. I also wanted to serve the static pages without a backend. So I did, creating the main list page and the actual blog post page. It didn’t take too long as the design wasn’t too crazy.</p>
+
+<figure>
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/border.png" />
+    <figcaption>who doesn't love a good, handsome border?</figcaption>
+</figure>
+<h2 id="i-️-borders">i ❤️ borders</h2>
+<p>I <i>did</i> have a little hiccup creating the site though. And that was in creating the borders that you see in the figure above. I had no idea how I would solely get the corner of the borders to show. I had a rough idea of blocking out the non-corner areas of the border using a white element, but my background is not uniformly white so that would not work. Luckily, there are no original ideas in this world and everything that you think of has already been thought of. I found <a href="https://css-tip.com/corner-only-border-image/">this smart CSS implementation by Temani Afif</a> online. I read it through and used it to get the borders I desire so very much.</p>
+
+<p>After finishing up the design, I realized why people use site generators; it would be a huge PITA whenever I had to add a new blog post. I would have to make a copy of the blog post page, edit it for the new post, link it in the main page, add the excerpt and thumbnail in the main page, etc. etc.</p>
+
+<h2 id="static-site-generators">static site generators?!</h2>
+<p>I haven’t used a static site generator (or, SSG because it sounds cooler) before, so I did some research. At first i stumbled across <a href="https://hexo.io/">Hexo</a> which is a node based SSG. It seemed pretty suited towards what I was making, so I took a look at making a project based around it.</p>
+
+<p>However, Hexo seems to be ancient (1.0 was released 10 years ago.. which is 170 in web-framework years), and there isn’t much of a community around it in this day and age. Furthermore, creating my own theme, which is why I even decided to build a website from ground up, was seemingly difficult and confusing. So, I decided to scrap it and look for others.</p>
+
+<p>I came across <a href="https://hexo.io/">Gatsby.js</a>, which was a framework I’ve considered using before. However, I’d have to dip my feet back into
+React again, which would take me a while to acclimatize to. So, I searched for more.</p>
+
+<p>Then, I found <a href="https://jekyllrb.com/">Jekyll</a>. Jekyll seemed to be perfect - no wonky javascript frameworks, big community (github pages uses jekyll!), good documentation, and as an added bonus, easy deployment to github pages! It even used a template engine that I had experience with, LiquidJS. Bringing over my web pages and stylings over to jekyll was extremely easy and pain-free. Creating blog posts using markdown is also a pretty smooth experience.</p>
+
+<h2 id="deploying">deploying</h2>
+
+<h2 id="conclusion">conclusion</h2>
+<p>Jekyll is pretty cool. Pretty proud of how this blog looks. Thank you Temani Afif for the borders.</p>
+
+</article>
+
+    </body>
+</html>
