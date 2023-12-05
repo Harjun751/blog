@@ -256,6 +256,12 @@ ul {
     margin-top: 10px;
     position: relative;
   }
+  .blog-link h2 {
+    font-size: 30px;
+  }
+  .blog-link p {
+    font-size: 22px;
+  }
   nav .link {
     display: none;
   }
