@@ -7,7 +7,7 @@ title: Home
 <ul>
   {% for post in site.posts %}
     <a href="{{ site.baseurl }}{{ post.url }}"><div class="blog-link">
-        <div class="side img"><img class="blog-img" src="{{ post.excerpt_image }}" alt="{{ post.excerpt_image_alt }}"/></div><div class="side text">
+        <div class="side img"><img class="blog-img" src="{{ site.baseurl }}{{ post.excerpt_image }}" alt="{{ post.excerpt_image_alt }}"/></div><div class="side text">
             <h2 class="blog-link-title"><i>{{ post.title }}</i></h2>
             <p class="blog-link-body">{{ post.custom_excerpt }}</p>
             <div class="blog-bottom">

@@ -18,20 +18,20 @@
 </nav>
         <article class="blog-post">
     <figure>
-    <img class="hero" src="/assets/blog-images/2023-12-05/inception.png" />
+    <img class="hero" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/inception.png" />
 </figure>
 <h1 id="creating-a-blog">CREATING A BLOG</h1>
 <p>So I wanted somewhere to write about the projects or random stuff I was doing, so I decided to create a blog (in 2023… 🤮). I like designing my own stuff from ground up and then making it from scratch, so I wasn’t going to use wix or any other website builder.</p>
 
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/figma.png" />
+    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/figma.png" />
     <figcaption>my figma board</figcaption>
 </figure>
 
 <h2 id="designing-with-figma">DESIGNING WITH FIGMA</h2>
 <p>My first step for something like this was to get on Figma (<a href="https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta">please don’t get aquired</a>) and just start designing.</p>
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/yuck.png" />
+    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/yuck.png" />
     <figcaption>the first design. disgusting. inferior. yuck.</figcaption>
 </figure>
 <p>Of course, not every design is perfect. I usually begin by picking colors (<a href="https://coolors.co/">coolors</a> is nice), then going for typography (google fonts). Rinse repeat until I get a design that I like.</p>
@@ -40,7 +40,7 @@
 <p>I intentionally aimed on building the site entirely on HTML &amp; CSS and serving it on a simple http server to make it as lightweight as possible. I also wanted to serve the static pages without a backend. So I did, creating the main list page and the actual blog post page. It didn’t take too long as the design wasn’t too crazy.</p>
 
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/border.png" />
+    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/border.png" />
     <figcaption>who doesn't love a good, handsome border?</figcaption>
 </figure>
 <h2 id="i-️-borders">i ❤️ borders</h2>
@@ -58,10 +58,17 @@ React again, which would take me a while to acclimatize to. So, I searched for m
 
 <p>Then, I found <a href="https://jekyllrb.com/">Jekyll</a>. Jekyll seemed to be perfect - no wonky javascript frameworks, big community (github pages uses jekyll!), good documentation, and as an added bonus, easy deployment to github pages! It even used a template engine that I had experience with, LiquidJS. Bringing over my web pages and stylings over to jekyll was extremely easy and pain-free. Creating blog posts using markdown is also a pretty smooth experience.</p>
 
+<figure>
+    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/beauty.png" />
+    <figcaption>bold and brash</figcaption>
+</figure>
+
 <h2 id="deploying">deploying</h2>
+<p>Deploying the jekyll project to github pages was frictionless. <i>Or so I thought</i>. A tale as old as time itself: The assets weren’t loading. As per the jekyll step-by-step guide, I was diligently using the url <code class="language-plaintext highlighter-rouge">/assets/images/...</code> for my assets (and stylesheet). Because I was deploying to a subdirectory <code class="language-plaintext highlighter-rouge">Harjun751.github.io/blog/</code>, it needed a proper baseurl to be set, so that all asset links could be prepended with that base url. <a href="https://mademistakes.com/mastering-jekyll/site-url-baseurl/">This beautiful website</a> by a Michael Rose set me on the right path to right my wrongs. This particular problem should be mentioned on the jekyll guide, methinks. It’s a common enough use case.
+Eventually, I deployed it. I mean, you’re looking at it, aren’t you?</p>
 
 <h2 id="conclusion">conclusion</h2>
-<p>Jekyll is pretty cool. Pretty proud of how this blog looks. Thank you Temani Afif for the borders.</p>
+<p>This was a pretty fun project for me. I’m pretty proud of how the blog looks, and it was a good use of 2 days of my free time in NS. Jekyll is pretty cool. Thank you Temani Afif for the borders, and thank you Michael Rose for the enlightenment.</p>
 
 </article>
 

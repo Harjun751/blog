@@ -4,20 +4,20 @@ custom_excerpt: My ravings on creating the blog site you are seeing right now.
 excerpt_image: /assets/blog-images/2023-12-05/yuck.png
 ---
 <figure>
-    <img class="hero" src="/assets/blog-images/2023-12-05/inception.png"/>
+    <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/inception.png"/>
 </figure>
 # CREATING A BLOG
 So I wanted somewhere to write about the projects or random stuff I was doing, so I decided to create a blog (in 2023... 🤮). I like designing my own stuff from ground up and then making it from scratch, so I wasn't going to use wix or any other website builder.
 
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/figma.png"/>
+    <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/figma.png"/>
     <figcaption>my figma board</figcaption>
 </figure>
 
 ## DESIGNING WITH FIGMA
 My first step for something like this was to get on Figma ([please don't get aquired](https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta)) and just start designing.
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/yuck.png"/>
+    <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/yuck.png"/>
     <figcaption>the first design. disgusting. inferior. yuck.</figcaption>
 </figure>
 Of course, not every design is perfect. I usually begin by picking colors ([coolors](https://coolors.co/) is nice), then going for typography (google fonts). Rinse repeat until I get a design that I like.
@@ -26,7 +26,7 @@ Of course, not every design is perfect. I usually begin by picking colors ([cool
 I intentionally aimed on building the site entirely on HTML & CSS and serving it on a simple http server to make it as lightweight as possible. I also wanted to serve the static pages without a backend. So I did, creating the main list page and the actual blog post page. It didn't take too long as the design wasn't too crazy.
 
 <figure>
-    <img class="blog-img" src="/assets/blog-images/2023-12-05/border.png"/>
+    <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/border.png"/>
     <figcaption>who doesn't love a good, handsome border?</figcaption>
 </figure>
 ## i ❤️ borders
@@ -45,7 +45,14 @@ React again, which would take me a while to acclimatize to. So, I searched for m
 
 Then, I found [Jekyll](https://jekyllrb.com/). Jekyll seemed to be perfect - no wonky javascript frameworks, big community (github pages uses jekyll!), good documentation, and as an added bonus, easy deployment to github pages! It even used a template engine that I had experience with, LiquidJS. Bringing over my web pages and stylings over to jekyll was extremely easy and pain-free. Creating blog posts using markdown is also a pretty smooth experience.
 
+<figure>
+    <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/beauty.png"/>
+    <figcaption>bold and brash</figcaption>
+</figure>
+
 ## deploying
+Deploying the jekyll project to github pages was frictionless. <i>Or so I thought</i>. A tale as old as time itself: The assets weren't loading. As per the jekyll step-by-step guide, I was diligently using the url `/assets/images/...` for my assets (and stylesheet). Because I was deploying to a subdirectory `Harjun751.github.io/blog/`, it needed a proper baseurl to be set, so that all asset links could be prepended with that base url. [This beautiful website](https://mademistakes.com/mastering-jekyll/site-url-baseurl/) by a Michael Rose set me on the right path to right my wrongs. This particular problem should be mentioned on the jekyll guide, methinks. It's a common enough use case.
+Eventually, I deployed it. I mean, you're looking at it, aren't you?
 
 ## conclusion
-Jekyll is pretty cool. Pretty proud of how this blog looks. Thank you Temani Afif for the borders.
+This was a pretty fun project for me. I'm pretty proud of how the blog looks, and it was a good use of 2 days of my free time in NS. Jekyll is pretty cool. Thank you Temani Afif for the borders, and thank you Michael Rose for the enlightenment.
