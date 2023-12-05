@@ -1,0 +1,24 @@
+---
+layout: default
+title: Home
+---
+<h1>Latest Posts</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <a href="{{ post.url }}"><div class="blog-link">
+        <div class="side img"><img class="blog-img" src="{{ post.excerpt_image }}" alt="{{ post.excerpt_image_alt }}"/></div><div class="side text">
+            <h2 class="blog-link-title"><i>{{ post.title }}</i></h2>
+            <p class="blog-link-body">{{ post.custom_excerpt }}</p>
+            <div class="blog-bottom">
+                <div class="date">
+                    {{ post.date | date_to_string }}
+                </div>
+                <div class="more">
+                    >>>read more
+                </div>
+            </div>
+        </div>
+    </div></a>
+  {% endfor %}
+</ul>
