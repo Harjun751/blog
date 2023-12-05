@@ -9,13 +9,12 @@ excerpt_image: /assets/blog-images/2023-12-05/yuck.png
 # CREATING A BLOG
 So I wanted somewhere to write about the projects or random stuff I was doing, so I decided to create a blog (in 2023... 🤮). I like designing my own stuff from ground up and then making it from scratch, so I wasn't going to use wix or any other website builder.
 
+## DESIGNING WITH FIGMA
 <figure>
     <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/figma.png"/>
     <figcaption>my figma board</figcaption>
 </figure>
-
-## DESIGNING WITH FIGMA
-My first step for something like this was to get on Figma ([please don't get aquired](https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta)) and just start designing.
+My first step for something like this was to get on Figma ([please don't get acquired](https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta)) and just start designing.
 <figure>
     <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/yuck.png"/>
     <figcaption>the first design. disgusting. inferior. yuck.</figcaption>
@@ -23,13 +22,13 @@ My first step for something like this was to get on Figma ([please don't get aqu
 Of course, not every design is perfect. I usually begin by picking colors ([coolors](https://coolors.co/) is nice), then going for typography (google fonts). Rinse repeat until I get a design that I like.
 
 ## building it like the forefathers intended
-I intentionally aimed on building the site entirely on HTML & CSS and serving it on a simple http server to make it as lightweight as possible. I also wanted to serve the static pages without a backend. So I did, creating the main list page and the actual blog post page. It didn't take too long as the design wasn't too crazy.
+I initially aimed on building the site entirely on HTML & CSS and serving it on a simple http server to make it as lightweight as possible. I also wanted to serve the static pages without a backend. So I did, creating the main list page and the actual blog post page. It didn't take too long as the design wasn't too crazy.
 
+## i ❤️ borders
 <figure>
     <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/border.png"/>
     <figcaption>who doesn't love a good, handsome border?</figcaption>
 </figure>
-## i ❤️ borders
 I <i>did</i> have a little hiccup creating the site though. And that was in creating the borders that you see in the figure above. I had no idea how I would solely get the corner of the borders to show. I had a rough idea of blocking out the non-corner areas of the border using a white element, but my background is not uniformly white so that would not work. Luckily, there are no original ideas in this world and everything that you think of has already been thought of. I found [this smart CSS implementation by Temani Afif](https://css-tip.com/corner-only-border-image/) online. I read it through and used it to get the borders I desire so very much.
 
 
@@ -45,12 +44,11 @@ React again, which would take me a while to acclimatize to. So, I searched for m
 
 Then, I found [Jekyll](https://jekyllrb.com/). Jekyll seemed to be perfect - no wonky javascript frameworks, big community (github pages uses jekyll!), good documentation, and as an added bonus, easy deployment to github pages! It even used a template engine that I had experience with, LiquidJS. Bringing over my web pages and stylings over to jekyll was extremely easy and pain-free. Creating blog posts using markdown is also a pretty smooth experience.
 
+## deploying
 <figure>
     <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2023-12-05/beauty.png"/>
     <figcaption>bold and brash</figcaption>
 </figure>
-
-## deploying
 Deploying the jekyll project to github pages was frictionless. <i>Or so I thought</i>. A tale as old as time itself: The assets weren't loading. As per the jekyll step-by-step guide, I was diligently using the url `/assets/images/...` for my assets (and stylesheet). Because I was deploying to a subdirectory `Harjun751.github.io/blog/`, it needed a proper baseurl to be set, so that all asset links could be prepended with that base url. [This beautiful website](https://mademistakes.com/mastering-jekyll/site-url-baseurl/) by a Michael Rose set me on the right path to right my wrongs. This particular problem should be mentioned on the jekyll guide, methinks. It's a common enough use case.
 Eventually, I deployed it. I mean, you're looking at it, aren't you?
 
