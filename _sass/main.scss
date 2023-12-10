@@ -1,7 +1,7 @@
 html{
     background-color: #FFF;
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
-    url('/assets/images/dark-geometric.png')
+    url($baseurl + '/assets/images/dark-geometric.png')
 }
 
 nav .link{

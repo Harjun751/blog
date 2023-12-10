@@ -8,29 +8,29 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://harjun751.github.io/blog/assets/css/styles.css">
+        <link rel="stylesheet" href="/assets/css/styles.css">
     </head>
 
     <body>
         <nav>
-    <a href="https://harjun751.github.io/blog/"><header>HARVINDER ARJUN SINGH</header></a>
-    <a class="link" href="https://harjun751.github.io/blog/about">about</a>
+    <a href="/"><header>HARVINDER ARJUN SINGH</header></a>
+    <a class="link" href="/about">about</a>
 </nav>
         <article class="blog-post">
     <figure>
-    <img class="hero" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/inception.png" />
+    <img class="hero" src="/assets/blog-images/2023-12-05/inception.png" />
 </figure>
 <h1 id="creating-a-blog">CREATING A BLOG</h1>
 <p>So I wanted somewhere to write about the projects or random stuff I was doing, so I decided to create a blog (in 2023… 🤮). I like designing my own stuff from ground up and then making it from scratch, so I wasn’t going to use wix or any other website builder.</p>
 
 <h2 id="designing-with-figma">DESIGNING WITH FIGMA</h2>
 <figure>
-    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/figma.png" />
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/figma.png" />
     <figcaption>my figma board</figcaption>
 </figure>
 <p>My first step for something like this was to get on Figma (<a href="https://www.theverge.com/2022/11/8/23445821/figma-adobe-acquisition-design-vr-ai-meta">please don’t get acquired</a>) and just start designing.</p>
 <figure>
-    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/yuck.png" />
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/yuck.png" />
     <figcaption>the first design. disgusting. inferior. yuck.</figcaption>
 </figure>
 <p>Of course, not every design is perfect. I usually begin by picking colors (<a href="https://coolors.co/">coolors</a> is nice), then going for typography (google fonts). Rinse repeat until I get a design that I like.</p>
@@ -40,7 +40,7 @@
 
 <h2 id="i-️-borders">i ❤️ borders</h2>
 <figure>
-    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/border.png" />
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/border.png" />
     <figcaption>who doesn't love a good, handsome border?</figcaption>
 </figure>
 <p>I <i>did</i> have a little hiccup creating the site though. And that was in creating the borders that you see in the figure above. I had no idea how I would solely get the corner of the borders to show. I had a rough idea of blocking out the non-corner areas of the border using a white element, but my background is not uniformly white so that would not work. Luckily, there are no original ideas in this world and everything that you think of has already been thought of. I found <a href="https://css-tip.com/corner-only-border-image/">this smart CSS implementation by Temani Afif</a> online. I read it through and used it to get the borders I desire so very much.</p>
@@ -59,7 +59,7 @@ React again, which would take me a while to acclimatize to. So, I searched for m
 
 <h2 id="deploying">deploying</h2>
 <figure>
-    <img class="blog-img" src="https://harjun751.github.io/blog/assets/blog-images/2023-12-05/beauty.png" />
+    <img class="blog-img" src="/assets/blog-images/2023-12-05/beauty.png" />
     <figcaption>bold and brash</figcaption>
 </figure>
 <p>Deploying the jekyll project to github pages was frictionless. <i>Or so I thought</i>. A tale as old as time itself: The assets weren’t loading. As per the jekyll step-by-step guide, I was diligently using the url <code class="language-plaintext highlighter-rouge">/assets/images/...</code> for my assets (and stylesheet). Because I was deploying to a subdirectory <code class="language-plaintext highlighter-rouge">Harjun751.github.io/blog/</code>, it needed a proper baseurl to be set, so that all asset links could be prepended with that base url. <a href="https://mademistakes.com/mastering-jekyll/site-url-baseurl/">This beautiful website</a> by a Michael Rose set me on the right path to right my wrongs. This particular problem should be mentioned on the jekyll guide, methinks. It’s a common enough use case.
