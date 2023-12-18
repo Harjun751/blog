@@ -1,6 +1,6 @@
 html {
   background-color: #FFF;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("https://harjun751.github.io/blog/assets/images/dark-geometric.png");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("/blog/assets/images/dark-geometric.png");
 }
 
 nav .link {
