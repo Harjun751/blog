@@ -1,2 +1,2 @@
 destination         : ./docs
-baseurl             : "https://harjun751.github.io/blog" # does not include hostname
+# baseurl             : "https://harjun751.github.io/blog" # does not include hostname
