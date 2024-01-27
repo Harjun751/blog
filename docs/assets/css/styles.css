@@ -70,6 +70,10 @@ p {
   font-family: "Archivo", sans-serif;
 }
 
+.date, .more {
+  font-family: "Chakra Petch", sans-serif;
+}
+
 .blog-link {
   height: 130px;
   width: 1200px;

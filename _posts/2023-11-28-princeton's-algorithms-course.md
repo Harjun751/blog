@@ -1,13 +1,15 @@
 ---
 layout: post
-custom_excerpt: 
-excerpt_image: 
+custom_excerpt: It's free!
+excerpt_image: /assets/blog-images/2023-11-28/love.png
 ---
 <figure>
     <img class="hero" style="height:50%;object-fit: cover;object-position:top" src="{{ site.baseurl }}/assets/blog-images/2023-11-28/drip.webp"/>
 </figure>
+
 # Princeton's Algorithms Course
 [Github repo link](https://github.com/Harjun751/Princeton-Algorithms/)
+
 For the past 12 weeks I've been doing Princeton's 2-part algorithms course which is available for free on coursera. These are my thoughts on the course (it's excellent).
 
 ## How the course works
