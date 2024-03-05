@@ -215,16 +215,6 @@ tr, th {
 }
 
 @media only screen and (max-width: 1250px) {
-  h1 {
-    font-size: 23px;
-    letter-spacing: 5px;
-  }
-  h2 {
-    font-size: 18px;
-  }
-  p, ul, table {
-    font-size: 16px;
-  }
   nav header {
     position: initial;
     width: 100%;
