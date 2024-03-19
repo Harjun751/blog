@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" />
+
+        <title>👨‍💻 | Cors Cookies</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/blog/assets/css/styles.css">
+    </head>
+
+    <body>
+        <nav>
+    <a href="/blog/"><header>HARVINDER ARJUN SINGH</header></a>
+    <a class="link" href="/blog/about">about</a>
+</nav>
+        <article class="blog-post">
+    <h1 id="cross-domain-cookie-settings">CROSS-domain cookie settings</h1>
+<h1 id="server-side-requirements">Server-Side Requirements</h1>
+<h2 id="cors-headers">CORS Headers</h2>
+<p>On the server side, these CORS headers must be set.</p>
+
+<ul>
+  <li>Access-Control-Allow-Origin: http://localhost:port</li>
+</ul>
+
+<p>This <b>must</b> be set to localhost, because <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies">cookies with the secure attribute are only sent on https or localhost</a>. It also <b>cannot</b> be set to Any(*), as then the <a href="https://fetch.spec.whatwg.org/#cors-protocol-and-credentials">cookies will not be included with the client-side request</a>.</p>
+
+<ul>
+  <li>Access-Control-Allow-Headers: Example, Etc, Etc2</li>
+</ul>
+
+<p>This <b>must</b> be set to an explicit list and <b>not</b> a wildcard (*).</p>
+
+<ul>
+  <li>Access-Control-Allow-Methods: POST, GET, ETC</li>
+</ul>
+
+<p>Once again, this <b>must</b> be set to an explicit link and not a wildcard (*).</p>
+
+<ul>
+  <li>Access-Control-Allow-Credentials: true</li>
+</ul>
+
+<p>This tells the client that they can send cookies with their request.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards">This link</a> shows the guidelines on wildcards and credentialed requests, for reference.</p>
+
+<h2 id="cookie-settings">Cookie Settings</h2>
+<p>These are the attributes that must be supplied by the server along with the Set-Cookie Response.</p>
+
+<ul>
+  <li>SameSite=None;</li>
+</ul>
+
+<p>This indicates whether the cookie can be sent to different sites. Because we’re setting up Cross-Origin cookies, this must be set to “None”, indicating that they can be sent cross-site. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute">See this link for more info.</a></p>
+
+<ul>
+  <li>Secure;</li>
+</ul>
+
+<p>This is required because SameSite is set to None. When this option is set, cookies are sent in https contexts, except for localhost. So it’s no problem when doing local development, but when deploying remember to serve to https and set SSL certs.</p>
+
+<p>This is all you need. <b>Don’t</b> set the Domain attribute, because localhost does not qualify as a proper domain.</p>
+
+<h1 id="client-side-requirements">Client-Side Requirements</h1>
+<p>For the client side, you have to explicitly set that you want to include credentials with your request. For JavaScript, this is easy for fetch and <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials">xmlHTTPRequest</a>. However, if you’re using a different language and libraries, you have to find the appropriate flag or setting or whatever to enable cookie functionality</p>
+
+<h1 id="end">End</h1>
+<p>This should be all you need. If you’re encountering any issues, Chrome DevTools has a nicer interface for cookies as compared to Firefox DevTools. Good luck.</p>
+
+<p>I wrote this because I’ve been wrangling with CORS cookies again, and probably will wrangle with them in the future as well. Writing this allows me to internalize these concepts. This is heavily based on <a href="https://stackoverflow.com/questions/46288437/set-cookies-for-cross-origin-requests#46412839">this stackoverflow post</a>, but I added some more explanations and links for reference.</p>
+
+
+</article>
+
+    </body>
+</html>
