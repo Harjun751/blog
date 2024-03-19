@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" />
+
+        <title>👨‍💻 | My Rss Reader</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/blog/assets/css/styles.css">
+    </head>
+
+    <body>
+        <nav>
+    <a href="/blog/"><header>HARVINDER ARJUN SINGH</header></a>
+    <a class="link" href="/blog/about">about</a>
+</nav>
+        <article class="blog-post">
+    <figure>
+    <img class="hero" src="/blog/assets/blog-images/2024-03-16/main-sized.png" width="50%" />
+</figure>
+
+<h1 id="my-rss-reader">my rss reader</h1>
+<p><b>MY</b> RSS reader does things that other RSS readers don’t do. <b>MY</b> RSS reader is <em>special</em>. <b>MY</b> RSS reader provides you things. To read. This is <b>MY</b> RSS reader. There are many like it, but this one is <em>MINE</em>.</p>
+
+<h2 id="ok-but-why">ok but why</h2>
+<p>The RSS reader that I’m using right now in this post-Google-Reader world is <a href="https://feedly.com/">feedly</a>. It’s really cool and has many cool features. I will now list the cool features.</p>
+<ul>
+  <li>Read later</li>
+  <li>Annotation</li>
+  <li>Read count for articles</li>
+  <li>A cool little green description on articles that are trending</li>
+  <li>Feedly AI summaries for certain mentions</li>
+  <li>Bookmarks</li>
+  <li>and more, probably.</li>
+</ul>
+
+<p>I mean, wow. Those are really cool. But I don’t use any of these features. Don’t get me wrong, I’m not complaining that these features are in feedly, but I have one major gripe with it. I’ve followed a myriad of different publishers, and all their articles are showing up on one little happy place (that is to say, feedly). I can view and read all of these articles in my happy place. I never have to leave my happy place! Oh wait, what’s this?</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/damn.jpg" style="max-width:50%" />
+</figure>
+<p>It’s only showing an excerpt of the full article! Now, if I want to read the full article, I have to leave my little happy place and go to the scary website. I completely understand why publishers do this - high-quality journalism (such as what you’re reading now) is not free. Journalists need to get paid. These sites want their ad revenue, analytics data, and subscriptions (in the case of paywalls). <b>BUT</b> I am but a student. University is hella expensive. I don’t have a salary right now as I’m doing my full-time National Service (it’s <em>ALLOWANCE</em>). I’m saving what I can to support my Uni, and I have other expenses too. I can’t afford subscriptions to publishers right now - I promise you WIRED, I like your stuff and one day I will subscribe to you. One day.</p>
+
+<p>So this major gripe leads to here. I want an RSS reader that will allow me to read full articles without ever having to leave.</p>
+
+<h2 id="figma-time">FIGma time</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/prototype.png" />
+    <figcaption>my figma board</figcaption>
+</figure>
+<p>As always, my first step is to prototype on Figma. For this stage, I wasn’t really interested in a pretty UI, and was more focused on the backend - mainly I wanted to make sure full text extraction could work.</p>
+
+<h2 id="planning-time">Planning time</h2>
+<p>My next step was planning how I’d go about building the system. I made some diagrams to help me visualize how it’d all pan out.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/erd-blank.png" />
+    <figcaption>Entity Relationship Diagram</figcaption>
+</figure>
+<p>Firstly, I did an Entity Relationship Diagram. This helps me greatly for the database setup, and for the classes to be used in the actual program later. As I was doing this diagram, I had a little conundrum regarding log-ins and passwords. I had to weigh whether or not I wanted user accounts, and if I did, whether or not I wanted passwords (which brought on added complexity). I decided against user accounts, as right now this is a purely personal project. Also, I was thinking about where to put user configuration. Databse or Cookies? Ultimately, I decided to go with cookies, as the configuration stored would not be that important. Additionally, adding cookies is trivial.</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/seq-blank.png" />
+    <figcaption>Sequence Diagram</figcaption>
+</figure>
+<p>Then, I did some sequence diagrams depicting a few flows of the program. The figure above shows a sequence where a user wants to get an article with full text extraction.</p>
+
+<p>Lastly, I had to decide which frameworks to use to build this project. My first requirement was to use Rust, as I recently learnt about it and wanted to solidify my knowledge. Surverying the backend frameworks, I chose <a href="https://github.com/tokio-rs/axum">Axum</a>. I looked at other frameworks such as <a href="https://rocket.rs/">Rocket</a>, but I chose Axum because of it’s simplicity. Axum doesn’t rely on macros, so writing an Axum program <em>looks</em> like Rust. I’m trying to convey that it’s more low-level as compared to other frameworks. Another very popular point that many sages &amp; high-level wizards on Reddit make is that Axum is backed by the <a href="https://tokio.rs/">Tokio Organisation</a>, so there’s a lower chance of it being dropped completely and becoming useless in the future. This is a possibility for other frameworks - Rocket <a href="https://github.com/rwf2/Rocket/discussions/1672#discussioncomment-1225139">development was on hiatus</a> due to its author having a difficult month. CHANGE THISSSSSS</p>
+
+<p>For the frontend framework, I chose <a href="https://dioxuslabs.com/">Dioxus</a>. I chose it because it was React-like, and I was familiar with JavaScript frameworks like that. It looked simple, and provided many targets to deploy to: Web, Desktop, Mobile, and even Terminal UI? It looked alright to use, and it’s ranking was pretty high when I searched for “rust frontend frameworks”. That’s <em>gotta</em> mean something.</p>
+
+<h2 id="writing-time">Writing time</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/fax.jpg" />
+    <figcaption>app.rs after 48 hours of hard work</figcaption>
+</figure>
+<p>Writing the backend with Axum was delightfully easy. I was applying many of the concepts I had learnt from the Rust book, and solidifying my knowledge on some of the more quirky parts of Rust, like lifelines. I was truly writing <em>Rusty</em> code. Maybe some of the rustiest I’ve written. I was particularly proud of solving this problem below:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/snippet-backend.png" />
+</figure>
+<p>The error I was getting was that this function wasn’t satisfying a bound to be an Axum handler. This was because the future could not be Sent safely, as <b><code class="language-plaintext highlighter-rouge">Box&lt;dyn Error&gt;</code></b> did not implement Send. Due to the nature of it being a dynamic error, I could not make it implement Send. So, the way I fixed it was this:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/snippet-fixed.png" />
+</figure>
+<p>I moved the asynchronous call and match statement into its own scope (see the curly braces). This meant that at the end of the block, the <code class="language-plaintext highlighter-rouge">res</code> variable (the dyn Error) would go out of scope and hence be freed. This meant that the future could then be sent around.</p>
+
+<p>As I said, I was pretty proud of this. I didn’t google it or anything, it was satisfying because I was applying the concepts I learnt (of lifelines and scopes) to a non-obvious solution (am I even conveying this properly??), and it worked in a way I was expecting it to on the first try. I didn’t have to do anything like this in other programming languges, so it was new to me. TLDR; brain get dopamine.</p>
+
+<p>But the happy times must end. As they always do.</p>
+
+<h2 id="sad-time">Sad time</h2>
+<p>I really enjoyed writing Axum, but when switching gears to Dioxus I suffered a pretty good deal. Dioxus is in <b>0.5</b> right now - when I started it was at <b>0.4</b>. It’s a rapidly-developing framework, and it’s not mature yet. Because of this, it has “Developer-experience” issues.</p>
+
+<p style="color:#9D9B9B;">
+(One of the issues I had while developing the frontend was really quite embarrasing. I risk my credibility as a programmer if I delve into it here. This issue got me on a little hiatus from developing the app, that's how bad it was. Anyway let's just chalk it up to uhhh unfamiliarity in a new environment. Yea. Let's call it that.)
+</p>
+
+<p>I did have legitimate problems with Dioxus, though. One of them was regarding an onclick handler.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/snippet-fe.png" />
+</figure>
+<p>I already implemented the onclick handler fine, and it was able to run my asynchronous function when the item was clicked on. However, when I introduced the <code class="language-plaintext highlighter-rouge">subs.restart()</code> call into the on_click closure, the line on the right would error. The error was perplexing: <code class="language-plaintext highlighter-rouge">borrowed data escapes outside of function </code>cx<code class="language-plaintext highlighter-rouge"> escapes the function body</code>. I had no idea why the error would be on that line, or why the data escaped the function. The error was also pointing to a lifeline that was defined in a #[component] macro, code that I couldn’t see or touch. After fumbling arround, trying to find out why, I found an <a href="https://github.com/DioxusLabs/dioxus/issues/1562">issue on github</a> that was exactly what I had. The issue was closed, with a merged PR, so apparently this was fixed in the latest version of Dioxus. But, when I tried to update my dependencies, I was still getting the issue! So I asked on the thread, and one of the maintainers told me that the code would work out of the box.</p>
+
+<p>I was confused. This wasn’t working for me though!? So I copied the code over to my app, and made the minimum amount of changes so that it would compile properly. And. It. Worked. I felt defeated. I decided to use that code, and make step-by-step changes until it matched my code exactly. That way, I could see at which part the error is introduced. I got it down to this:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/cursed.png" />
+    <figcaption>it's cursed.</figcaption>
+</figure>
+<p>I changed that line to a dummy function returning another Result&lt;&gt; and it worked. Ahh, I got it! It’s cursed. The function is cursed. Good job everyone. Pack it up, go home, wrap it up! We’re done here - the line is cursed. Call an exorcist.</p>
+
+<p>So the exorcist arrives, and they notice something - there actually is a small difference between the dummy function and actual function. The return type of the dummy function is a Result&lt;Subscription, <b>String</b>&gt;, while the return type of the actual function is a Result&lt;Subscription, <b>reqwest::Error</b>&gt;. The exorcist suggests to me that maybe this is happening because your return types don’t implement Copy: specifically reqwest::Error. I nod solemnly and checked the module docs - it doesn’t implement Copy. I make a change in the library function, and lo and behold it compiles.</p>
+
+<p>To sum it up, I was getting this issue on an unrelated line that borrowed data (didn’t tell me which data!) was escaping the function, and because the return type of my Error Result did not implement Copy, it was borrowed into the closure. By implementing Copy, it would have had its own scope in the closure, so it could live as long as it needed to. It would have been nice if the error was more specific OR in the correct place.</p>
+
+<h2 id="cookie-time">Cookie time</h2>
+<p>I was also trying to set up cookies for some time to no avail. I was having trouble setting the withCredentials flag for reqwests, the library I used in the project. I <a href="https://github.com/DioxusLabs/dioxus/issues/2099">even opened a github issue on it</a>, but it seems that it isn’t supported. Sad. And because I was very annoyed with the whole process, I created a blog post so that I would remember how to do it in the future.</p>
+
+<h2 id="result-time">Result time</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-03-16/cool.gif" style="max-width:40%" />
+    <figcaption>say it's cool SAY IT'S COOL</figcaption>
+</figure>
+<p>I was able to get full text extraction working! I would like to work on this project even more, but I’ve reached my time limit. I’m flying off to Germany for <b>[REDACTED]</b>, so I won’t be able to work on it. On top of that, a friend wants to work on something with me, so I’m putting it this on hold. I will definitely come back to this project, though.</p>
+
+</article>
+
+    </body>
+</html>
