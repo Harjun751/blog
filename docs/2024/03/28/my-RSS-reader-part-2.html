@@ -3,7 +3,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" />
 
-        <title>👨‍💻 | Rss Part 2</title>
+        <title>👨‍💻 | My Rss Reader Part 2</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 
 <h2 id="the-issue">The issue</h2>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/requests.png" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/requests.png" />
     <figcaption>Something's probably going wrong if you have 1642 requests.</figcaption>
 </figure>
 <p>I was making some really nice progress on the app - I enabled PWA functionality, worked through another page that I wanted, and more. I’m not too sure what triggered this specifically, but my pages would stop loading during development. Dioxus was telling me that the reason this was happening was that I had hooks that were in conditionals - this was an issue that I was aware about, but dismissed because it was working on my end anyway. At the time. So I refactored the code to remove the hooks from the conditionals, and this is where it all falls apart.</p>
@@ -37,7 +37,7 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 
 <h2 id="i-sleep">I sleep</h2>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/sleep.png" style="width:50%" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/sleep.png" style="width:50%" />
 </figure>
 <p>I slept on it. I didn’t know why this wasn’t working, but enough is enough. I don’t want to wade through insufficient documentation again, or make a new issue on github to find out why this is happening. Below are all the reasons why I’m done with dioxus.</p>
 <ul>
@@ -52,7 +52,7 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 
 <h2 id="back-home-or-how-i-learned-to-stop-worrying-and-love-vue">Back home, or: How I learned to stop worrying and love vue</h2>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/weenie.webp" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/weenie.webp" />
     <figcaption>it's ok to accept defeat sometimes</figcaption>
 </figure>
 <p>I’m back to Vue. It’s my Weenie Hut Jr - but hey the whole point of the episode was that Spongebob doesn’t need to “prove” himself or gain approval. Spongebob <em>enjoys</em> Weenie Hut Jr, and it’s not a problem to admit that! He has nothing to prove. Yes.</p>
@@ -64,8 +64,8 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 
 <h2 id="giving-some-love-to-the-logger">Giving some love to the logger</h2>
 <figure>
-    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-pending/json.jpg" />
-    <figcaption>quirky dinglekasfsakdflksafjsaldf</figcaption>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/json.jpg" />
+    <figcaption>yooo isn't json like THE BEST one out there</figcaption>
 </figure>
 <p>At that point, all the initial features that I wanted to have in the reader was done. The last thing on my list was to properly finish the logger. The logger at the time was simply spewing out some information that could be useful into a text file - it wasn’t very readable and indexable, which was a clear problem. I thought of using some other file type/markup language to store the logs in. In my mind I had no doubt that JSON would be my way to go, but when I started implementing it I had 2 problems. Firstly, when adding a new log I was unsure what to do to maintain proper JSON syntax. For the log to be a proper object, it would have to be encapsulated with <code class="language-plaintext highlighter-rouge">[]</code>. This could not be done easily, because I was simply appending some text to the end of a file. So, my options to make this work are:</p>
 <ul>
@@ -76,7 +76,7 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 <p>Any option would require me to manipulate/read the file more than I want to - I’d preferrably have a solution where I can simply keep appending text without worry of an ending delimiter. Secondly, I had trouble cramming a backtrace full of newlines and formatting into a JSON field - JSON doesn’t allow multiline strings.</p>
 
 <figure>
-    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-pending/yaml.jpg" />
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/yaml.jpg" />
     <figcaption>yooo isn't yaml like THE BEST one out there</figcaption>
 </figure>
 <p>Then, I had a thought - I could use a more “loose” (for lack of better word) markup language that would not require me to add some ending delimiter AND would have support for multiline strings. I settled on YAML, but came into another problem. YAML was <em>almost</em> what I needed, but there was an issue regarding multiline strings - they’re supported, but there are certain patterns that are explicitly not allowed. Namely, a colon(:) followed by a space ( ). This was a pretty big problem because the backtrace was FULL of such patterns. Formatting the backtrace and manually escaping them was not an option due to the added overhead.</p>
@@ -90,17 +90,23 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 
 <p>Just kidding. The answer was in front of my eyes the whole time. XML. X (eXtreme) M (maximalistic) L (Language), baby. I’ve been working with it the whole time in RSS feeds and I hadn’t realised it’s <em>utility</em>. It’s <em>flexibility</em>. It’s <em>simplicity</em> 🤌. XML’s syntax needs no introduction, and it supports mulitiline text with no need for escape characters using the CDATA attribute. Perfect. Added bonus: I could now serve the log file through the API on the web, and have it be human-readable. Perrrfect.</p>
 <figure>
-    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-pending/xml.jpg" />
-    <figcaption>yooo isn't yaml like THE BEST one out there</figcaption>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/xml.jpg" />
+    <figcaption>yooo isn't xml like THE BEST one out there</figcaption>
 </figure>
 <p>Buut not really perfect. That first problem I described with JSON, where I needed an ending delimiter, was still present in XML. XML requires a root node, so it means that everything needs to be encapsulated in this root node. But, at this point I was too tired to fight, and the pros of xml outweighed this con. I’m sure I’ll come up with a solution I like more soon.</p>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/logs.png" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/logs.png" />
     <figcaption>my beautiful xml logs</figcaption>
 </figure>
 
 <h2 id="dockerizing">Dockerizing</h2>
-<p>I always hate this, it feels like a chore. I started work on getting the project ready for deployment, and I wanted it Dockerized so that I could run it anywhere easily. Created the Dockerfiles, which then took an annoyingly long time build - the unoptimized backend api image was <strong>6 (six)</strong> gigabytes, and took more than 5 minutes to build on my poor T495 ThinkPad. I was fixing the CORS configuration which was very fun because each time I wanted to set a new allow-origin value, it meant that I had to wait 5 minutes to see if it worked (I was unsure on which was the origin - the IP address of the app running INSIDE the container, or the address from which I was accessing it on the OUTSIDE. Turns out it was the outside.) AND THEN once I got CORS to work on the single-stage-6GB build, when I tried a multi-stage build to decrease the size of the final image, <strong>I GOT CORS ISSUES AGAIN!!!</strong> Skill issue. Well as it turned out I <em>thought</em> I had CORS issues again but it turns out that the container exited due to an issue, and if the fronted makes a cross domain request when the receiver is down, it shows a <code class="language-plaintext highlighter-rouge">Cors issue status null</code>. That false alarm side tracked me a little, because I had no indication from the docker-cli that the container exited. Oh well. yada yada got it to work yay!!! Overall, I can say that this experience was as pleasurable as falling down a flight of stairs.</p>
+<p>I always hate this, it feels like a chore. I started work on getting the project ready for deployment, and I wanted it Dockerized so that I could run it anywhere easily. Created the Dockerfiles, which then took an annoyingly long time build - the unoptimized backend api image was <strong>6 (six)</strong> gigabytes, and took more than 5 minutes to build on my poor T495 ThinkPad.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/How.png" />
+    <figcaption>compilation pains</figcaption>
+</figure>
+
+<p>I was fixing the CORS configuration which was very fun because each time I wanted to set a new allow-origin value, it meant that I had to wait 5 minutes to see if it worked (I was unsure on which was the origin - the IP address of the app running INSIDE the container, or the address from which I was accessing it on the OUTSIDE. Turns out it was the outside.) AND THEN once I got CORS to work on the single-stage-6GB build, when I tried a multi-stage build to decrease the size of the final image, <strong>I GOT CORS ISSUES AGAIN!!!</strong> Skill issue. Well as it turned out I <em>thought</em> I had CORS issues again but it turns out that the container exited due to an issue, and if the fronted makes a cross domain request when the receiver is down, it shows a <code class="language-plaintext highlighter-rouge">Cors issue status null</code>. That false alarm side tracked me a little, because I had no indication from the docker-cli that the container exited. Oh well. yada yada got it to work yay!!! Overall, I can say that this experience was as pleasurable as falling down a flight of stairs.</p>
 
 <h2 id="choosing-a-name-and-a-logo">choosing a name and a logo</h2>
 <p>I finally picked a name for this app while Dockerizing everything. A very good name. Are you ready? Get ready. I don’t think you’re ready.</p>
@@ -111,42 +117,47 @@ let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
 
 <p>Ok but if you’re blown away by the name, wait till you see the logo. Ok, you can see it now.</p>
 <figure>
-    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-pending/logo.png" />
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/logo.png" />
     <figcaption>some wonder how i'm such a multi-talented person</figcaption>
 </figure>
 
 <h2 id="cicd-ing-it">CI/CD-ing it</h2>
-<p>This was really important! I would need a CI/CD pipeline because I expect to update the reader here and there with new scraping instructions for new websites. I was going to be deploying it to my home NAS, because I don’t want to pay for hosting or deal with any subscriptions/services. So that meant that I couldn’t simply use some github action workflow to deploy, I sure as hell wasn’t going to be exposing my IP address like that. So what were my options? Off the top of my head,
-TODO: Make this a table or something</p>
-<ul>
-  <li>Setup a git server on my home NAS. Add the server as an origin so that when I push, the code updates on my NAS as well. On update of the files, run docker compose.
-    <ul>
-      <li>Pros: It works, probably. Seemingly simple to do as well?</li>
-      <li>Cons: I don’t want to run a whole git server just for this. I don’t know how resource intensive it is, but I strive to have as little services running on my NAS as possible.</li>
-    </ul>
-  </li>
-  <li>Have a periodically-run script invoke a <code class="language-plaintext highlighter-rouge">git pull</code> on my database (essentially polling)
-    <ul>
-      <li>Pros: Cron is lightweight, a git pull updating nothing probably doesn’t consume much system resources either.</li>
-      <li>Cons: It won’t update immediately when I push to the database. I’d have to set a reasonable period to run the script. An hour? Day? Week?</li>
-    </ul>
-  </li>
-</ul>
+<p>This was really important! I would need a CI/CD pipeline because I expect to update the reader here and there with new scraping instructions for new websites. I was going to be deploying it to my home NAS, because I don’t want to pay for hosting or deal with any subscriptions/services. So that meant that I couldn’t simply use some github action workflow to deploy, I sure as hell wasn’t going to be exposing my IP address like that. So what were my options? Off the top of my head,</p>
+<table>
+    <thead>
+        <td>Option</td>
+        <td>Pros</td>
+        <td>Cons</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">Git Server on NAS. Add server to git origins, push code to all origins</td>
+            <td>It works, probably</td>
+            <td>Overhead of running Git server? Unwanted.</td>
+        </tr>
+        <tr>
+            <td>Simple to do</td>
+            <td>I want to have as little services running on my NAS as possible</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Script that periodically runs `git pull` (essentially polling)</td>
+            <td>Cron is lightweight</td>
+            <td>It won't update immediately when I push a change</td>
+        </tr>
+        <tr>
+            <td>Git pull updating nothing probably is lightweight as well</td>
+            <td>Need to set reasonable period to run script. Hour? Day? Week?</td>
+        </tr>
+    </tbody>
+</table>
 
 <p>Note that my perceptions on how intensive some of these processes are are an <em>intuition</em> and not well-researched fact.</p>
 
-<p>Some other options I found through research</p>
-<ul>
-  <li>Watchtower. It’s an app that watches docker image versioning, and automatically updates running containers
-    <ul>
-      <li>I’d have to upload my images to a repository, then manage versioning. This probably means that I’d want to make a CI script that updates the version of the docker image on every push to the main branch (or manage versioning <em>manually</em>. blegh). For something that is probably (&lt;- I cannot say this is true), under the hood, running cron to trigger the container rebuilds, it is a lot of added overhead. I prefer my option 2 from above.</li>
-    </ul>
-  </li>
-</ul>
+<p>I also found an app called Watchtower through my research. It watches docker image versioning, and automatically updates running containers. This means that I’d have to upload my images to a repository, then manage versioning. This probably means that I’d want to make a CI script that updates the version of the docker image on every push to the main branch (or manage versioning <em>manually</em>. blegh). For something that is probably (&lt;- I cannot say this is true), under the hood, running cron to trigger the container rebuilds, it is a lot of added overhead. I prefer my option 2 from above.</p>
 
 <p>As I was researching more, I found a Reddit post containing this:</p>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/reddit.png" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/reddit.png" />
     <figcaption>thank you, venerable u/SUNx2YCH &amp; u/Angdrambor.</figcaption>
 </figure>
 <p>Validated by 2 strangers on a Reddit thread from 6 years ago. That’s all I ever needed. Option 2 it is.</p>
@@ -160,26 +171,30 @@ TODO: Make this a table or something</p>
   <li>See if the commit hash changed. If so, run <code class="language-plaintext highlighter-rouge">docker compose up</code></li>
 </ol>
 
-<p>I had everything I needed. But then in my shortsightedness I failed to realize that I can’t just SSH into the NAS, pull the code and <em>run docker compose</em>. TrueNAS scale uses kubernetes under the hood to manage containers, and the recommended way to do what I intend to do is to use a virtual machine! Or docker-in-docker. Sheesh. Virtualization much. If life is a simulation, it would be deployed on docker.</p>
+<p>I had everything I needed. But then in my shortsightedness I failed to realize that I can’t just SSH into the NAS, pull the code and <em>run docker compose</em>. TrueNAS scale uses kubernetes under the hood to manage containers, and the recommended way to do what I intend to do is to use a virtual machine! Or docker-in-docker. Sheesh. Virtualization much. I mean, how virtual can we go? I have a theory.</p>
 <figure>
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/theory.png" style="width:70%" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/theory.png" style="width:70%" />
     <figcaption>there's a case to be made that "some guy" is living in a simulation too</figcaption>
 </figure>
 
 <p>I end up running docker in a VM. As I pull the code onto the machine, I realise that I needed to tweak some of the details in the deployment configs. And everytime after I make the tweak and pull the new commit on the machine, I realise that I need to tweak it some more! This happened 7 times! This is really a reminder that I should use a <code class="language-plaintext highlighter-rouge">deploy-testing</code> branch or something to make all my changes and testing there, and then squash the commits and merge into main when I was <em>truly</em> complete. I did this once and that commit history was <em>clean</em>, but in my hubris I thought I didn’t need to here.</p>
 <figure style="margin-bottom:21px">
-    <img class="blog-img" src="/blog/assets/blog-images/2024-pending/hubris.png" />
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/hubris.png" />
     <figcaption>hubris</figcaption>
 </figure>
 
 <p>I haven’t fully set it up on my home yet. To be “done” I want to add a domain name &amp; use https. I was messing with my router settings all the way from Germany (thousands of kilometers away from my home) on a VPN. When I remotely restarted the router, it shitted itself and died, leaving my family wondering what the hell happened. It took about an hour for me to walk through my family on how to fix it, so I think I’m done messing with it from HERE.</p>
+
+<h2 id="https-on-a-home-network">HTTPS on a home network</h2>
+<p>So, back home, I finished up the deployment. My last snag was getting HTTPS working in my local network. I deployed the frontend to the url “home.news.com”, which would only be available in my home network - my router was acting as the DNS. So, I could not use a public certificate. I generated a self-signed certificate using OpenSSL. Then, of course, I had to make changes in the Docker Files to manage the SSL certificates as well. With all that done, I had HTTPS working for the app on my network. Buuuuut, Chrome does not allow you to install a PWA with self-signed certificates by default.
+The solution is pretty easy - I just installed the certificates on my PC and Phone. With that done, I got the app <strong>downloaded</strong> on my phone, and I gotta say: PWAs are sick. I haven’t harnessed their full potential yet, but maybe down the line I will.</p>
 
 <h1 id="show-off">Show off</h1>
 <p>Now is the time I show bits and pieces of what all of this amounts to.</p>
 
 <h2 id="ooo-infinite-scrolling">ooo infinite scrolling</h2>
 <figure>
-    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-pending/infinite.webm"></video>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/infinite.webm"></video>
     <figcaption>the invention of infinite scrolling and its consequences have been a disaster for the human race - tad kazynki</figcaption>
 </figure>
 <p>Infinite scrolling, baby. Starts loading of new content when reaching close to the bottom of the page, and seamlessly inserts it.</p>
@@ -188,7 +203,7 @@ TODO: Make this a table or something</p>
 
 <h2 id="oooo-loading-animations">oooo loading animations</h2>
 <figure>
-    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-pending/loading.webm"></video>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/loading.webm"></video>
     <figcaption>i call this: the skeleton loader. i added a delay to the app so that users can truly appreciate it.</figcaption>
 </figure>
 <p>Look at that loading animation. If that isn’t a loading animation, I don’t know what is. That is, without a doubt, one of the loading animations of all time.</p>
@@ -197,13 +212,23 @@ TODO: Make this a table or something</p>
 
 <h2 id="the-scrape-feature">The scrape feature</h2>
 <figure>
-    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-pending/scrape.webm"></video>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/scrape.webm"></video>
     <figcaption>the full article extraction in action</figcaption>
 </figure>
 <p>And the reason why I built this in the first place, full text extraction. It works!
 By the way, I recorded this video on my laptop with my phone’s hotspot which had 1 bar on 4G which is why it loads so long. No, I will not speed up the video.</p>
 
 <p><strong>Fact: Every important person in this world uses this app. <em>Are you important?</em></strong></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>So, yea I have an RSS reader that I’m happy with now. I really enjoyed this project! There’s still some minor things to do so I’ll still be working on it a little, but it’s more or less done. Now I’m thinking what to do next.</p>
+
+<p>This was a long-ass, meandering post. If you actually read all of this (who am I kidding?!), you deserve a cookie. Here.</p>
+
+<p style="color:#9D9B9B;">(If you have not actually read the whole post, you are required to not look at the cookie. If you have, please un-see it. If you decide not to, my legal team will contact you shortly. Have a good day.)</p>
+<figure style="margin-bottom:21px">
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/cookie.png" />
+</figure>
 
 </article>
 

@@ -299,4 +299,38 @@ tr, th {
   width: 100px;
 }
 
+pre {
+  display: block;
+  background-color: #DDD;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+code {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 21px;
+  background-color: #DDD;
+}
+
+ol {
+  font-family: "Archivo", sans-serif;
+  font-size: 21px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+table, td, th {
+  border: 1px solid;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+}
+
 /*# sourceMappingURL=styles.css.map */
