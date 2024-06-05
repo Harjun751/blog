@@ -225,36 +225,17 @@ tr, th {
     all: unset;
   }
   .blog-link {
-    height: unset;
-    width: 100%;
-    margin-bottom: 70px !important;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
+    width: 90%;
   }
-  .blog-link .text {
-    width: calc(100% - 20px);
-    margin-left: 0;
-    padding: 10px;
-  }
-  .blog-link .img {
-    width: 100%;
-  }
-  .blog-link .blog-img {
-    width: calc(100% - 2px);
-    height: unset;
-    border-radius: 10px 10px 0 0;
-    max-height: 60vh;
-    object-fit: cover;
-  }
-  .blog-link::after {
-    all: unset;
+  .blog-link .text.side {
+    width: calc(100% - 139px - 32px);
   }
   .blog-link .blog-bottom {
-    margin-top: 10px;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+  }
+  .blog-link::after {
+    width: 100%;
   }
   .blog-link h2 {
     font-size: 30px;
