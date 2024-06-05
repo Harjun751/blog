@@ -1,7 +1,7 @@
 ---
 layout: post
-custom_excerpt: 
-excerpt_image: /assets/blog-images/2024-05-03/snek.jpg
+custom_excerpt: + PWAs again
+excerpt_image: /assets/blog-images/2024-06-05/plan.jpg
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2024-06-05/skyhelix.jpg"/>
