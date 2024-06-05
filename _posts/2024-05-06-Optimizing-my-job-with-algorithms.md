@@ -88,7 +88,7 @@ The rest of the setting up was easy, with minor hiccups. I was able to get the P
 # Demo
 
 <figure>
-    <video height="800px" class="blog-img" autoplay loop muted playsinline src="{{ site.baseurl }}/assets/blog-images/2024-06-05/demo.mp4"></video>
+    <video height="800px" class="blog-img" autoplay loop muted playsinline src="{{ site.baseurl }}/assets/blog-images/2024-06-05/Demo.mp4"></video>
     <figcaption>The SkyHelix Helper.</figcaption>
 </figure>
 
