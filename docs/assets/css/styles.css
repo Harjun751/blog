@@ -65,6 +65,12 @@ h2 {
   text-transform: uppercase;
 }
 
+h3 {
+  font-family: "Chakra Petch", sans-serif;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
 p {
   font-size: 21px;
   font-family: "Archivo", sans-serif;
