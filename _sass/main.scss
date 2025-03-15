@@ -212,7 +212,7 @@ tr, th{
     padding: 0 10px;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1250px) {    
     nav header{
         // display: block;
         // font-size: 26px;
@@ -238,37 +238,9 @@ tr, th{
         bottom:0;
     }
 
-    // .blog-link{
-    //     height: unset;
-    //     width: 100%;
-    //     margin-bottom: 70px !important;
-    
-    //     border-radius: 10px;
-    //     background-color: rgba(0, 0, 0, 0.1);
-    //     margin: 0 auto;
-    //     position: relative;
-    //     cursor: pointer;
-    // }
-    // .blog-link .text{
-    //     width: calc(100% - 20px);
-    //     margin-left: 0;
-    //     padding: 10px;
-    // }
-    // .blog-link .img{
-    //     width: 100%;
-    // }
-    // .blog-link .blog-img{
-    //     width: calc(100% - 2px);
-    //     height: unset;
-    //     // display: block;
-    //     // margin: 0 auto;
-    //     border-radius: 10px 10px 0 0;
-    //     max-height: 60vh;
-    //     object-fit: cover;
-    // }
-
     .blog-link::after{
         width: 100%;
+        height: 200px;
     }
     .blog-link h2{
         font-size:30px;
@@ -280,11 +252,38 @@ tr, th{
     nav .link{
         display: none;
     }
-  }
+    // make each link bigger
+    .blog-link{
+        height: 200px;
+    }
+    .blog-link .blog-img{
+        height: 200px;
+        width: 195px;
+    }
+
+    .blog-link .text.side{
+        width: calc(100% - 195px - 32px);
+    }
+}
+
+
 @media only screen and (max-width: 800px) {
     .blog-post{
         width: calc(100% - 10px);
         padding: 5px;
+    }
+    
+    // make each link bigger
+    .blog-link{
+        height: 200px;
+    }
+    .blog-link .blog-img{
+        height: 200px;
+        width: 195px;
+    }
+
+    .blog-link .text.side{
+        width: calc(100% - 195px - 32px);
     }
 
     .blog-post .hero{
