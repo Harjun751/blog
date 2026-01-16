@@ -71,9 +71,14 @@ h3 {
   text-transform: uppercase;
 }
 
-p {
+p, details, summary {
   font-size: 21px;
   font-family: "Archivo", sans-serif;
+}
+
+details {
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .date, .more {
