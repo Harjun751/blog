@@ -77,11 +77,13 @@ Note that I'm not evaluating features or quality by any means.
 **Safety** - Again, seems pretty [transparent](https://deepmind.google/blog/advancing-geminis-security-safeguards/). Their safeguards seem to be strict to a point where people complain online. Whether that's good or bad is up to you and how you use it. [PASS]
 
 ## Microsoft
+Microsoft has copilot, but copilot is mostly [powered by OpenAI's models](https://www.microsoft.com/en-us/microsoft-365/blog/2025/09/24/expanding-model-choice-in-microsoft-365-copilot/). They did have some [AI models](https://www.microsoft.com/en-us/research/blog/using-deepspeed-and-megatron-to-train-megatron-turing-nlg-530b-the-worlds-largest-and-most-powerful-generative-language-model/) a while back, but none that are really an analog to current-day models and how they're exposed. But, they are still worth talking about as they're still training [new models](https://www.microsoft.com/en-us/research/story/advancing-ai-for-the-physical-world/). Whether they come up with a new LLM chatbot is still unclear. With that said,
+
 <figure>
     <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2026-01-15/microsoft.png"/>
 </figure>
 
-**Environment** - Microsoft currently seems to be at the forefront of tackling this data center issue - voluntarily taking on [higher electricity bills](https://edition.cnn.com/2026/01/13/tech/microsoft-ai-data-centers-electricity-bills-plan) to prevent spikes in bills, furthermore pledging to cover costs of improving the existing grid. On top of that, a concrete plan to [curb impact of data center water use](https://www.reuters.com/business/microsoft-launches-data-center-initiative-limit-power-costs-water-use-2026-01-13/) and efforts to decrease [water usage to zero](https://www.microsoft.com/en-us/microsoft-cloud/blog/2024/12/09/sustainable-by-design-next-generation-datacenters-consume-zero-water-for-cooling/). Microsoft has not released any data regarding the footprint of a prompt or training a model. Either way, they seem committed and transparent. [PASS]
+**Environment** - Microsoft looks to be at the forefront of tackling this data center issue - voluntarily taking on [higher electricity bills](https://edition.cnn.com/2026/01/13/tech/microsoft-ai-data-centers-electricity-bills-plan) to prevent spikes in bills, furthermore pledging to cover costs of improving the existing grid. On top of that, a concrete plan to [curb impact of data center water use](https://www.reuters.com/business/microsoft-launches-data-center-initiative-limit-power-costs-water-use-2026-01-13/) and efforts to decrease [water usage to zero](https://www.microsoft.com/en-us/microsoft-cloud/blog/2024/12/09/sustainable-by-design-next-generation-datacenters-consume-zero-water-for-cooling/). Microsoft has not released any data regarding the footprint of a prompt or training a model. Either way, they seem committed and transparent. [PASS]
 
 **Training Material** - More claims of [piracy](https://www.reuters.com/sustainability/boards-policy-regulation/microsoft-sued-by-authors-over-use-books-ai-training-2025-06-25/). They've also announced ["Copilot Copyright Commitment"](https://blogs.microsoft.com/on-the-issues/2023/09/07/copilot-copyright-commitment-ai-legal-concerns/) which states that they will"assume responsibility for the potential legal risks involved" on using generated copilot output. This is insanely odd to me and almost akin to admitting that chatbot output is/potentially can be illegal on the grounds of infringement. But go off I guess. [FAIL]
 
@@ -110,14 +112,25 @@ Note that I'm not evaluating features or quality by any means.
 
 **Safety** - It seems that Deepseek are lacking behind their contermporaries in this - their safety guardrails [failed many tests](https://www.wired.com/story/deepseeks-ai-jailbreak-prompt-injection-attacks/) by researchers.
 
+## Mistral
+<figure>
+    <img class="blog-img" src="{{ site.baseurl }}/assets/blog-images/2026-01-15/mistral.png"/>
+</figure>
+
+**Environment** - As the image says, a [report](https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai) that not just takes into account inference on AI, but on its full lifecycle from conception to consumption. If not the full picture, the largest one to date. They also suggest ways to measure impact by amortizing inference. In terms of environmental transparency, Mistral is leading the way.
+
+**Training Material** - The cofounder of Mistral, , was implicated with the big Meta [piracy hoohaa](https://www.liberation.fr/economie/economie-numerique/un-des-cofondateurs-de-mistral-ai-accuse-davoir-pirate-des-millions-de-livres-quand-il-travaillait-chez-meta-20251222_RGFHNU37AFFQTENP5PH6RARYKQ/). Also see [this](https://www.vanityfair.com/news/story/meta-ai-lawsuit) (ctrl-F his name ;). Getting past that, Mistral *insists* it only uses data that is publicly available on the internet in their [privacy policy](https://legal.mistral.ai/terms/privacy-policy). Whether that includes anna's archive is up to you to decide. The EU seems to be [cracking down](https://www.france24.com/en/tv-shows/tech-24/20250711-eu-orders-ai-companies-to-clean-up-their-act-stop-using-pirated-datanw) on use of pirated material, though.
+
+**Safety** - There are [guardrails](https://docs.mistral.ai/capabilities/guardrailing) - as to their efficacy I cannot tell.
+
 
 # Conclusion
-Well if you're using AI you just have to accept that these companies have profitted off pirating vast quanitites of material and/or using them without express permission. It's actually quite hard to see AI without it - LLMs are almost rapacious in their hunger for training material, and feeding them the wealth of information that lives online and in our books seems like a natural step. But there has to have been a better way to achieve this than how these companies went about it.
+Well if you're using AI you just have to accept that these companies have profited off pirating vast quantities of material and/or using them without express permission. It's actually quite hard to see AI without it - LLMs are almost rapacious in their hunger for training material, and feeding them the wealth of information that lives online and in our books seems like a natural step. But there has to have been a better way to achieve this than how these companies went about it.
 
-Some companies are better for the environment than others, and surprisingly Microsoft pulled through on that one.
+Some companies are better for the environment than others, and surprisingly Microsoft pulled through on that one. Though copilot just uses OpenAI anyway.
 
 All of the companies have AI safeguards, with some of them being more on the forefront of research and safety features. But prompt injections and "jailbreak" prompts are still rife and are a problem that has not been solved yet. I'm not sure it ever will be solved without crippling usage. Again, you'll just have to accept that these tools are perhaps too powerful for our own good.
 
-Privacy was not even talked about - data leakage has been reported in all major providers. Unless you're using a enterprise-level subscription with separated information (microsoft offers this), it's a risk that you will have to accept. Privacy-focused individuals should be using offline and self-hosted LLMs anyway.
+Privacy was not even talked about - data leakage has been reported in all major providers. Unless you're using a enterprise-level subscription with separated information (microsoft offers this), it's a risk that you will have to accept. Privacy-focused individuals should be using offline and self-hosted LLMs anyway. Also worth noting that Mistral, being a French firm, is subject to GDPR regulations as well.
 
-Personally, I have a larger focus on mitigating the environmental toll that these companies can cause. Therefore I will be going with Microsoft's Copilot.
+Personally, I have a larger focus on mitigating the environmental toll that these companies can cause. I believe that Mistral is the way to go in this regard - they were the most transparent. They also have a focus on using smaller models for specific use cases, in order to increase overall efficiency. On top of that, I have more faith in the EU in managing and regulating AI over the wild wild west techno-hellscape that is America. Of course, I don't think Mistral has the best model (yet). But I don't really care.
