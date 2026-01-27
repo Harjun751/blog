@@ -1,0 +1,198 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" />
+
+        <title>👨‍💻 | Hack N Roll 2026</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/blog/assets/css/styles.css">
+    </head>
+
+    <body>
+        <nav>
+    <a href="/blog/"><header>HARVINDER ARJUN SINGH</header></a>
+    <a class="link" href="/blog/about">about</a>
+</nav>
+        <article class="blog-post">
+    <figure>
+    <img class="hero" src="/blog/assets/blog-images/2026-01-18/payorpray.png" />
+</figure>
+
+<h1 id="hack-n-roll-2026">Hack N’ Roll 2026</h1>
+<p>If you don’t know what <a href="https://hacknroll.nushackers.org/">Hack &amp; Roll</a> is, it’s a 24 hour hackathon where you can build whatever you want - no problem statements.</p>
+
+<p>This year I actually saw the sign up information on time, so I decided to join. Sadly, my friend failed to join so I was alone in this enterprise (at first…)</p>
+
+<p>I found some group mates through the Discord, and met up with a group that consisted of 2 NTU students and a Y1 NUS student (all CS if I recall).</p>
+
+<p>I mentioned in another post that one of my learning outcomes for this semester was incorporating AI use in a manner that makes sense and actually improves productivity. With that in mind, I had one pertinent goal in this hackathon: Overuse AI. I wanted to figure if I just delegated most of my work to AI, would it be feasible? At what point do we feel productivity gains/losses? I wanted to explore this. So my workflow was mostly using copliot in a JetBrains IDE (I had yet to finish choosing a proper <a href="https://harjun751.github.io/blog/2026/01/15/choosing-an-ai-provider.html">AI provider</a>)</p>
+
+<h2 id="the-brainstorming">The Brainstorming</h2>
+<p>After a particularly productive brainstorming session, we had several ideas that we were unsure would work. One that I really wanted to do was to create an alternative front-end for the NUS library booking system.</p>
+
+<p>I went as far as creating a rooted emulator to scrape the Backend “Chope” API with, before realizing that spoofing authentication would be a nightmare. And that if I could actually do it it’d be quite concerning overall. But I had some fun booking sessions through Bruno with scraped JWT first.</p>
+
+<h2 id="the-idea">The idea</h2>
+<p>Well, we met on the day itself with nary a clue on what to build. Somehow we landed on making a <a href="https://www.splitwise.com/">splitwise</a> clone but with baked-in gambling features. After thinking about it more and more, this was an idea that I actually liked a lot. <strong>I LOVE GAMBLING!!!!</strong>. We were going to call it PayOrPray.</p>
+
+<figure>
+    <img class="blog-img" style="width:40%" src="/blog/assets/blog-images/2026-01-18/gambling.webp" />
+    <figcaption>i should probably add a disclaimer that you should not believe this, but if you even think it does i'm afraid you're too far gone buddy</figcaption>
+</figure>
+
+<h2 id="the-hacking">The hacking</h2>
+<p>Met up with the group mates and we began hacking at about 1pm (we got lunch at hwang’s first, shoutout).</p>
+
+<p>I don’t remember most of the timings actually, so it’s kind of a rough guess down here. I’m also using git commit times to roughly tell.</p>
+
+<h3 id="1pm">1PM</h3>
+<p>At first, we weren’t sure how to proceed, so I organized our group into 3 teams that could tackle tasks in parallel.</p>
+
+<p>The first team was to work on front end:</p>
+<ul>
+  <li>Create a design</li>
+  <li>Generate using AI</li>
+  <li>Tweak generated site where necessary</li>
+  <li>Add PWA functionality</li>
+  <li>Integrate with Back end</li>
+</ul>
+
+<p>The second team was to work on back end:</p>
+<ul>
+  <li>Create a simple API specification so that Front end could structure their work</li>
+  <li>Scaffold a Back end server - choose framework</li>
+  <li>Code it out</li>
+</ul>
+
+<p>The third team was to work on deployment and architecture:</p>
+<ul>
+  <li>Look for a (free) DB provider and set up</li>
+  <li>Pass a connection string to Back end ASAP</li>
+  <li>Look for a server provider</li>
+  <li>Investigate and make deployment happen somehow</li>
+</ul>
+
+<p>4 people among 3 teams, so one person could hop around where necessary.</p>
+
+<p>It was a rough plan, but it was working. We were able to work well in parallel.</p>
+
+<p>I was mostly working on Back end.</p>
+
+<h3 id="3pm">3PM</h3>
+<p>A basic API spec was created. We finished figuring out how to generate paynow QR codes on demand for settling debts.</p>
+
+<p>We integrated SupaBase as a DB provider into the App.</p>
+
+<p>A design was created.</p>
+
+<p>All seemed to be going quite well and optimism was in the air.</p>
+
+<h3 id="5pm">5PM</h3>
+<p>We fixed up a login page on the Front end using SupaBase auth.</p>
+
+<p>Back end endpoints were being implemented.</p>
+
+<h3 id="6pm">6PM</h3>
+<p>As we went along, we realized we needed one or two more endpoints.</p>
+
+<p>We implemented an /invites system to the Back end. Fully integrated JWT auth with the Front end.</p>
+
+<p>Front end was being fleshed out and integrated with the Back end.</p>
+
+<h3 id="9pm">9PM</h3>
+<p>I encountered the first non-trivial (ie non CRUD-related) issue at this time. We were thinking of how splitwise actually does the “simplify debts” feature, and realized it’s not simple.</p>
+
+<p>I’m very glad that people have looked into this, because there was no way I was figuring out that it required utilizing Digraphs and Maxflow algorithms on that night - I was already groggy and tired.</p>
+
+<p>If you’re interested, the <a href="https://medium.com/@mithunmk93/algorithm-behind-splitwises-debt-simplification-feature-8ac485e97688">algo is here</a>. So I just had to adapt the code to JavaScript.</p>
+
+<p>I was eventually able to do it, and we had an endpoint that was able to return the simplified debt payment data.</p>
+
+<h3 id="11pm">11PM</h3>
+<p>By 11pm, things were looking good. We had a solid application that was able to do expense tracking and debt-payment, with authentication. The app looked pretty good on mobile too.</p>
+
+<p>We had a few more things to do:</p>
+<ol>
+  <li>Polish up the front end - there were undesired UI elements that could be removed</li>
+  <li>Add actual gambling elements - we just needed the frontend components to do so</li>
+  <li>Integrate the invite system into the frontend</li>
+  <li>Some refactoring if we had time - codebase was a mess</li>
+  <li>Deploy</li>
+</ol>
+
+<p>My team mates decided that they weren’t going to be staying overnight, but I decided to stay. There was still things I wanted to complete in the app, and it was getting too late for me to take the last bus back home. I was <strong>not</strong> going to pay for a taxi.</p>
+
+<h1 id="midnight">Midnight.</h1>
+<p>So from midnight onwards I was working in a pure hallucinogenic mind-melded hyperbolic-time-chamber coding fugue state. My brain was shutting down and I saw miracles in the in-betweens of lines of code. I saw software in its distilled purest state, and I was terrified.</p>
+
+<p>I was mostly vibecoding.</p>
+
+<h3 id="3am">3am</h3>
+<p>I only know what happened till 3am because I sent a message to my group:
+I:</p>
+<ul>
+  <li>Integrated working user invites on Front end</li>
+  <li>Fixed some bugs on expense-splitting and some Front end bugs</li>
+  <li>Deployed Back end and Front end to render</li>
+</ul>
+
+<h3 id="6am">6am</h3>
+<figure>
+    <img class="blog-img" style="width:80%" src="/blog/assets/blog-images/2026-01-18/sorry.png" />
+</figure>
+<p>So uhh yea by 6am I really was in the trenches. I recall sleeping on a random bench somewhere for about 30minutes before the sun starting peeking at my eyes and I awoke.</p>
+
+<h3 id="9am">9am</h3>
+<p>After my short sleep and some inadequate breakfast, I did this:</p>
+<figure>
+    <img class="blog-img" style="width:80%" src="/blog/assets/blog-images/2026-01-18/gamble.png" />
+</figure>
+<p>YAY!</p>
+
+<h3 id="11am">11am</h3>
+<p>After that, my team mates came and met up with me again. I can only imagine how I looked and what they thought when they saw I, an ascended software wizard who was diligently at his craft throughout the night, remaining seated at the same seat they saw me in when they left at 11pm last night. Perfection is often ugly.</p>
+
+<p>Not much changes after that, and I left soon because my body was shutting down.</p>
+
+<h2 id="the-result">The result</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/payorpray.png" />
+    <figcaption>main page</figcaption>
+</figure>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/trip.png" />
+    <figcaption>trip page</figcaption>
+</figure>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/gamble.gif" />
+    <figcaption>gambling</figcaption>
+</figure>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Pretty happy with how that turned out! Of course, some things could be improved, but in 24 hours and one overnight session I’m satisfied.</p>
+
+<p>My experience with vibecoding is mixed.</p>
+
+<h3 id="things-it-was-good-for"><strong>Things it was good for:</strong></h3>
+
+<p>Creating API specifications in a standardized format (openapi.yml) after passing it natural-language instructions. Goated.</p>
+
+<p>Brainstorming API and Architecture layout. I think straight up asking it “what should I do is bad”, but if you provide it with baseline expectations and thoughts, it can provide some value.</p>
+
+<h3 id="things-it-was-okay-at">Things it was <em>okay</em> at:</h3>
+
+<p>Implementing back end endpoints from specifications. It’s hit or miss, but using few-shot prompting helps a little.</p>
+
+<h3 id="things-it-was-horrendous-at">Things it was horrendous at:</h3>
+
+<p>Debugging. I attempted to ask it to debug a few problems, but it was a bad experience. The flow of prompting AI &gt; letting it incorporate changes &gt; test is pretty wonky. I feel like debugging by using your brain is still better.</p>
+
+</article>
+
+    </body>
+</html>
