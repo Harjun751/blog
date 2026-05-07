@@ -2,23 +2,36 @@
 layout: default
 title: Home
 ---
-<h1>Latest Posts</h1>
 
-<ul>
-  {% for post in site.posts %}
-    <a href="{{ site.baseurl }}{{ post.url }}"><div class="blog-link">
-        <div class="side img"><img class="blog-img" src="{{ site.baseurl }}{{ post.excerpt_image }}" alt="{{ post.excerpt_image_alt }}"/></div><div class="side text">
-            <h2 class="blog-link-title"><i>{{ post.title }}</i></h2>
-            <p class="blog-link-body">{{ post.custom_excerpt }}</p>
-            <div class="blog-bottom">
-                <div class="date">
-                    {{ post.date | date_to_string }}
-                </div>
-                <div class="more">
-                    >>>read more
+<div class="blog-container">
+    <h1>Posts</h1>
+    <ul>
+    {% for post in paginator.posts %}
+        <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none"><div class="blog-link">
+            <img class="side img blog-img" src="{{ site.baseurl }}{{ post.excerpt_image }}" alt="{{ post.excerpt_image_alt }}"/>
+            <div class="side text">
+                <h2 class="blog-link-title"><i>{{ post.title }}</i></h2>
+                <p class="blog-link-body">{{ post.custom_excerpt }}</p>
+                <div class="blog-bottom">
+                    <div class="date">
+                        {{ post.date | date_to_string }}
+                    </div>
+                    <div class="more">
+                        >>>read more
+                    </div>
                 </div>
             </div>
-        </div>
-    </div></a>
-  {% endfor %}
-</ul>
+        </div></a>
+      {% endfor %}
+    </ul>
+    <!-- Pagination links -->
+    <div class="pagination">
+        <a href="/blog/{{ paginator.previous_page_path }}"><span><</span></a>
+        <a href="/blog/" {% if paginator.page == 1 %} class="active" {% endif %}><span>1</span></a>
+        {% for page in (2.. paginator.total_pages) %}
+        <a href="/blog/page{{page}}"{% if paginator.page == page %} class="active" {% endif %}><span>{{ page }}</span></a>
+        {% endfor %}
+        <a href="/blog/{{ paginator.next_page_path }}"><span>></span></a>
+    </div>
+
+</div>

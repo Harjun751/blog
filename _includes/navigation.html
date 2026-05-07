@@ -1,4 +1,42 @@
-<nav>
-    <a href="{{ site.baseurl }}/"><header>HARVINDER ARJUN SINGH</header></a>
-    <a class="link" href="{{ site.baseurl }}/about">about</a>
-</nav>
+<div>
+    <input class="checkbox" type="checkbox" id="toggle" name="toggle-color-scheme"/>
+    <input class="hamburg" type="checkbox" id="hamburger-toggle" name="toggle-panel"/>
+    <nav>
+        <div class="name">
+            <a href="{{ site.baseurl }}/">
+                <header>Harvinder Arjun Singh</header>
+            </a>
+            <div class="subheader wrapper">
+                <div class="marquee">
+                    {% for i in (1..2) %}
+                    <p>
+                        computing / consumer electronics / stuff /
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="hamburg">
+            <label for="hamburger-toggle" class="hamburg-label">
+                <span class="line l1"></span>
+                <span class="line l2"></span>
+                <span class="line l3"></span>
+                <span class="line l4"></span>
+            </label>
+        </div>
+
+        <div class="links">
+            <a class="link" href="{{ site.baseurl }}/about">about</a>
+            <label for="toggle" class="checkbox-label">
+                <span class="ball"></span>
+            </label>
+        </div>
+    </nav>
+
+    <div class="links-standalone">
+        <a class="link" href="{{ site.baseurl }}/about">about</a>
+        <label for="toggle" class="checkbox-label">
+            <span class="ball"></span>
+        </label>
+    </div>
+</div>

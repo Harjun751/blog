@@ -1,0 +1,115 @@
+// ---------------- BLOG POST CONTAINER ---------------------
+.blog-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+.blog-container > h1 {
+  margin-top: 0;
+}
+// ---------------- BLOG POST LIST ITEM ----------------
+.blog-link {
+  display: flex;
+  height: var(--blog-post-height);
+  border-radius: 10px;
+  background-color: var(--on-background);
+  margin-bottom: 40px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: -1px 4px 8px rgba(0,0,0,0.25);
+}
+
+.blog-link:hover {
+  background-color: var(--on-background-hover);
+}
+.blog-link::after {
+  /* credit to https://css-tip.com/corner-only-border-image/ for border */
+  --s: 50px; /* the size on the corner */
+  --t: 3px; /* the thickness of the border */
+  --g: 10px; /* the gap between the border and image */
+
+  border-radius: 20px;
+  content: "";
+  display: block;
+  height: var(--blog-post-height);
+  width: 100%;
+  position: absolute;
+  top: -13px;
+  left: -13px;
+  padding: calc(var(--g) + var(--t));
+  outline: var(--t) solid var(--on-background); /* the color here */
+  outline-offset: calc(-1 * var(--t));
+  -webkit-mask:
+          conic-gradient(at var(--s) var(--s), #0000 75%, #000 0) 0 0 /
+            calc(100% - var(--s)) calc(100% - var(--s)),
+          linear-gradient(#000 0 0) content-box;
+  transition: 0.1s;
+}
+.blog-link:hover:after {
+  outline-offset: calc(var(--g) / -1);
+}
+a .blog-link {
+  text-decoration: none;
+  color: var(--text-on-background);
+}
+// -------------- Blog images, nitty gritty ------------------
+.blog-link .blog-img {
+  height: 100%;
+  width: 100%;
+  max-width: var(--blog-post-height);
+  border-radius: 10px 0 0 10px;
+  border: 1px solid black;
+  object-fit: cover;
+}
+.blog-link .side {
+  display: inline-block;
+  vertical-align: top;
+}
+.blog-link .text {
+  position: relative;
+  width: 100%;
+  margin: 5px 5px 5px 10px;
+  height: inherit;
+}
+
+.blog-link .blog-link-title {
+  font-weight: 600;
+  margin: 0;
+}
+.blog-link .blog-link-body {
+  margin: 0;
+}
+.blog-link .blog-bottom {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+.blog-link .blog-bottom div {
+  display: inline-block;
+}
+.blog-link .blog-bottom .more {
+  float: right;
+}
+
+// ------------- Headers (section title) ------------
+h1 {
+  font-size: var(--header);
+  color: var(--text-background);
+  font-weight: 300;
+  text-shadow: 0 0 4px var(--text-background);
+}
+
+// ------------- Headers (post title) ------------
+h2 {
+  font-size: var(--header2);
+  color: var(--text-on-background);
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+
+// ---- post list ---
+ul {
+  padding-left: 0;
+}

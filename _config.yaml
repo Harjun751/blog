@@ -1,2 +1,6 @@
 destination         : ./docs
 baseurl             : "/blog" # does not include hostname
+paginate: 5
+plugins:
+  - jekyll-paginate
+  - jekyll-feed

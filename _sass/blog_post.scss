@@ -1,0 +1,79 @@
+.blog-post {
+  max-width: 850px;
+  width: 90%;
+  padding: var(--content-height-padding) var(--content-width-padding);
+
+  border-radius: 10px;
+  background-color: var(--on-background);
+  color: var(--text-on-background);
+  margin: 0 auto;
+  position: relative;
+  font-size: var(--body);
+}
+
+.blog-post h1{
+  text-transform: uppercase;
+}
+
+.blog-post .hero {
+  width: calc(100% + (2 * var(--content-width-padding)));
+  position: relative;
+  left: calc(var(--content-width-padding) * -1);
+  top: -20px;
+  border-radius: 10px 10px 0 0;
+}
+
+.blog-post .blog-img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.blog-post figcaption {
+  color: var(--secondary-text-on-background);
+  font-size: var(--sub);
+  margin-top: 5px;
+  text-align: center;
+}
+
+.blog-post h1 {
+  margin-top: 0;
+}
+
+.blog-post p {
+  line-height: var(--lineheight);
+}
+
+.blog-post a {
+  color: var(--accent);
+  text-shadow: 0 0 4px var(--accent);
+}
+
+// ------------ Table Stuff -------------
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+tr,
+th,
+td {
+  padding: 10px;
+}
+
+table,
+td,
+th {
+  border: 1px solid;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+}
+pre {
+  display: block;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: scroll;
+}

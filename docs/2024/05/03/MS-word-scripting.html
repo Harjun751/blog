@@ -1,21 +1,68 @@
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" />
+        <script src="/blog/assets/js/themeStorage.js" defer></script>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+
 
         <title>👨‍💻 | Ms Word Scripting</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Single:wght@100..900&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/blog/assets/css/styles.css">
     </head>
 
     <body>
-        <nav>
-    <a href="/blog/"><header>HARVINDER ARJUN SINGH</header></a>
-    <a class="link" href="/blog/about">about</a>
-</nav>
+        <div>
+    <input class="checkbox" type="checkbox" id="toggle" name="toggle-color-scheme"/>
+    <input class="hamburg" type="checkbox" id="hamburger-toggle" name="toggle-panel"/>
+    <nav>
+        <div class="name">
+            <a href="/blog/">
+                <header>Harvinder Arjun Singh</header>
+            </a>
+            <div class="subheader wrapper">
+                <div class="marquee">
+                    
+                    <p>
+                        computing / consumer electronics / stuff /
+                    </p>
+                    
+                    <p>
+                        computing / consumer electronics / stuff /
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="hamburg">
+            <label for="hamburger-toggle" class="hamburg-label">
+                <span class="line l1"></span>
+                <span class="line l2"></span>
+                <span class="line l3"></span>
+                <span class="line l4"></span>
+            </label>
+        </div>
+
+        <div class="links">
+            <a class="link" href="/blog/about">about</a>
+            <label for="toggle" class="checkbox-label">
+                <span class="ball"></span>
+            </label>
+        </div>
+    </nav>
+
+    <div class="links-standalone">
+        <a class="link" href="/blog/about">about</a>
+        <label for="toggle" class="checkbox-label">
+            <span class="ball"></span>
+        </label>
+    </div>
+</div>
+
         <article class="blog-post">
     <p>My mum is working on a thesis (very sick). It’s been in the works for a while, and it’s pretty chunky right now. Because of feedback from her supervisors, she’s had to remove and add stuff at various locations multiple times. Very sadly, she did not utilize Microsoft Word’s reference table feature (one of my great shame is not catching this and telling her earlier) because SHE DID NOT KNOW ABOUT IT. So, the reference list is now out of whack. There are new citations that have no full listing in the reference list, and old citations that have to be removed. I have no idea how it became like this. Due to the sorry state of affairs, my mother enlisted my help to straighten out the reference list while she works on the <em>important</em> parts of the thesis.</p>
 
@@ -46,6 +93,12 @@
 <p>As for ChatGPT, I would say it’s <em>mildly</em> useful. It’s not a replacement for reading documentation - I had to consult python-docx docs a good amount still. But, it’s useful for getting started. I’m curious about the performance of the “better” paid models in this regard, but I’m not paying to find out.</p>
 
 </article>
+
+        <footer>
+    <a href="mailto:harjun751@gmail.com"><span>email</span></a>
+    <a href="/blog/feed.xml"><span>rss</span></a>
+    <a href="https://github.com/Harjun751/"><span>github</span></a>
+</footer>
 
     </body>
 </html>

@@ -85,7 +85,7 @@ You start getting deviations once going deeper into development. Many things in 
 So I eventually got most of the key features completely baked - adaptive layouts on mobile, actual searching based on location, and more. There's still some stuff to do like fleshing out the google maps integration, invalid input handling, loading screens, and so on. I wanted to publish this blog once I was completely done with the app, but to be honest I haven't touched it in about a month. School caught up with me. So I'll just put what it currently looks like down here:
 
 <figure>
-    <video height="800px" class="blog-img" autoplay loop muted playsinline src="{{ site.baseurl }}/assets/blog-images/2025-03-15/demo.mp4"></video>
+    <video max-height="800px" class="blog-img" autoplay loop muted playsinline src="{{ site.baseurl }}/assets/blog-images/2025-03-15/demo.mp4"></video>
     <figcaption>It lives</figcaption>
 </figure>
 
