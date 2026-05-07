@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: Have you SEEN the economy
 excerpt_image: /assets/blog-images/2025-03-15/shiokprices.png
+tags:
+  - computing
+  - software
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2025-03-15/goodprices.png"/>

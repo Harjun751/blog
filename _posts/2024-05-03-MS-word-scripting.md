@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: (it's a python script)
 excerpt_image: /assets/blog-images/2024-05-03/snek.jpg
+tags:
+  - computing
 ---
 My mum is working on a thesis (very sick). It's been in the works for a while, and it's pretty chunky right now. Because of feedback from her supervisors, she's had to remove and add stuff at various locations multiple times. Very sadly, she did not utilize Microsoft Word's reference table feature (one of my great shame is not catching this and telling her earlier) because SHE DID NOT KNOW ABOUT IT. So, the reference list is now out of whack. There are new citations that have no full listing in the reference list, and old citations that have to be removed. I have no idea how it became like this. Due to the sorry state of affairs, my mother enlisted my help to straighten out the reference list while she works on the *important* parts of the thesis.
 

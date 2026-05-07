@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: Truly groundbreaking.
 excerpt_image: /assets/blog-images/2024-03-16/main-cropped.png
+tags:
+  - computing
+  - software
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2024-03-16/main-sized.png" width="50%"/>

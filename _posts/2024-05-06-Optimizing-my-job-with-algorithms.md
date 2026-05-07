@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: + PWAs again
 excerpt_image: /assets/blog-images/2024-06-05/plan.jpg
+tags:
+  - computing
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2024-06-05/skyhelix.jpg"/>

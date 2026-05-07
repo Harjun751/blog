@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: My experience doing advent of code, a yearly christmas programming challenge advent calendar.
 excerpt_image: /assets/blog-images/2023-12-20/main.png
+tags:
+  - computing
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2023-12-20/main.png"/>

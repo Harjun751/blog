@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: It's free!
 excerpt_image: /assets/blog-images/2023-11-28/love.png
+tags:
+  - computing
 ---
 <figure>
     <img class="hero" style="height:50%;object-fit: cover;object-position:top" src="{{ site.baseurl }}/assets/blog-images/2023-11-28/drip.webp"/>

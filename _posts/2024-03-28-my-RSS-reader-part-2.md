@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: Regrets. Tears. Betrayal.
 excerpt_image: /assets/blog-images/2024-04-13/hap.png
+tags:
+  - computing
+  - software
 ---
 
 # RSS PART 2: electric boogaloo

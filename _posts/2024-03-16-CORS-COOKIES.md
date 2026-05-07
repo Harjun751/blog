@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: A reference for setting up cross-domain (CORS) cookies
 excerpt_image: /assets/blog-images/2024-03-16/cookie.png
+tags:
+  - computing
 ---
 
 # CROSS-domain cookie settings

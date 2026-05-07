@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: It does things!
 excerpt_image: /assets/blog-images/2024-03-03/nas.jpg
+tags:
+  - consumer.electronics
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2024-03-03/screen.png"/>

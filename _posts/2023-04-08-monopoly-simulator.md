@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: Adventures in object-oriented money-making
 excerpt_image: /assets/blog-images/2023-04-08/ChanceOfLandingByColor.png
+tags:
+  - computing
+  - software
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2023-04-08/monopoly.webp"/>

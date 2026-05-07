@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: My ravings on creating the blog site you are seeing right now.
 excerpt_image: /assets/blog-images/2023-05-12/yuck.png
+tags:
+  - computing
+  - software
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2023-05-12/inception.png"/>

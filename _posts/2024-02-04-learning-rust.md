@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: I'm a rustacean now.
 excerpt_image: /assets/blog-images/2024-02-04/ferrisangry.png
+tags:
+  - computing
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2024-02-04/crusty.png"/>

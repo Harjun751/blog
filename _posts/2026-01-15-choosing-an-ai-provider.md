@@ -2,6 +2,8 @@
 layout: post
 custom_excerpt: Because I had no choice
 excerpt_image: /assets/blog-images/2026-01-15/idk.png
+tags:
+  - AI
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2026-01-15/idk.png"/>

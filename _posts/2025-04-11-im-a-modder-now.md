@@ -2,6 +2,9 @@
 layout: post
 custom_excerpt: Because this game is TOO EASY 😤😤😤
 excerpt_image: /assets/blog-images/2025-04-11/thumbnail.png
+tags:
+  - computing
+  - games
 ---
 <figure>
     <img class="hero" src="{{ site.baseurl }}/assets/blog-images/2025-04-11/thumbnail.png"/>
