@@ -35,6 +35,8 @@
 
 html {
     background-color: var(--background);
+    background-image: url('/blog/assets/images/black-orchid.png');
+    background-blend-mode: overlay;
     color: var(--text-on-background);
     transition: background 0.3s, color 0.3s;
 }
