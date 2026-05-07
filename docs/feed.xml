@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/blog/" rel="alternate" type="text/html" /><updated>2026-05-07T22:34:40+08:00</updated><id>http://0.0.0.0:4000/blog/feed.xml</id><entry><title type="html">Hack N Roll 2026</title><link href="http://0.0.0.0:4000/blog/2026/01/18/hack-n-roll-2026.html" rel="alternate" type="text/html" title="Hack N Roll 2026" /><published>2026-01-18T00:00:00+08:00</published><updated>2026-01-18T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2026/01/18/hack-n-roll-2026</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2026/01/18/hack-n-roll-2026.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2026-01-18/payorpray.png" />
+</figure>
+
+<h1 id="hack-n-roll-2026">Hack N’ Roll 2026</h1>
+<p>If you don’t know what <a href="https://hacknroll.nushackers.org/">Hack &amp; Roll</a> is, it’s a 24 hour hackathon where you can build whatever you want - no problem statements.</p>
+
+<p>This year I actually saw the sign up information on time, so I decided to join. Sadly, my friend failed to join so I was alone in this enterprise (at first…)</p>
+
+<p>I found some group mates through the Discord, and met up with a group that consisted of 2 NTU students and a Y1 NUS student (all CS if I recall).</p>
+
+<p>I mentioned in another post that one of my learning outcomes for this semester was incorporating AI use in a manner that makes sense and actually improves productivity. With that in mind, I had one pertinent goal in this hackathon: Overuse AI. I wanted to figure if I just delegated most of my work to AI, would it be feasible? At what point do we feel productivity gains/losses? I wanted to explore this. So my workflow was mostly using copliot in a JetBrains IDE (I had yet to finish choosing a proper <a href="https://harjun751.github.io/blog/2026/01/15/choosing-an-ai-provider.html">AI provider</a>)</p>
+
+<h2 id="the-brainstorming">The Brainstorming</h2>
+<p>After a particularly productive brainstorming session, we had several ideas that we were unsure would work. One that I really wanted to do was to create an alternative front-end for the NUS library booking system.</p>
+
+<p>I went as far as creating a rooted emulator to scrape the Backend “Chope” API with, before realizing that spoofing authentication would be a nightmare. And that if I could actually do it it’d be quite concerning overall. But I had some fun booking sessions through Bruno with scraped JWT first.</p>
+
+<h2 id="the-idea">The idea</h2>
+<p>Well, we met on the day itself with nary a clue on what to build. Somehow we landed on making a <a href="https://www.splitwise.com/">splitwise</a> clone but with baked-in gambling features. After thinking about it more and more, this was an idea that I actually liked a lot. <strong>I LOVE GAMBLING!!!!</strong>. We were going to call it PayOrPray.</p>
+
+<figure>
+    <img class="blog-img" style="width:40%" src="/blog/assets/blog-images/2026-01-18/gambling.webp" />
+    <figcaption>i should probably add a disclaimer that you should not believe this, but if you even think it does i'm afraid you're too far gone buddy</figcaption>
+</figure>
+
+<h2 id="the-hacking">The hacking</h2>
+<p>Met up with the group mates and we began hacking at about 1pm (we got lunch at hwang’s first, shoutout).</p>
+
+<p>I don’t remember most of the timings actually, so it’s kind of a rough guess down here. I’m also using git commit times to roughly tell.</p>
+
+<h3 id="1pm">1PM</h3>
+<p>At first, we weren’t sure how to proceed, so I organized our group into 3 teams that could tackle tasks in parallel.</p>
+
+<p>The first team was to work on front end:</p>
+<ul>
+  <li>Create a design</li>
+  <li>Generate using AI</li>
+  <li>Tweak generated site where necessary</li>
+  <li>Add PWA functionality</li>
+  <li>Integrate with Back end</li>
+</ul>
+
+<p>The second team was to work on back end:</p>
+<ul>
+  <li>Create a simple API specification so that Front end could structure their work</li>
+  <li>Scaffold a Back end server - choose framework</li>
+  <li>Code it out</li>
+</ul>
+
+<p>The third team was to work on deployment and architecture:</p>
+<ul>
+  <li>Look for a (free) DB provider and set up</li>
+  <li>Pass a connection string to Back end ASAP</li>
+  <li>Look for a server provider</li>
+  <li>Investigate and make deployment happen somehow</li>
+</ul>
+
+<p>4 people among 3 teams, so one person could hop around where necessary.</p>
+
+<p>It was a rough plan, but it was working. We were able to work well in parallel.</p>
+
+<p>I was mostly working on Back end.</p>
+
+<h3 id="3pm">3PM</h3>
+<p>A basic API spec was created. We finished figuring out how to generate paynow QR codes on demand for settling debts.</p>
+
+<p>We integrated SupaBase as a DB provider into the App.</p>
+
+<p>A design was created.</p>
+
+<p>All seemed to be going quite well and optimism was in the air.</p>
+
+<h3 id="5pm">5PM</h3>
+<p>We fixed up a login page on the Front end using SupaBase auth.</p>
+
+<p>Back end endpoints were being implemented.</p>
+
+<h3 id="6pm">6PM</h3>
+<p>As we went along, we realized we needed one or two more endpoints.</p>
+
+<p>We implemented an /invites system to the Back end. Fully integrated JWT auth with the Front end.</p>
+
+<p>Front end was being fleshed out and integrated with the Back end.</p>
+
+<h3 id="9pm">9PM</h3>
+<p>I encountered the first non-trivial (ie non CRUD-related) issue at this time. We were thinking of how splitwise actually does the “simplify debts” feature, and realized it’s not simple.</p>
+
+<p>I’m very glad that people have looked into this, because there was no way I was figuring out that it required utilizing Digraphs and Maxflow algorithms on that night - I was already groggy and tired.</p>
+
+<p>If you’re interested, the <a href="https://medium.com/@mithunmk93/algorithm-behind-splitwises-debt-simplification-feature-8ac485e97688">algo is here</a>. So I just had to adapt the code to JavaScript.</p>
+
+<p>I was eventually able to do it, and we had an endpoint that was able to return the simplified debt payment data.</p>
+
+<h3 id="11pm">11PM</h3>
+<p>By 11pm, things were looking good. We had a solid application that was able to do expense tracking and debt-payment, with authentication. The app looked pretty good on mobile too.</p>
+
+<p>We had a few more things to do:</p>
+<ol>
+  <li>Polish up the front end - there were undesired UI elements that could be removed</li>
+  <li>Add actual gambling elements - we just needed the frontend components to do so</li>
+  <li>Integrate the invite system into the frontend</li>
+  <li>Some refactoring if we had time - codebase was a mess</li>
+  <li>Deploy</li>
+</ol>
+
+<p>My team mates decided that they weren’t going to be staying overnight, but I decided to stay. There was still things I wanted to complete in the app, and it was getting too late for me to take the last bus back home. I was <strong>not</strong> going to pay for a taxi.</p>
+
+<h1 id="midnight">Midnight.</h1>
+<p>So from midnight onwards I was working in a pure hallucinogenic mind-melded hyperbolic-time-chamber coding fugue state. My brain was shutting down and I saw miracles in the in-betweens of lines of code. I saw software in its distilled purest state, and I was terrified.</p>
+
+<p>I was mostly vibecoding.</p>
+
+<h3 id="3am">3am</h3>
+<p>I only know what happened till 3am because I sent a message to my group:
+I:</p>
+<ul>
+  <li>Integrated working user invites on Front end</li>
+  <li>Fixed some bugs on expense-splitting and some Front end bugs</li>
+  <li>Deployed Back end and Front end to render</li>
+</ul>
+
+<h3 id="6am">6am</h3>
+<figure>
+    <img class="blog-img" style="width:80%" src="/blog/assets/blog-images/2026-01-18/sorry.png" />
+</figure>
+<p>So uhh yea by 6am I really was in the trenches. I recall sleeping on a random bench somewhere for about 30minutes before the sun starting peeking at my eyes and I awoke.</p>
+
+<h3 id="9am">9am</h3>
+<p>After my short sleep and some inadequate breakfast, I did this:</p>
+<figure>
+    <img class="blog-img" style="width:80%" src="/blog/assets/blog-images/2026-01-18/gamble.png" />
+</figure>
+<p>YAY!</p>
+
+<h3 id="11am">11am</h3>
+<p>After that, my team mates came and met up with me again. I can only imagine how I looked and what they thought when they saw I, an ascended software wizard who was diligently at his craft throughout the night, remaining seated at the same seat they saw me in when they left at 11pm last night. Perfection is often ugly.</p>
+
+<p>Not much changes after that, and I left soon because my body was shutting down.</p>
+
+<h2 id="the-result">The result</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/payorpray.png" />
+    <figcaption>main page</figcaption>
+</figure>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/trip.png" />
+    <figcaption>trip page</figcaption>
+</figure>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-18/gamble.gif" />
+    <figcaption>gambling</figcaption>
+</figure>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Pretty happy with how that turned out! Of course, some things could be improved, but in 24 hours and one overnight session I’m satisfied.</p>
+
+<p>My experience with vibecoding is mixed.</p>
+
+<h3 id="things-it-was-good-for"><strong>Things it was good for:</strong></h3>
+
+<p>Creating API specifications in a standardized format (openapi.yml) after passing it natural-language instructions. Goated.</p>
+
+<p>Brainstorming API and Architecture layout. I think straight up asking it “what should I do is bad”, but if you provide it with baseline expectations and thoughts, it can provide some value.</p>
+
+<h3 id="things-it-was-okay-at">Things it was <em>okay</em> at:</h3>
+
+<p>Implementing back end endpoints from specifications. It’s hit or miss, but using few-shot prompting helps a little.</p>
+
+<h3 id="things-it-was-horrendous-at">Things it was horrendous at:</h3>
+
+<p>Debugging. I attempted to ask it to debug a few problems, but it was a bad experience. The flow of prompting AI &gt; letting it incorporate changes &gt; test is pretty wonky. I feel like debugging by using your brain is still better.</p>]]></content><author><name></name></author><category term="computing" /><category term="school" /><category term="software" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Choosing An Ai Provider</title><link href="http://0.0.0.0:4000/blog/2026/01/15/choosing-an-ai-provider.html" rel="alternate" type="text/html" title="Choosing An Ai Provider" /><published>2026-01-15T00:00:00+08:00</published><updated>2026-01-15T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2026/01/15/choosing-an-ai-provider</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2026/01/15/choosing-an-ai-provider.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2026-01-15/idk.png" />
+</figure>
+
+<h1 id="choosing-an-ai-assistant-in-2026">Choosing an AI assistant in 2026</h1>
+<p>Despite my best efforts to abstain from using AI chatbots and assistance, it seems like I can abstain no more. A course that I’m taking this semester requires <strong>heavy</strong> use of AI in an exploratory role, seeing what tools and workflows work best for software development and what don’t.</p>
+
+<p>I’m not blind towards the industry I’m working towards - new hires are expected to be proficient in using AI tools before they’re even considered. You’re “losing out” if you’re NOT using assistants to help with your studying or work. Statements I’m sure you’ve heard before. I’m not a luddite - I do believe that these tools <em>can</em> and even <em>will</em> seismically shift the way we go about work in a positive way. The reservations I have about AI is not the technology itself (Machine Learning is a wonderful field that has improved lives significantly - AI I believe is just another prong of that), but rather about the way these large corporations have gone about in attaining it.</p>
+
+<p>Companies like OpenAI and Meta seem to frankly just not give a shit:</p>
+
+<ul>
+  <li>Stealing <a href="https://arstechnica.com/tech-policy/2025/12/openai-desperate-to-avoid-explaining-why-it-deleted-pirated-book-datasets/">books</a>, <a href="https://www.forbes.com/sites/bernardmarr/2023/08/08/is-generative-ai-stealing-from-artists/">art</a>, <a href="https://www.businessinsider.com/openai-chatgpt-generative-ai-stole-personal-data-lawsuit-children-medical-2023-6?op=1">information</a> to train models</li>
+  <li>Recklessly building datacenters, <a href="https://www.forbes.com/sites/kensilverstein/2026/01/11/americas-ai-boom-is-running-into-an-unplanned-water-problem/">draining local potable water supplies</a></li>
+  <li>Whatever the hell <a href="https://www.bloomberg.com/news/articles/2026-01-07/musk-s-grok-ai-generated-thousands-of-undressed-images-per-hour-on-x">grok is doing</a></li>
+</ul>
+
+<details>
+<summary>An aside on water use</summary>
+<p>
+There's a lot of contention about AI water use. Why is it even an issue?
+
+Well, many data centers use <a href="https://www.accountabilityconsole.com/newsletter/articles/ai-data-centers-and-potable-water/">potable water supplies</a> from municipal systems. These water bodies are limited in throughput. A spike in usage means that more water is evaporated (because many data centers use *evaporative cooling*) - this in turn results in more water being in the atmosphere rather than in water bodies. The water in the atmosphere is not always guaranteed to fall back to where it came from - it goes to oceans and other places. Build enough data centers and I think you get the picture.
+
+It's not a scarcity issue - at this moment we have enough water. It's a resource allocation issue. This is an issue that can be fixed with proper planning. I believe that companies must be aware of their effect on the community and take that into account. That's why to me, it's ethically iffy to support companies that churn out data centers with reckless abandon.
+</p>
+</details>
+
+<p>It seems that all of these companies providing LLMs are guilty as sin. It’s the modus operandi of Big Tech - iterate and develop at any cost, capture market share, and deal with the consequences afterward. And by dealing with consequences, I mean something like paying a <a href="https://www.reuters.com/technology/italy-fines-openai-15-million-euros-over-privacy-rules-breach-2024-12-20/">15 million Euro fine</a> as a company that recently did a <a href="https://fortune.com/2024/10/02/openai-officially-raises-6-6-billion-funding-deal-157-billion-valuation-sam-altman-thrive-capital/">6.6 billion US dollar funding round</a>. That’s about 0.26% of that by the way.</p>
+
+<p>On top of that, I do have a personal vendetta; AI has made the internet a vastly less-useful resource. New webpages are inundated with AI slop and <a href="https://github.com/harry0703/MoneyPrinterTurbo">things like this</a> just make it worse. The internet seems rife with it, to the point where I’m questioning what happens when AI is trained on AI. A convergence of slop I believe.</p>
+
+<h1 id="so-what-do-i-do">So what do I do?</h1>
+<p>My main objective of this is to find a LLM provider that is <strong>ethical</strong>. That is,</p>
+<ol>
+  <li>Acknowledgement of environmental toll, and concrete steps taken to mitigate/offset it.</li>
+  <li>Acknowledgement of rights holders (authors, artists) when it comes to training data.</li>
+  <li>Safeguards against harmful material (radicalization, CSAM, etc). At the very least a model that won’t help you kill yourself. (optional)</li>
+  <li>Privacy. Might be a stretch. (optional)</li>
+</ol>
+
+<p>Note that I’m not evaluating features or quality by any means.</p>
+
+<h2 id="openai">OpenAI</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/chatgpt.png" />
+</figure>
+
+<p><strong>Environment</strong> - Seem to actively downplay water usage and electricity. Sure, Sam Altman claims a query uses “0.000085 gallons of water; roughly  one-fifteenth of a teaspoon”, but we all know that inference/running queries is <em>not</em> where most of the usage is. It’s in training. And there have been no acknowledgements/statements on that. On top of that, the statement does not address that some queries <a href="https://llmrefs.com/blog/chatgpt-system-prompt-leak">fire off additional queries</a>. We haven’t event talked about image generation yet. [FAIL]</p>
+
+<p><strong>Training Material</strong> - Current lawsuits on <a href="https://news.bloomberglaw.com/ip-law/openai-risks-billions-as-court-weighs-privilege-in-copyright-row">copyright theft</a>. [FAIL]</p>
+
+<p><strong>Safety</strong> - Several scandals about <a href="https://edition.cnn.com/2025/11/06/us/openai-chatgpt-suicide-lawsuit-invs-vis">ChatGPT encouraging suicide</a>. Remember when it got super sycophantic and ChatGPT-induced psychosis <a href="https://edition.cnn.com/2025/09/05/tech/ai-sparked-delusion-chatgpt">became a thing</a>? Yea that was fun. Either way, OpenAI does seem to be <a href="https://openai.com/safety/">making an effort</a> towards safety. Whether that will be adequate is for time to tell. [MEH]</p>
+
+<h2 id="meta">Meta</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/meta.png" />
+</figure>
+
+<p><strong>Environment</strong> - Meta releases a sustainability report every year. They at least seem to be <em>thinking</em> about it. Their (lofty) goal is to achieve <a href="https://sustainability.atmeta.com/">net zero emissions and become water postive by 2030</a>. But, they’re also planning on constructing <a href="https://ppc.land/meta-confronts-sustainability-tensions-amid-massive-ai-infrastructure-expansion/">data centers that consume electricity in the scale of gigawatts</a>. Who knows, maybe they’ll do it. Either way, Meta’s data centers in the here and now still <a href="https://www.nytimes.com/2025/07/14/technology/meta-data-center-water.html">drain the taps for local residents</a> and <a href="https://www.cnbc.com/2025/11/26/ai-data-center-frenzy-is-pushing-up-your-electric-bill-heres-why.html">inflate energy bills</a>. As an aside, electricity bills increasing feels more like an “America” problem than a “data center” problem. [MEH]</p>
+
+<p><strong>Training Material</strong> - <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/meta-staff-torrented-nearly-82tb-of-pirated-books-for-ai-training-court-records-reveal-copyright-violations">Here we go again</a> [FAIL]</p>
+
+<p><strong>Safety</strong> - Meta has introduced <a href="https://about.fb.com/news/2025/10/teen-ai-safety-approach/">parental guards</a> in response to <a href="https://www.forbes.com/sites/douglaslaney/2025/08/17/alternate-approaches-to-ai-safeguards-meta-versus-anthropic/">leaked policies</a> that were shockingly permissive. Meta’s track record is not good, and I’m inclined to believe that this was done to keep the Chatbot as engaging as possible to maximize value. But that is my own bias - take it as you will after [FAIL]</p>
+
+<h2 id="google">Google</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/google.png" />
+</figure>
+
+<p><strong>Environment</strong> - Google seems to be generally transparent when it comes to the environmental toll of AI. This <a href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference">article</a> summarizes a <a href="https://arxiv.org/abs/2508.15734">techinal paper</a> that they’ve released that discusses the footprint of AI. They discuss how their data center operations take into account of the local watershed, energy efficiency, and more. The article isn’t peer reviewed, and still this is only taking into account of inference. Additionally, their claims on water/energy consumption is only on the <em>median</em>. Color me skeptical. This is still leagues above Meta and especially OpenAI’s approach. I’ll give it a meagre pass. [PASS]</p>
+
+<p><strong>Training Material</strong> - I think you’d be hard-pressed to find a AI model/company that hasn’t <a href="https://www.cio.com/article/2069449/french-regulator-fines-google-271m-over-generative-ai-copyright-issue.html">faced</a> <a href="https://www.reuters.com/legal/litigation/google-sued-by-us-artists-over-ai-image-generator-2024-04-29/">lawsuits</a> regarding training materials. Couldn’t find anything about Google pirating their training material though, so I’ll give them that. [MEH]</p>
+
+<p><strong>Safety</strong> - Again, seems pretty <a href="https://deepmind.google/blog/advancing-geminis-security-safeguards/">transparent</a>. Their safeguards seem to be strict to a point where people complain online. Whether that’s good or bad is up to you and how you use it. [PASS]</p>
+
+<h2 id="microsoft">Microsoft</h2>
+<p>Microsoft has copilot, but copilot is mostly <a href="https://www.microsoft.com/en-us/microsoft-365/blog/2025/09/24/expanding-model-choice-in-microsoft-365-copilot/">powered by OpenAI’s models</a>. They did have some <a href="https://www.microsoft.com/en-us/research/blog/using-deepspeed-and-megatron-to-train-megatron-turing-nlg-530b-the-worlds-largest-and-most-powerful-generative-language-model/">AI models</a> a while back, but none that are really an analog to current-day models and how they’re exposed. But, they are still worth talking about as they’re still training <a href="https://www.microsoft.com/en-us/research/story/advancing-ai-for-the-physical-world/">new models</a>. Whether they come up with a new LLM chatbot is still unclear. With that said,</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/microsoft.png" />
+</figure>
+
+<p><strong>Environment</strong> - Microsoft looks to be at the forefront of tackling this data center issue - voluntarily taking on <a href="https://edition.cnn.com/2026/01/13/tech/microsoft-ai-data-centers-electricity-bills-plan">higher electricity bills</a> to prevent spikes in bills, furthermore pledging to cover costs of improving the existing grid. On top of that, a concrete plan to <a href="https://www.reuters.com/business/microsoft-launches-data-center-initiative-limit-power-costs-water-use-2026-01-13/">curb impact of data center water use</a> and efforts to decrease <a href="https://www.microsoft.com/en-us/microsoft-cloud/blog/2024/12/09/sustainable-by-design-next-generation-datacenters-consume-zero-water-for-cooling/">water usage to zero</a>. Microsoft has not released any data regarding the footprint of a prompt or training a model. Either way, they seem committed and transparent. [PASS]</p>
+
+<p><strong>Training Material</strong> - More claims of <a href="https://www.reuters.com/sustainability/boards-policy-regulation/microsoft-sued-by-authors-over-use-books-ai-training-2025-06-25/">piracy</a>. They’ve also announced <a href="https://blogs.microsoft.com/on-the-issues/2023/09/07/copilot-copyright-commitment-ai-legal-concerns/">“Copilot Copyright Commitment”</a> which states that they will”assume responsibility for the potential legal risks involved” on using generated copilot output. This is insanely odd to me and almost akin to admitting that chatbot output is/potentially can be illegal on the grounds of infringement. But go off I guess. [FAIL]</p>
+
+<p><strong>Safety</strong> - As per the norm there are <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy">safeguards and policies</a> which attempt to mitigate potential damage. Old case of it egging on self-harm, but can’t find much cases in 2025. They seem to be rather strict on mitigating these cases. [PASS]</p>
+
+<h2 id="anthropic">Anthropic</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/anthropic.png" />
+</figure>
+
+<p><strong>Environment</strong> - Anthropic’s concerns seem to be set on <a href="https://www.anthropic.com/news/build-ai-in-america">building out and expanding</a> data centers across the US. The statements and reports I can find online are mostly related to this. They seem to have a strong focus on America “winning” the AI race - and their vision to achieve that would involve relaxing zoning laws and building out more and more energy infrastructure. There is a distinct lack of talk about sustainability and environmental impact, especially as a company that claims to be a beacon of responsibility in AI. [BIG FAIL]</p>
+
+<p><strong>Training Material</strong> - They got fined <a href="https://www.bbc.com/news/articles/c5y4jpg922qo">1.5 billion for piracy</a></p>
+
+<p><strong>Safety</strong> - At the very least Anthropic seems to be the one championing AI safety - they have a <a href="https://www.anthropic.com/rsp-updates">responsible scaling policy</a> (nope it’s not about the environment) that details how they secure their bots. Their <a href="https://www.anthropic.com/news/core-views-on-ai-safety">core views on AI safety</a> read well and make sense. In the crop of AI companies, they do seem to be one of the more transparent ones in this sense. [PASS]</p>
+
+<h2 id="deepseek">Deepseek</h2>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/deepseek.png" />
+</figure>
+
+<p><strong>Environment</strong> - DeepSeek’s models seem to be more efficient during the training phase, but <a href="https://www.technologyreview.com/2025/01/31/1110776/deepseek-might-not-be-such-good-news-for-energy-after-all/">worse during inference</a>. They notably caused Nvidia shares to sink when they publicized the cost of training DeepSeek-V3, claiming that training the model required far less infrastructure than normal.They have not published any sustainability reports or have made statements about their data centers. I would err on the side of caution. [MEH?]</p>
+
+<p><strong>Training Material</strong> - Deepseek says that data in the pre-training stage is <a href="https://archive.ph/TRiG3#selection-1137.172-1141.91">“mainly collected from publicly available online information and authorised third-party data”</a>. If this is true, it would be the only provider so far to actually get authorisation. However, I am unsure on the difference between the “pre-training” stage and the “training” stage - the statement seems quite specifically worded. There really isn’t much information on this from Deepseek, so again, I’d err on the side of caution. [MEH?]</p>
+
+<p><strong>Safety</strong> - It seems that Deepseek are lacking behind their contermporaries in this - their safety guardrails <a href="https://www.wired.com/story/deepseeks-ai-jailbreak-prompt-injection-attacks/">failed many tests</a> by researchers.</p>
+
+<h2 id="mistral">Mistral</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-01-15/mistral.png" />
+</figure>
+
+<p><strong>Environment</strong> - As the image says, a <a href="https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai">report</a> that not just takes into account inference on AI, but on its full lifecycle from conception to consumption. If not the full picture, the largest one to date. They also suggest ways to measure impact by amortizing inference. In terms of environmental transparency, Mistral is leading the way.</p>
+
+<p><strong>Training Material</strong> - The cofounder of Mistral, , was implicated with the big Meta <a href="https://www.liberation.fr/economie/economie-numerique/un-des-cofondateurs-de-mistral-ai-accuse-davoir-pirate-des-millions-de-livres-quand-il-travaillait-chez-meta-20251222_RGFHNU37AFFQTENP5PH6RARYKQ/">piracy hoohaa</a>. Also see <a href="https://www.vanityfair.com/news/story/meta-ai-lawsuit">this</a> (ctrl-F his name ;). Getting past that, Mistral <em>insists</em> it only uses data that is publicly available on the internet in their <a href="https://legal.mistral.ai/terms/privacy-policy">privacy policy</a>. Whether that includes anna’s archive is up to you to decide. The EU seems to be <a href="https://www.france24.com/en/tv-shows/tech-24/20250711-eu-orders-ai-companies-to-clean-up-their-act-stop-using-pirated-datanw">cracking down</a> on use of pirated material, though.</p>
+
+<p><strong>Safety</strong> - There are <a href="https://docs.mistral.ai/capabilities/guardrailing">guardrails</a> - as to their efficacy I cannot tell.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Well if you’re using AI you just have to accept that these companies have profited off pirating vast quantities of material and/or using them without express permission. It’s actually quite hard to see AI without it - LLMs are almost rapacious in their hunger for training material, and feeding them the wealth of information that lives online and in our books seems like a natural step. But there has to have been a better way to achieve this than how these companies went about it.</p>
+
+<p>Some companies are better for the environment than others, and surprisingly Microsoft pulled through on that one. Though copilot just uses OpenAI anyway.</p>
+
+<p>All of the companies have AI safeguards, with some of them being more on the forefront of research and safety features. But prompt injections and “jailbreak” prompts are still rife and are a problem that has not been solved yet. I’m not sure it ever will be solved without crippling usage. Again, you’ll just have to accept that these tools are perhaps too powerful for our own good.</p>
+
+<p>Privacy was not even talked about - data leakage has been reported in all major providers. Unless you’re using a enterprise-level subscription with separated information (microsoft offers this), it’s a risk that you will have to accept. Privacy-focused individuals should be using offline and self-hosted LLMs anyway. Also worth noting that Mistral, being a French firm, is subject to GDPR regulations as well.</p>
+
+<p>Personally, I have a larger focus on mitigating the environmental toll that these companies can cause. I believe that Mistral is the way to go in this regard - they were the most transparent. They also have a focus on using smaller models for specific use cases, in order to increase overall efficiency. On top of that, I have more faith in the EU in managing and regulating AI over the wild wild west techno-hellscape that is America. Of course, I don’t think Mistral has the best model (yet). But I don’t really care.</p>]]></content><author><name></name></author><category term="AI" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Nus Cs Y2s1</title><link href="http://0.0.0.0:4000/blog/2025/12/29/nus-cs-y2s1.html" rel="alternate" type="text/html" title="Nus Cs Y2s1" /><published>2025-12-29T00:00:00+08:00</published><updated>2025-12-29T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2025/12/29/nus-cs-y2s1</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/12/29/nus-cs-y2s1.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2025-12-29/wow.png" />
+</figure>
+<p>The scandals get increasingly scandalous</p>
+
+<h1 id="nus-cs-y2s1">NUS CS y2s1</h1>
+<p>It’s already the end of the year and another semester is over, wow. It’s feeling better and better being here and learning, and this semester for me is hands-down the best. I’m learning things I enjoy learning, and the added practicality of this sem (due to CS2013T) is something I’ve been aching for since the last year.</p>
+
+<p>This year I also declared a minor in Data Science so I did the introductory course (DSA1101) too.</p>
+
+<h2 id="cp2106---orbital">CP2106 - Orbital</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/understance.png" />
+    <figcaption>Sample data in our website</figcaption>
+</figure>
+<p>Ok, this technically wasn’t in the last semester. Orbital is a software engineering project that you do over the holidays (which already feels so long ago..) in groups. I formed a group with a good friend and we created a website.</p>
+
+<p>The idea behind the website is to provide a platform for users to figure out their affiliations based on a questionnaire (that can be updated via a dashboard) with different parties. It allows them, at the end, to view a question-by-question breakdown on the party’s stances to see how well the user agrees or disagrees with a given stance.</p>
+
+<p>It was a good project that allowed me to re-familiarise myself with some software engineering tools that I’ve not used in some time, like SwaggerHub for API documentation, Github actions for non-trivial CI/CD tasks, and more. I also learnt React for this project. I’ve mostly been using Vue as the frontend framework, so this is somewhat new to me!</p>
+
+<h2 id="cs2100---computer-organisation">CS2100 - Computer Organisation</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/cs2100.png" />
+    <figcaption>Go off</figcaption>
+</figure>
+<p>CS2100 is… a lot. It’s a module that crams many many things into one - the profs themselves said it used to be 3 modules. CS2100 is also, IMO, pretty poorly managed. The lecture videos are old recorded lectures. The slides (which I hope were not re-used from old semesters, cos if so, OOF) have terrible formatting issues sometimes. The most egregious of which was in the MIPS datapath slides. It was literally unreadable.</p>
+
+<p>The content is learnable, but the assessments are extremely tedious. At times it feels like they’re throwing everything at you and hoping you make a mistake. And due to the nature of the content, one tiny mistake can cascade and absolutely derail everything later on.</p>
+
+<p>However, with all that said, I really enjoyed this course. Despite of all of these issues, the <em>content</em> and learning outcome of CS2100 is really just cool and illuminating. Peeking under the hood of a basic processor is new and absolutely rewarding. The <em>click</em> moment in this course is really something beautiful, and I’m glad I took this. I’m also glad this semester didn’t feel too hectic for me (in terms of the other modules), because the contents needed to sit with me before I could fully digest them.</p>
+
+<p>For the exam, I spent by far the most prep time on this module. Due to the nature of it being open book, it rewards raw time spent and good preparation - prepare alternate datapaths, prepare extensions of answers given in tutorials, prepare critical paths of instructions, prepare anything remotely preparable if you have the time and will. Explore the lines of questioning that the tutorials lay out. I was able to skip thinking about entire questions in the exam by doing this - I just copied over my answers in my notes. Got an A in the end!</p>
+
+<h2 id="cs2103t---software-engineering">CS2103T - Software Engineering</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/cs2103.png" />
+    <figcaption>Yea it's pretty toxic (see below)</figcaption>
+</figure>
+<p>Whew, CS2103T. This is the most well-handled module I’ve taken so far. There are certain pain points in the module (cough cough the PE), but every single time I encounter a situation where I’m thinking “That’s so weird why would they do it like this” Prof. Damith will have wrote out why (or talked about it) somewhere and I’d be like “okay that makes sense”. Prof. Damith seems to be acutely aware the trade-offs of conducting assessments in a certain way, and he seems to take the best way forward most if not all of the time.</p>
+
+<p>Both the TP and IP set out baseline expectations that should be met, but students are welcome to do more than that anyway. However, doing more than expected does not net you any extra points, and most likely opens you up to extra bugs that will be a problem in the Practical Exam (PE). I was in a group with other enthusiastic students as well, so we tried our best to create strong features that were coded and maintained well, perhaps doing more than we ought to have done.</p>
+
+<p>The PE is what I suspect most people will find annoyances or have problems with. The incentive structure is a little odd - you must find bugs in <em>other</em> people’s TP projects and report them using the issue tracker.</p>
+
+<p>The PE has kind of a back-and-forth going on between the dev team and the testers, and the dev team that I was assigned to DID NOT like me reporting bugs:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/braindamage.png" />
+    <figcaption>Ragebaited</figcaption>
+</figure>
+<p>People looooove to hide behind their keyboards huh. You get situations like the ABOVE, where dev teams completely eschew professionality and result to personal attacks. At their own detriment. Well if only I could earn the schadenfreude and see their faces when the teaching team favored my report over their response. If only. I’ll take my overall result as a consolation prize though.</p>
+
+<p>I did <em>REALLY</em> well for this module. A+. On top of that, Prof. Damith emailed me telling me I was in the top 10 for this cohort. No brain damage here.</p>
+
+<h2 id="dsa1101---introduction-to-data-science">DSA1101 - Introduction to Data Science</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/dsa1101.png" />
+    <figcaption>Prof. Daisy the GOAT</figcaption>
+</figure>
+<p>Uhh this module felt really easy to me. I feel like I barely put in effort, but my overall grade was an A+. It’s a bit odd but this A+ felt quite unrewarding. Not a flex or anything.</p>
+
+<p>I DID NOT watch the lectures, as I found the videos enough for my understanding. The lectures just felt like a rehash. The assigment was alright - you needed to write a statistical report using a dataset. I’ve done similar things in poly, so it wasn’t really new to me. Perhaps the only new thing was using R.</p>
+
+<p>The exams are really quite easy since it’s open book. Prepare a easily searchable R file that contains all the code you need. The exams really only have tutorial-standard questions and nothing significantly harder than that. So it’s a matter of reading the question, finding what you need, copy-pasting it over and changing the variables or values. That’s it. I think if you’re comfortable in coding you can excel at this module without even really understanding the techinical concepts.</p>
+
+<h2 id="eg1311---design--make">EG1311 - Design &amp; Make</h2>
+<p>People looked at me funny when I told them I took this module as a CS student. I thought it looked fun, and I thought it’d be useful for me to learn some elementary CADding skills since my brother has a 3D printer.</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-12-29/jason.jpg" />
+    <figcaption>Jason, our heavy robot.</figcaption>
+</figure>
+<p>The project was fun, and the final lab was pretty awesome. Seeing everyone’s robot either crush the course or crash and burn was pretty funny. My team was able to do the whole course, albeit our robot was the heaviest in the lab.</p>
+
+<p>As a course that I took for fun, it definitely delivered.</p>
+
+<h2 id="gess1025---singapore-imagining-the-next-50-years">GESS1025 - Singapore: Imagining the Next 50 Years</h2>
+<p>I took this course because it fulfilled one requirement and it’s a pass/fail module. Not much thoughts on it. Some topics quite interesting, others quite boring.</p>
+
+<h1 id="talkin-bout-time-again">Talkin’ bout time again</h1>
+<p>A recurring theme in these posts is me talking about time management and how I’m doing it. I’ve burned through a couple of ideas and I think I’ve finally settled on one that works for me pretty well: not managing my time.</p>
+
+<p>Watching time like it’s some kind of commodity to be spent is depressing and gets old quick. My idea from the last semester was bad. Lives are not inflexible and things happen and schedules change. Amazing that I’m learning this now.</p>
+
+<p>I’ve fallen back to using simple to-do lists with set deadlines, only my deadlines are a little stricter. I’ve also set buffers so that nothing overruns badly. I’m probably going to be sticking with this all the way. If I set my deadlines right like for this past semester, I get into a kind of flow state. It pushes me to finish things that I’d normally put for later, and at the end of the week I feel my time was well-spent.</p>
+
+<p>On a personal level, this semester was good for me as well. Met some old poly friends for CS2103 and it was good. I’ve been exercising much more regularly too, I’ve got about 180km on Strava. As an old couch potato, that’s a good number. The start of the year was pretty slack, so I’m aiming for 360KM for the next year, a goal I think is achievable. Really happy with this semester, and hoping this upward momentum keeps on for the next year.</p>
+
+<p>Cheers.</p>]]></content><author><name></name></author><category term="school" /><summary type="html"><![CDATA[The scandals get increasingly scandalous]]></summary></entry><entry><title type="html">Nus Cs Y1s2</title><link href="http://0.0.0.0:4000/blog/2025/08/11/nus-cs-y1s2.html" rel="alternate" type="text/html" title="Nus Cs Y1s2" /><published>2025-08-11T00:00:00+08:00</published><updated>2025-08-11T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2025/08/11/nus-cs-y1s2</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/08/11/nus-cs-y1s2.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2025-08-11/trash.jpg" />
+</figure>
+<p>Another year another NUS controversy</p>
+
+<h1 id="nus-cs-y1s2">NUS CS y1s2</h1>
+<p>I meant to make this way earlier but it’s the start of y2s1 now but better late than never I guess.Overall thoughts are actually pretty good! This <em>felt</em> way better than sem 1, and I mostly think it’s due to lesser math and more programming-related stuff. Stuff I feel more comfortable with.</p>
+
+<p>You’ll also notice that this post is way shorter than my sem 1 one, and that’s probably because I did the semester 1 post when it was all fresh in my head. oops.</p>
+
+<h2 id="cs2030s-programming-methodology-ii">CS2030S Programming Methodology II</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/cs2030s.jpg" />
+    <figcaption>There are no absolutes in human misery and things <i>can</i> always get worse.</figcaption>
+</figure>
+<p>So this is the first Programming Methodology module I took, since I was exempted from the first one. I actually found this module quite fun and relaxed. But that’s probably because I’ve had experience in Java and am pretty comfortable with it.</p>
+
+<p>The final exam had a question that I fumbled because I forgot the truth table for XOR but it is what it is. Quite happy with the grade I got anyway!</p>
+
+<p>In the previous reflection I had a “What I would have done differently” section, but I don’t think it’s needed for this module at least.</p>
+
+<h2 id="cs2040s-data-structures-and-algorithms">CS2040S Data Structures and Algorithms</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/cs2040s.jpg" />
+    <figcaption>Facts</figcaption>
+</figure>
+<p>Another fun module! I loved doing the assignments that they gave. I enjoy doing algorithms questions on my own time because I think it’s like a fun puzzle, but it’s not so fun in examination scenarios :(</p>
+
+<p>Either way, learned a decent bit from this. Also prof eldon is by far the best lecturer I’ve encountered so far. His enthusiasm is infectious.</p>
+
+<h2 id="es2660-communicating-in-the-information-age">ES2660 Communicating in the Information Age</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/es2660.jpg" />
+    <figcaption>Hm</figcaption>
+</figure>
+<p>A module about communicating as a professional in IT. Enjoyed the sessions despite them being 3 hours - generally the ES modules I’ve taken are quite chill and enjoyable. The environment is not boring as the prof encourages discussions and viewpoints from everyone. I do think some of the concepts thought are a little on the quack side - I don’t see when I’ll be using them (ahem some of the critical thinking frameworks. Just use your brain \s)</p>
+
+<p>I’m pretty alright on presentations too, so the projects were fun to do - only thing might be the video you have to film which is a little tight in terms of the deadline.</p>
+
+<p>Met some pretty good teammates on this module too.</p>
+
+<h2 id="hsa1000-asian-interconnections">HSA1000 Asian Interconnections</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/hsa1000.jpg" />
+</figure>
+<p>I tried on this one, I did. At the start, I followed along. I did the assignment. My first assignment got a really good grade too, 90/100. I thought I could do it.</p>
+
+<p>I do believe that a holistic education is important and necessary, but I COULD NOT MAKE IT THROUGH THIS ALL THE WAY. I found the topics discussed to be boring, surface level, unnecessary, and even pretentious all at the same time (Who am I to critique, though. I can only write what I feel). I did not dedicate much time to this module, and it shows. By the end, I was quite intent on doing what I can and then using a S/U for the module if I had to</p>
+
+<h2 id="hsh1000-the-human-condition">HSH1000 The Human Condition</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/hsh1000.jpg" />
+    <figcaption>Essential</figcaption>
+</figure>
+<p>In terms of the non-CS related courses, I really enjoyed this one. In contrast to HSA1000. I enjoyed the structure of the course. The reading material was good too - it made me read some texts I would have probably never read on my own time. Overall entertaining, especially if you like reading! From my experience, most people seemed to not have read the text and instead watched the videos covering the texts. While you can do that, I still think that reading the texts would give you an overall advantage, so I do recommend that if you’re going into this that you prepared to (and look forward to!) read. The texts are not particularly long, aside from 1 or 2 of them.</p>
+
+<p>To be honest, I did not deliver the highest quality work for the final project since my attention was directed towards other modules at that time period, but I still did get a good grade.</p>
+
+<h2 id="st2334-probability-and-statistics">ST2334 Probability and Statistics</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-08-11/st2334.jpg" />
+    <figcaption>This is a lie</figcaption>
+</figure>
+<p>The only math module I took this semester. First half was pretty good and gave me confidence. But the final exam was pretty hard. This seems to be on par for math modules, though. Not much to say other than it’s Stats. Professor was good.</p>
+
+<h1 id="reflecting-on-the-things-i-said-id-do-in-semester-2-in-semester-1">Reflecting on the things I said I’d do in semester 2 in semester 1</h1>
+<p>This is me addressing the things I said I’d do in semester 2 in the semester 1 blog post. As the header says.</p>
+
+<h2 id="timetable">Timetable</h2>
+<p>To improve my time management, I said that I would create a timetable. I did create one, and it fell apart pretty fast. I’ve found that my brain doesn’t respond well to the inflexibility that the time table creates - I was not able to sustain it for very long. I instead fell back to just using vibes to choose when to study or chill or etc. And to be fair it worked.</p>
+
+<p>But now, I’ve thought about another way to ensure that I stay on track with my goals. I got this idea from envelope-style budgeting, a thing I’ve started to do to manage my money. The oversimplified TLDR version is that you assign budgets to each category of expenditure that you have, and just track if you hit your budgets or not.</p>
+
+<p>So I’m taking that idea and applying that to time instead. I would have the categories study time, entertainment, school, and maybe a catch-all “missing time” category to account for travel and such. The easy part about this is setting the “budgets” - the hard part is tracking the time. I’ve had some ideas to make this process easier, but I’ll see how it goes.</p>
+
+<h2 id="reinforcing-learning">Reinforcing learning</h2>
+<p>I mentioned in my previous s1 blog post about revisitng early topics to reinforce my learning. By laying that out in the post, I think I became more intentional about it, and I did actually do it. I definitely think it helped.</p>
+
+<p>Anyway that’s it. See ya.</p>]]></content><author><name></name></author><category term="school" /><summary type="html"><![CDATA[Another year another NUS controversy]]></summary></entry><entry><title type="html">Im A Modder Now</title><link href="http://0.0.0.0:4000/blog/2025/04/11/im-a-modder-now.html" rel="alternate" type="text/html" title="Im A Modder Now" /><published>2025-04-11T00:00:00+08:00</published><updated>2025-04-11T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2025/04/11/im-a-modder-now</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/04/11/im-a-modder-now.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2025-04-11/thumbnail.png" />
+</figure>
+<p><a href="https://www.nexusmods.com/monsterhunterwilds/mods/1201?tab=description">Mod link</a></p>
+
+<p><a href="https://github.com/Harjun751/mhwilds-difficulty-script">Script repo</a></p>
+
+<h1 id="im-a-modder-now">I’m a modder now</h1>
+<p>Is it in the middle of the semester? Yes. Are there more “important” things that I should do first? Maybe. But “important” is a relative concept anyway.</p>
+
+<figure>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2025-04-11/peak.mp4"></video>
+    <figcaption>Peak Gaming</figcaption>
+</figure>
+
+<p>Monster hunter is a game I’ve loved since I was a wee kid and my mum got me a PSP (shoutout to her). Something about it just activates my neurons. So when I heard that Wilds (the newest iteration in the series) was coming out in the middle of the semester, it was terrible news. I planned on not buying it - staying away till the semester was done. But alas, my friend bought it for me (shoutout to him). I took that as a sign and succumbed to its siren call.</p>
+
+<h2 id="the-seed">The seed</h2>
+<p>I was watching a video on youtube about the <em>strength</em> of monsters and how it’s random, and there the idea sprouted in my head - you could make a mod for this… I didn’t know how modding was done but it couldn’t be that bad right?</p>
+
+<p>Then, while I was downloading other mods for the game, I looked into how it was done. Curiosity. I started reading the modding framework documentation. I joined a discord server for modding. I played around with things. I became consumed with this idea and would not stop till it was done.</p>
+
+<h2 id="so-how-does-this-work-anyway">So how does this work anyway</h2>
+<p>So modding a ReEngine game comes in two flavours. First are .lua scripts - the modding framework allows you to read the game’s function calls and attach hooks to them to add on extra functionality. The other way, which is slightly more involved, is editing the game files themselves. This requires you to unpack the game files using a tool (made by the community!), and read them using a binary text editor. You can then make the changes there, save the file, and set up the edited file in the mod manager. Because I was changing the probability tables baked in the game itself, I needed to use the second, more involved, method.</p>
+
+<h2 id="its-basically-treasure-hunting">It’s basically treasure hunting</h2>
+<p>After unpacking the files you’re left with a hierarchy of tons of files. Your job is to figure out which file correlates to the functionality you want to change. You have “hints” in the sense of folders and file names, but sometimes these are more of a hindrance than a help. You reach a file which you think is it? Well, DIG. Read the file, change the values if you think that’s what you want, and save it. Then you run the game and hope it works and that you didn’t break anything accidentally</p>
+
+<h2 id="it-was-a-pain">It was a pain</h2>
+<p>To create this mod, I looked for any files related to enemy difficulty. I found some files called “emdifficulty”, which sounded like it was it. I deleted the entries of lower-strength monsters and hoped that was enough to force max-strengths, but that kind of broke the game.</p>
+
+<p>Then, I tried editing each enemy file to be the strongest version itself. This worked! I could even give them millions of HP and one-hit attacks. But the changes wouldn’t apply for other players in the multiplayer session.</p>
+
+<figure>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2025-04-11/onehit.mp4"></video>
+    <figcaption>Playing around and giving monsters lethal attacks</figcaption>
+</figure>
+
+<p>After this, I looked for any files relating to “quests”, “strength”, and “rewards”. I had a hunch that difficulty was tied to rewards. But after looking through way too many files, I couldn’t find what I wanted.</p>
+
+<p>The next morning, I took a look again. The in-game ReFramework mod allows you to take a look at objects and methods in the game, so I spent a while triggerring respawns and hooking methods to figure out which methods are called when monsters are spawned in the map. I figured out some method called “popField()” (or something to that effect) was used when <em>populating the field</em>. No way. This was another hint now - I looked for files and folders with “pop” or “field” in the name. With this newfound hint, I grepped. I grepped and grepped, until I found a file called st_…_fieldparams. This was promising. Playing around with it and manually changing the values, I could see that the changes actually affected spawns.</p>
+
+<h2 id="programatically-making-the-changes">Programatically making the changes</h2>
+<p>However, there were a lot of fields to edit, and I’d have to do it everytime a new update was out. So I wanted to figure out a way to do this programatically. Thankfully, some great people in the community made a .dll exactly for this. I hadn’t touched C# in a hot minute, but I was currently learning Java in the semester. The two languages are pretty similar, and coding in C# went super smooth. I used the .dll to read the file and make batch changes. I tested it and yep, it worked!</p>
+
+<h2 id="publishing-it">Publishing it</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-04-11/stats.png" />
+    <figcaption>woah</figcaption>
+</figure>
+<p>After that, I published it. My first mod! Right now, it has 2297 unique downloads, which is crazy to me. Keeping it updated and responding to queries is an <em>interesting</em> experience to say the least. I have wayy more ideas for mods now but I’ll probably leave those ideas on backburner until the semester is over.</p>]]></content><author><name></name></author><category term="computing" /><category term="games" /><summary type="html"><![CDATA[Mod link]]></summary></entry><entry><title type="html">Shiok Prices Part 1</title><link href="http://0.0.0.0:4000/blog/2025/03/15/shiok-prices-part-1.html" rel="alternate" type="text/html" title="Shiok Prices Part 1" /><published>2025-03-15T00:00:00+08:00</published><updated>2025-03-15T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2025/03/15/shiok-prices-part-1</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/03/15/shiok-prices-part-1.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2025-03-15/goodprices.png" />
+</figure>
+
+<h1 id="shiok-prices">Shiok Prices</h1>
+<p>A friend approached me with an idea. He saw one of the government websites, <a href="https://www.gowhere.gov.sg/budgetmeal/">“BudgetMealsGoWhere”</a> and wanted to build upon that idea, fleshing it out with more features. I’m mostly down for anything so I said yea, and we began laying out the plan.</p>
+
+<p>We first wanted to get the data that the government had already collected (I talked about scraping before <a href="TODO">here</a>), so I needed to scrape their website. After that, we’d design the app itself and I’d code it out. My friend can’t code, so it’d just be me.</p>
+
+<h2 id="scraping-the-site">Scraping the site</h2>
+<p>The site takes in an address and returns budget meals in a 2km radius of the query. With this in mind, the job was to simply cover Singapore using circles of 2km radius.</p>
+
+<p>To do this, I took 4 points that represent singapores upper/lower/left/right boundaries in Decimal Degrees notation (for lat/long). Then I created a nested loop to plot all centers of the circle. For accuracy, I did left-right first, changing solely the <em>longitude</em>. This is because difference in longitude is NOT uniform; it’s based on the current latitude</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/longlat.png" />
+    <figcaption>You can see pretty clearly here how the distance between longitude (up/down) lines aren't uniform and converge at the poles.</figcaption>
+</figure>
+
+<p>Additionally, the empty space between the circles had to be accounted for as well. I’m not sure if there’s a more effecient method to pack circles in such a manner, but I didn’t mind simply adding more circles because efficiency wasn’t a key goal. Apparently hexagonal packing is the densest packing arrangement possible. You learn something new everyday.</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/plan.png" />
+</figure>
+
+<p>Now, I had a list of about 1200 lat/long coordinates. A good amount of them were in the sea because I wanted to cover the islands off the coast as well. Using the <a href="https://www.onemap.gov.sg/apidocs/">onemaps reverse geocoding API</a>, I fed the coordinates in to get a postal code that I could use to scrape the data. Discarding all invalid queries, I was left with about 300 postal codes. Plotting them out, they look like this:</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/map.png" />
+    <figcaption>map</figcaption>
+</figure>
+
+<p>Looks pretty good. There’s some gaps, noticeably at the left corner - it’s a military training area. Pulau Tekong is not included too, but the boys there are pretty set on meal choices already.</p>
+
+<p>With the postal codes, it was time to scrape the website. I used selenium to run each query and extract the necessary data.</p>
+
+<p>While I was inspecting the website (so I could use the correct tags for selenium), I noticed something. Every single time the website loads, a request is made out to some endpoint for a 40kb json file called “data.json”. No. It can’t be. I open up the file. It’s a JSON list containing 440 data points. I expand one. No. Why. WHY.</p>
+
+<p>The website loads ALL of the budget meal data on first load through a JSON file served by some endpoint. WHYYYYYYYY. I question why they do it in this way but it works for me.</p>
+
+<p>To confirm that the data file was valid, I ran the scraper on the postal codes that I collated. Indeed, they matched with the data file.</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/why.png" />
+    <figcaption>Note to self: next time if scraping websites do some digging on the website first. probably check any requests to endpoints like "DATA.*"</figcaption>
+</figure>
+
+<h2 id="figma-time">Figma time.</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/figma.png" />
+    <figcaption></figcaption>
+</figure>
+
+<p>Feel like I <em>am</em> getting better at designing things, the first draft for this was way better than my previous projects. Though I really liked the pink swatch in the bottom left, no one else I asked liked it so I went for the green in the top right. If you think the pink one is cooler please email me and let me know and I will bestow upon you gifts.</p>
+
+<h2 id="app-development">App development</h2>
+<p>Well, it was time to develop the app. I was pretty tempted to make another PWA, but Tim Cook kind of spoiled that for me (us - the future we could’ve had!). What’s the point of developing a PWA if IOS users can’t even download it like an app. My friend also wanted it on IOS, so I had some work to do (I don’t have a mac but we’ll figure that out later).</p>
+
+<p>So, I looked at the list of cross-platform app development frameworks for definitely-not-the-first-time. I used my usual way of making hard decisions (not proper research - randomnamepicker.com), and landed on Kotlin Multiplatform.</p>
+
+<p>As developer who has developed nothing on native android (I honestly regret not taking mobile app development in poly!) or IOS, I was kind of in the deep end here. Kotlin Multiplatform (KMP) has <em>some</em> tutorials and docs on their website. However, as someone completely new to it, none sufficed. They taught the basics of UI and such, but nothing more advanced like, hey, NAVIGATING BETWEEN PAGES.</p>
+
+<p>So after doing the little material that jetbrains provides for fresh KMP devs, I looked to the Jetpack compose site - it had a tutorial specifically targetted towards developers who hadn’t touched android before. Before we go any further, let me explain something (skip the next paragraph if you don’t care).</p>
+
+<p><strong>Kotlin Multiplatform</strong> is a framework that allows you to develop, using kotlin, apps targetting android, IOS, desktop, and Web. You can choose to develop the UI using native options such as swift (IOS) and something else (android). OR, you can choose to develop a shared UI using a little nifty thing called Jetpack Compose. <strong>Jetpack compose</strong> is the now-recommended way to build native UIs for android.</p>
+
+<p>So, I’m essentially taking an android dev course. I’m hoping that familiarity with Jetpack Compose for android development will help me to use Jetpack Compose for KMP development. See?? Perhaps not the most direct way to do it, but I’ve wanted to learn android development for a while now anyway.</p>
+
+<h2 id="the-jetpack-compose-android-basics-course">The Jetpack Compose Android Basics Course</h2>
+<p>The course was actually VERY extensive. It’s structured over units containing codelabs where you implement features with some guidance. There’s generally one big project for each “Chapter” where you’re given an app idea and told to implement it. I actually enjoyed it quite a bit - you can see how many projects the course took me through:
+<!-- TODO: Image showing folders -->
+Now, I’m pretty confident in building an android app with navigation, states, and the basics. I’m pretty sure I could pull of a decent CRUD app. Back to KMP.</p>
+
+<h2 id="kotlin-multiplatform">Kotlin Multiplatform</h2>
+<p>So, I began developing the app in Kotlin Multiplatform. For the most part, the libraries and functionalities that exist on Jetpack Compose exist in KMP too, though usually in slightly different forms. The “feel” of Jetpack Compose and Compose Multiplatform is similar, but not completely the same.</p>
+
+<p>You start getting deviations once going deeper into development. Many things in KMP are not even fully shipped yet - navigation, for one, requires you to use the experimental compose navigation UI. Not everything is fully-baked. I couldn’t quite find a good way to manage credentials either. Mid-development, the wasmJs target just straight up stopped working! I just continued on mobile, pushing the problem to further down the line (update: fixed)</p>
+
+<h2 id="progress">Progress</h2>
+<p>So I eventually got most of the key features completely baked - adaptive layouts on mobile, actual searching based on location, and more. There’s still some stuff to do like fleshing out the google maps integration, invalid input handling, loading screens, and so on. I wanted to publish this blog once I was completely done with the app, but to be honest I haven’t touched it in about a month. School caught up with me. So I’ll just put what it currently looks like down here:</p>
+
+<figure>
+    <video max-height="800px" class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2025-03-15/demo.mp4"></video>
+    <figcaption>It lives</figcaption>
+</figure>
+
+<p>And here’s it on an actual browser:</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2025-03-15/web.png" />
+    <figcaption>multiplatform is cool</figcaption>
+</figure>
+
+<p>If I don’t make a part 2, this project went to the graveyard. remember it.</p>
+
+<p style="color:#9D9B9B;">I *WILL* get back to it I *SWEAR* bro</p>]]></content><author><name></name></author><category term="computing" /><category term="software" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Nus Cs Y1s1</title><link href="http://0.0.0.0:4000/blog/2024/11/29/nus-cs-y1s1.html" rel="alternate" type="text/html" title="Nus Cs Y1s1" /><published>2024-11-29T00:00:00+08:00</published><updated>2024-11-29T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2024/11/29/nus-cs-y1s1</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/11/29/nus-cs-y1s1.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2024-11-29/nus.jpg" />
+</figure>
+<p><a href="https://github.com/Harjun751/nus-stuff/tree/b0533dd21d4763ff6be3e6aae174e5eaf1dc7d2f/Y1/S1">Repo link to some material I’ve made for y1s1</a></p>
+<h1 id="nus-cs-y1s1">NUS CS y1s1</h1>
+<p>It’s about 5 hours after the end of my final exams, and oof I’ve got thoughts. Before I get to those though, I just wanna put it out there how proud I am to even reach this stage in the first place - NUS was always the goal and sometimes I feel like I’ve just got to step back and appreciate that <em>I’m here</em>. But hey, it doesn’t stop here.</p>
+
+<h2 id="the-courses">The courses</h2>
+<p>So for my first semester I decided to get math out of the way. I took MA1522 Linear Algebra, MA1521 Calculus, CS1231S Discrete Structures, GEA1000 Quantitative Reasoning with data, and finally ES1103 English for Academic Purposes. I didn’t do too well for the Qualifying English test apparently. I was exempted from the introductory programming course CS1010s because I came through IT in polytechnic.</p>
+
+<h2 id="ma1522-linear-algebra">MA1522 Linear Algebra</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-11-29/1522.png" />
+</figure>
+<p>This was something completely new to me. Prof Jonathan Teo is clearly passionate about what he’s teaching, though I question his “Math Cafe” timeslots. The course was pretty much self-paced, with key deadlines to hit. It’s completely online through pre-recorded lecture videos, and they’re pretty good. I had some trouble at the start understanding some concepts, but after grasping the basics the rest come easier.</p>
+
+<p>For some of the later topics, it really helps to get an intuition on what exactly you’re <em>doing</em>. The pre-recorded lecture slides don’t really help with that, but they do link other supplemental videos (I’d classify them as required viewing, to be honest) that help. <a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown</a> was amazing for getting the intuitions down.</p>
+
+<p>Tutorials were pretty okay, but my timeslot for tutorials essentially became completely unrelated to the tutorial questions themselves. The tutor (who was excellent) spent the hour per week going through the intuition of the concepts instead of the questions themselves. I am definitely appreciative of the tutor, but I do think that the questions <em>should</em> be gone through - being a mostly online course, that timeslot was the only chance I’d have to interact with someone knowledgable. While they would answer my questions after class, I feel like it simply wasn’t enough.</p>
+
+<p>Finals was tough. I don’t know what grade I’m going to get, but that’s for later. I don’t like that the multiple challenging questions had essentially the same “form”: you’d have a linear system Ax=b with x and b given, but you needed to find A. x wouldn’t be invertible, so you couldn’t simply bring it to the other side. It felt very “samey” and cheap I suppose. But what do I know.</p>
+
+<p>I did enjoy learning this, though.</p>
+
+<h3 id="what-i-would-have-done-different">What I would have done different</h3>
+<p>If for some godforsaken reason time went back to the start of the semester where my hairline was approximately 2cm closer to the front of my head than it is now, I’d definitely do some things different. Firstly: get on those 3Blue1Brown videos. Intuition helps learning immensely, and the slides just don’t cut it in that aspect. The visuals in 3Blue1Brown really ground the topic and make it more understandable and “real”. I think the Book would’ve helped me too.</p>
+
+<p>I should’ve definitely studied the tutorial solutions more as well. I’ve got no one to blame but myself, but the solutions would come out the week after and by then I’d be focused on the content and tutorial of that week itself. I also think they should look into increasing the timeslot of the tutorials so that the <em>tutorials</em> could be discussed.</p>
+
+<h2 id="ma1521-calculus-for-computing">MA1521 Calculus for Computing</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-11-29/1521.png" />
+    <figcaption>part of the 9.</figcaption>
+</figure>
+<p>It’s calculus. This course was pretty standard with 2 lecture time slots and a hour long tutorial slot per week. I attended all lectures in-person, and the tutorials as well. It had the basics (differentiation/integration) then goes into more advanced stuff with planes ODE and stuff like that. You know, stuff.</p>
+
+<p>The lectures were meh. I felt that the professor was mostly reading from the slides, with some additions here and there.</p>
+
+<p>I was able to do the tutorials, they felt pretty alright. The tutor was good too, and explained the solutions clearly.</p>
+
+<p>And oh boy, the finals. The finals were TOUGH. Prior to this, I wouldn’t really leave questions blank in exams. 1521 changed that. I thought I studied pretty good in reading week, but I was just not able to “link” and do it. But it seems about standard - I heard some people saying they left 4-5 questions blank in the paper. My friends left some blanks too. It was just really difficult for me.</p>
+
+<h3 id="wiwhdd">WIWHDD</h3>
+<p>Firstly, I would’ve not gone for the in-person lectures. I would’ve read the slides and notes myself, and <em>if</em> I had any difficulty I would’ve come to the lecture slots. The lectures were mostly a waste of time for me.</p>
+
+<p>Additionally, I would get the book and do extra questions from the book as well. I did this for the first 3 chapters, but I fell out of it. Note to self: don’t fall out of it.</p>
+
+<h2 id="cs1231s-discrete-structures">CS1231S Discrete Structures</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-11-29/1231s.png" />
+    <figcaption>This review was clearly posted by someone *very* frustrated. I would be lying if I say I didn't agree with some of the points they brought up, though.</figcaption>
+</figure>
+<p>Interesting module! I definitely learned something. Prof Aaron is enthusiatic about what he’s teaching, definitely. Some of the stuff is more abstract and annoying, though. A bunch of people mention that this <em>will</em> be useful in the future, but I don’t see it yet.</p>
+
+<p>While the content <em>is</em> interesting, the tests are frustrating. Some questions seem to put the <em>actual</em> content of the course behind, and attempts to trick you through some redirection or cheap trick of some kind. I get that they’re trying to differentiate the cohort, but the amount of frustrated sighs I hear when prof Aaron goes through some questions is very telling. And I suppose I do see the value in trying to instill that level of care when it comes to doing the questions, but you only have so much time in an exam.</p>
+
+<h2 id="gea1000-quantitative-reasoning-with-data">GEA1000 Quantitative Reasoning with Data</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-11-29/GEA.png" />
+    <figcaption>No comment. But this is a comment. Simpson's paradox.</figcaption>
+</figure>
+<p>This course had a pretty low workload. Tutorials occur every alternate week for 3 hours. The course teaches you about statistics and probability, which was pretty useful in CS1231s as well. Timothy teaches with a bunch of enthusiasm, and takes extra care such that students understand. I enjoyed his sessions.</p>
+
+<p>Finals was very manageable, but I hear that the bell curve is steep. The group project was alright, but it really depends on who you’re paired with.</p>
+
+<h2 id="es1103---english-for-academic-purposes">ES1103 - English for Academic Purposes</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-11-29/es.png" />
+    <figcaption>One of the more positive review sections I've seen</figcaption>
+</figure>
+<p>I <em>really</em> liked this course. I was disgruntled at first that I had to take it, but I genuinely learned a lot more about academic papers. It goes well and beyond the formal writing taught in our secondary schools, and equips you with the tools and techniques to improve your writing.</p>
+
+<p>My tutor was excellent, and I enjoyed the essay projects that were assigned.</p>
+
+<h1 id="semester-2">Semester 2</h1>
+<p>I’m definitely going to do some things different. Firstly, plan. My time management was admittedly horrible this semester. Sure, I finished all my things on time. But I felt like I didn’t have much time for much else. I’m going to create a <strong>timetable</strong> once the course scheduling is out - I’ll need to balance between time for studies, myself, and <strong>exercise</strong>, something I didn’t do at all. I’ll see how it goes.</p>
+
+<p>I’m also going to <strong>reinforce</strong> my learning. A thing I found particularly worrying while studying during reading week is that I forget some of the things that I learnt during the earlier parts of the semester. I’d do the tutorials perfectly fine on the weeks themselves, but looking back some of them would seem alien. Clearly, I need to re-visit the things that I learn. I plan to do this on a regular basis, reviewing prior work for each module. I’ll probably link this to the timetable.</p>
+
+<p>I’ll see how it goes.</p>]]></content><author><name></name></author><category term="school" /><summary type="html"><![CDATA[Repo link to some material I’ve made for y1s1 NUS CS y1s1 It’s about 5 hours after the end of my final exams, and oof I’ve got thoughts. Before I get to those though, I just wanna put it out there how proud I am to even reach this stage in the first place - NUS was always the goal and sometimes I feel like I’ve just got to step back and appreciate that I’m here. But hey, it doesn’t stop here.]]></summary></entry><entry><title type="html">Optimizing My Job With Algorithms</title><link href="http://0.0.0.0:4000/blog/2024/05/06/Optimizing-my-job-with-algorithms.html" rel="alternate" type="text/html" title="Optimizing My Job With Algorithms" /><published>2024-05-06T00:00:00+08:00</published><updated>2024-05-06T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2024/05/06/Optimizing-my-job-with-algorithms</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/05/06/Optimizing-my-job-with-algorithms.html"><![CDATA[<figure>
+    <img class="hero" src="/blog/assets/blog-images/2024-06-05/skyhelix.jpg" />
+</figure>
+<h1 id="the-skyhelix-helper">THE SKYHELIX HELPER</h1>
+<p>About 15 days ago, I completed my National Service. Huge milestone, whatever, blah blah. The next big thing in my life would be university. But university is hella expensive and I NEED MONEY. So I looked for a part time job.</p>
+
+<p>I got really lucky and found a job near my home that’s pretty easy going. I now work at the skyhelix in Sentosa, and I’ve been loving it! I’m surrounded by really great people. But there’s something I notice at work. A possibility. A chance. An opportunity. At sweet, sweet OPTIMIZATION.</p>
+
+<p>The rough workflow of my job is so:</p>
+<ol>
+  <li>A group of people enter the queue of the attraction</li>
+  <li>I scan their tickets, and note down on an excel sheet how many people are coming in</li>
+  <li>I plan. There are 16 seats in the attraction, and only some have seatbelts that are longer than the rest. Some are shorter.</li>
+</ol>
+
+<p>When planning for seating, I have to account for a couple of things. Firstly, plus-sized guests have to get the seats with longer seatbelts. We have to maintain the integrity of group - guests in groups typically want to sit together. Then, every 4 seats there are partitons - if possible, we place groups so that there are no partitions splitting them. Lastly, kids have to have a parent on their left or right for safety.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-06-05/plan.jpg" />
+    <figcaption>An example on how we plan for rides</figcaption>
+</figure>
+
+<p>All of this combined makes it a kind of a “puzzle”. And sure, puzzles are fun to do, but when you’re managing a huge tour group, planning the next ride, and answering a question that a tourist is asking you (tourists LOOOVE to ask questions) all at the same time the fun factor is kind of gone. So recently on a shift the idea to automate this came into my mind, and I could not stop thinking about it. For the remaining of the shift I was focused on thinking about this problem and searching for solutions and algorithms.</p>
+
+<h2 id="proof-of-concept">Proof of concept</h2>
+<p>Before going all-in, I wanted to prove that I could solve this issue. So I wrote a small script. I used Javascript, because if I were to go ahead with the project, I’d want it to be a progressive web app (again), and I’d require it to work <em>fully offline</em> - I don’t want to send customer data to a server or do anything potentially legally implicating like that.</p>
+
+<p>To solve the seating allocation issue, I used the sliding window technique with custom acceptance criteria that chooses the “best fit”. At the start though, my algo could not account for situations in which “concessions” had to be made. For example, if there was a group of 4, 3, 3, 3 people, the algo would prioritize giving gaps between the groups so that the groups would not be split between partitions. This was exactly what I coded it to do, but I realize it does not account for situations in which we HAVE to squeeze people in order to get the ride full.</p>
+
+<p>So I edited the code. I added a section that “pre-processes” the queue so that I could fit the most amount of people in the ride that the groups would allow. Subtracting the amount of guests going for the ride from the total amount of seats the ride has, gives you the amount of gaps that can be left on the ride. I divide that value by the amount of groups to get the average amount of gaps that should be allocated between groups.</p>
+
+<p>So what I have in the end is a sliding window algo that is aware that it can only allocate a certain number of gaps between groups - it maximizes the gaps between the groups while staying below the average amount that should be allocated.</p>
+
+<p>Buuut this doesn’t work. Because it stays below the average gap that should be allocated, the longer-seatbelt seats possibly are not allocated to the group that needs them the most. The algo picks the best fit <em>sequentially</em>, thus resulting in non-optimal solutions. So in the end I resorted to a brute-force technique that still utilized the sliding window. It recursively fills in the seats of the ride for every possible permutation of the groups. The score is calculated on-the-fly in the “sliding window” portion of the algo. The best fit is then returned.</p>
+
+<figure style="margin-bottom:20px;">
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-06-05/algo.mp4"></video>
+    <figcaption>behold: this lazy slideshow</figcaption>
+</figure>
+
+<h2 id="designing-it">Designing it</h2>
+<p>With a working algo, I opened up Figma.</p>
+<p style="color:#9D9B9B;">There is a worrying trend in my prototypes. I only realize this now. I always start with purple. There's something inherently wrong with me.</p>
+
+<p>The first draft, as always, is disgusting.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-06-05/ew.png" />
+    <figcaption>EWWWW</figcaption>
+</figure>
+<p>Maybe my eyes just don’t parse color as good as other people do?</p>
+
+<p>I knew something was off, but I couldn’t for the life of me fix my own design. So I asked my brothers for help and they asked their friends for help too. Well, you know what they say: It takes a village to design a webpage. It’s a real quote, don’t google it.</p>
+
+<p>So with everyone’s help this is what the final (so far) version looks like:</p>
+<figure style="margin-bottom:20px;">
+    <img class="blog-img" src="/blog/assets/blog-images/2024-06-05/wow.png" />
+    <figcaption>TOTAL Glow upppp~~~</figcaption>
+</figure>
+
+<h2 id="making-it">Making it</h2>
+<p>Wow. For the first time, no comments. Everything went well.</p>
+
+<h2 id="deploying-it">Deploying it</h2>
+<p>Deploying it was mostly fuss-free. The RSS reader I made previously laid most of the groundwork to setting up a SSL’d site on my NAS. If you remember (of course you do!), my RSS reader is deployed in a docker container on a VM on my NAS in my home. Previously, simply using dnsmasq to point to the IP address of the VM was enough to get the named domain working - I bound the ports of the RSS reader container to 80 and 443. But now, I’ll be running another container on that VM, so I’ll need a proxy to send the requests to the correct port. There’s a reason I’m telling you this. So I was setting up the new domain and nginx proxy manager, and for it to work I needed to upload the SSL certs and keys that I used for the website. Now those certs and keys I generated inside the VM itself - I used the (BY DEFAULT AND THE ONE AND ONLY OPTION) SPICE protocol to get command line access to pull the code from github and generate the keys. So, I just needed to get the files out from the VM. Simple, right?</p>
+
+<h1 id="wrong">WRONG.</h1>
+<p>Why does every project have some segment that has me spiraling out of control?? Why can’t things just work??</p>
+
+<p>So I mentioned I was using SPICE. So my first thought wasto get the cert and key out was to just <code class="language-plaintext highlighter-rouge">cat</code> the file contents and copy-paste it into a file on my PC. TrueNAS Scale’s SPICE client runs in a browser tab, and you can’t select text in it. Annoying.</p>
+
+<p>A little bit of scrambling and later I decide to share the dataset in which the VM was residing on, so that I could access the files directly on my PC. I can’t. I can’t SMB share a zvol (I don’t even know what a zvol is! I tried learning but sysadmin jargon is too much for me. Sorry. Who names something a “zvol”?!?!). That sucks.</p>
+
+<p>Apparently you can isci share a zvol. What the hell is isci. I feel like I’m treading water in the mariana trench when my previous experience consists solely of the kiddie pool. I try and fail anyway.</p>
+
+<p>Ok back to square one - maybe a different SPICE client will allow me to copy/paste? I find one for windows and download it. The download failed the first time - pretty ominous. So I get it up and running and. You. Can’t. Copy. Paste. Why??? Why choose this over SSH truenas?? Why??</p>
+
+<p>Ok hail mary. I take screenshots of the cat’d files, and save them and upload them to an online OCR tool (my patience had run thin). I try it with the OCR’d results BUT IT FAILS!!! Yayyyy.</p>
+
+<p>At this point, I would’ve finished manually typing out the certificate and key if I went that route at the start. I go to sleep.</p>
+
+<p>The next day, I just mounted an existing SMB share on the linux VM and copied the key and certs to the share. Bruh.</p>
+
+<p>The rest of the setting up was easy, with minor hiccups. I was able to get the PWA on my phone, working!</p>
+
+<h1 id="demo">Demo</h1>
+
+<figure>
+    <video height="800px" class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-06-05/demo-vid.mp4"></video>
+    <figcaption>The SkyHelix Helper.</figcaption>
+</figure>
+
+<p>Here’s the final product! I really like how it looks right now - it feels smooth and snappy as well. Even generating the seat allocations is very fast. Now to bring it out for some field tests.</p>]]></content><author><name></name></author><category term="computing" /><summary type="html"><![CDATA[THE SKYHELIX HELPER About 15 days ago, I completed my National Service. Huge milestone, whatever, blah blah. The next big thing in my life would be university. But university is hella expensive and I NEED MONEY. So I looked for a part time job.]]></summary></entry><entry><title type="html">Ms Word Scripting</title><link href="http://0.0.0.0:4000/blog/2024/05/03/MS-word-scripting.html" rel="alternate" type="text/html" title="Ms Word Scripting" /><published>2024-05-03T00:00:00+08:00</published><updated>2024-05-03T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2024/05/03/MS-word-scripting</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/05/03/MS-word-scripting.html"><![CDATA[<p>My mum is working on a thesis (very sick). It’s been in the works for a while, and it’s pretty chunky right now. Because of feedback from her supervisors, she’s had to remove and add stuff at various locations multiple times. Very sadly, she did not utilize Microsoft Word’s reference table feature (one of my great shame is not catching this and telling her earlier) because SHE DID NOT KNOW ABOUT IT. So, the reference list is now out of whack. There are new citations that have no full listing in the reference list, and old citations that have to be removed. I have no idea how it became like this. Due to the sorry state of affairs, my mother enlisted my help to straighten out the reference list while she works on the <em>important</em> parts of the thesis.</p>
+
+<p>My task was simple. Read the chapters, and once I come upon a citation in the work I had to check the reference list. If the citation is in the reference list, highlight the item in the reference list. If the citation is not in the reference list, highlight the citation in the chapter. Simple. But, each chapter is at least 13,000 words. There are 7 chapters that require checking <em>right now</em>. 91,000 words. According to thereadtime.com (reliable source), that requires 6 hours to read. I’m not reading a thesis on [REDACTED] for 6 hours. Boring.</p>
+
+<p>This task sounded awfully automatable, though. I hopped on VSCode and began to write a python script. I wanted to get this done fast, so I wanted to try using ChatGPT to help with coding. I’ve never done this before - when learning, I feel I absorb more by reading documentation and then applying. But this was not for learning. I ask Mr. GPT how to read a word document in python, and sure enough it shows me how to open a document in python-docx (i’ve actually used this library before, so I knew it could be done).</p>
+
+<p>My next step was coding how to identify a citation in text. There were chiefly two kinds of citations, in-text and ones with parentheses. I don’t remember the actual, formal names for them but they looked like this:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-05-03/example.png" />
+    <figcaption>citations.</figcaption>
+</figure>
+<p>This was pretty simple. I created two regular expressions that captured these quickly.</p>
+
+<p>After this was identifying references. I would want to parse the reference list first, then store them as objects in a list. I created a class to represent the Reference. They held a list of authors and the year of the reference. The actual difficulty I had was when attempting to extract them from the reference list.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-05-03/references.png" />
+    <figcaption>references.</figcaption>
+</figure>
+<p>There could be one author, or there multiple. I only needed their first name (only those show up in the citations), and sometimes it was a little difficult to acertain which was which. I was trying with regex unsuccessfully for a while, until I realized that I could make my job easier by processing some of the text in python first. Not too long after, I got the regex working!</p>
+
+<p>So with my referenece list prepped and regex for matching citations done, the next step was to actually process the document and match citations. After matching the citations, my final step was to highlight the relevant citation or reference. The API for python-docx is a little weird when it comes to this. Highlights are done on “runs” of text, and a run of text may be a whole paragraph or a partial segment of a word. I’m not too sure what determines a “run” in python-docx, and in the interest of time I did not bother to find out. ChatGPT could also not help me in this regard - I asked for help on some of the code for highlighting but it seems to have hallucinated.</p>
+
+<p>In the end, I got a solution that highlights most of my matches. I would have to highlight the remaining ones manually. This was because of the aforementioned runs thing - some words would be cut in some runs. I could spend the extra maybe 30 minutes or so trying to fix that probelm, but I chose not to because there weren’t many that fell off the cracks.</p>
+
+<p>Overall, this script took me about 3 hours to complete including my breaks and distractions. The script worked quite well and it was even able to catch a sneaky spelling mistake in a citation, which impressed my mum. I saved a good deal of time doing this, as there would be even more chapters to do in the future. It’s pretty cool how applicable programming is, especially with python which has such great libraries like python-docx.</p>
+
+<p>As for ChatGPT, I would say it’s <em>mildly</em> useful. It’s not a replacement for reading documentation - I had to consult python-docx docs a good amount still. But, it’s useful for getting started. I’m curious about the performance of the “better” paid models in this regard, but I’m not paying to find out.</p>]]></content><author><name></name></author><category term="computing" /><summary type="html"><![CDATA[My mum is working on a thesis (very sick). It’s been in the works for a while, and it’s pretty chunky right now. Because of feedback from her supervisors, she’s had to remove and add stuff at various locations multiple times. Very sadly, she did not utilize Microsoft Word’s reference table feature (one of my great shame is not catching this and telling her earlier) because SHE DID NOT KNOW ABOUT IT. So, the reference list is now out of whack. There are new citations that have no full listing in the reference list, and old citations that have to be removed. I have no idea how it became like this. Due to the sorry state of affairs, my mother enlisted my help to straighten out the reference list while she works on the important parts of the thesis.]]></summary></entry><entry><title type="html">My Rss Reader Part 2</title><link href="http://0.0.0.0:4000/blog/2024/03/28/my-RSS-reader-part-2.html" rel="alternate" type="text/html" title="My Rss Reader Part 2" /><published>2024-03-28T00:00:00+08:00</published><updated>2024-03-28T00:00:00+08:00</updated><id>http://0.0.0.0:4000/blog/2024/03/28/my-RSS-reader-part-2</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2024/03/28/my-RSS-reader-part-2.html"><![CDATA[<h1 id="rss-part-2-electric-boogaloo">RSS PART 2: electric boogaloo</h1>
+<p>I want to stop using dioxus for my frontend. Every stupid roadblock I meet, I have the urge to drown my laptop in a tub of soapy water. I hear whispers sometimes: “re-write the frontend in Vue… it wouldn’t take that long… you’d be more <em>agile</em>…”. I evaluate. I think. I ruminate. Sunken cost fallacy gets the best of me and I dismiss the thoughts. I’m getting <em>really</em> close though. Let me describe the issue that has gotten me here.</p>
+
+<h2 id="the-issue">The issue</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/requests.png" />
+    <figcaption>Something's probably going wrong if you have 1642 requests.</figcaption>
+</figure>
+<p>I was making some really nice progress on the app - I enabled PWA functionality, worked through another page that I wanted, and more. I’m not too sure what triggered this specifically, but my pages would stop loading during development. Dioxus was telling me that the reason this was happening was that I had hooks that were in conditionals - this was an issue that I was aware about, but dismissed because it was working on my end anyway. At the time. So I refactored the code to remove the hooks from the conditionals, and this is where it all falls apart.</p>
+
+<p>I had two use_future hooks - these would take an async piece of code, run it, and allow you to get the value to render. These hooks can take in <em>dependencies</em>. When these dependencies change, the future is reloaded to get a new value. The dependencies are defined in the second argument.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let channel_future = use_future(cx, (), |_| get_channels(uid));
+let cid = use_state(cx, || 1);
+let post_future = use_future(cx, cid, |cid| get_daily_feed(*cid));
+</code></pre></div></div>
+
+<p>So, I had these 2 futures - channel_future has no dependencies, and post_future has a dependency on CID. Once channel_future completes, the CID is updated with the first channel in the result. This causes post_future to update, because it’s dependency changes. All good. However, for some reason, when post_future reloads, channel_future reloads as well - resulting in the code in <code class="language-plaintext highlighter-rouge">complete</code> state of channel_future to run again. WHICH means that CID is set AGAIN, <em>WHICH</em> means post_future reloads, WHICH means the code in the <code class="language-plaintext highlighter-rouge">complete</code> state of channel_future runs again, <em>WHICH</em> means, <strong>WHICH</strong> means, <em><strong>WHICH</strong></em> means, et cetera, ad inifinitum. Infinite loop. The problem was that channel_future was reloading when it wasn’t told to or set to.</p>
+
+<h2 id="i-sleep">I sleep</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/sleep.png" style="width:50%" />
+</figure>
+<p>I slept on it. I didn’t know why this wasn’t working, but enough is enough. I don’t want to wade through insufficient documentation again, or make a new issue on github to find out why this is happening. Below are all the reasons why I’m done with dioxus.</p>
+<ul>
+  <li>Issues like I just described, side-tracking me for hours</li>
+  <li>Dioxus targets WASM. Requests, the premier http requests crate on Rust, does not support WASM for their Cookie Jar. This effectively means I can’t easily implement Cookies (There are other much smaller crates that target this, though.)</li>
+  <li>Dioxus’ “Declarative Styling” doesn’t really work for me - I feel that it facilitates messy, messy styles.</li>
+  <li>It’s not you, it’s me.</li>
+  <li>It’s just that feeling that I could be accomplishing all that I’ve done much, much faster using other frameworks</li>
+</ul>
+
+<p>So, I’m re-writing the frontend. We’re breaking up.</p>
+
+<h2 id="back-home-or-how-i-learned-to-stop-worrying-and-love-vue">Back home, or: How I learned to stop worrying and love vue</h2>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/weenie.webp" />
+    <figcaption>it's ok to accept defeat sometimes</figcaption>
+</figure>
+<p>I’m back to Vue. It’s my Weenie Hut Jr - but hey the whole point of the episode was that Spongebob doesn’t need to “prove” himself or gain approval. Spongebob <em>enjoys</em> Weenie Hut Jr, and it’s not a problem to admit that! He has nothing to prove. Yes.</p>
+
+<p>But I digress. I was able to re-write the frontend and have a 1-to-1 Vue version in less than a day (<em>and</em> it was a pretty busy day, too). Not too long after, I was working. I was producing <em>new</em> code. I was being <strong>PRODUCTIVE</strong>. I wasn’t <strong>FIGHTING</strong> the framework. Why did I ever leave you?</p>
+
+<h2 id="creating-a-local-store-for-user-preferences">Creating a local store for user preferences</h2>
+<p>My next step was to have a persistent store for user preferences somewhere. I didn’t want to use a database, and cookies seemed like an inappropriate tool to store complex objects in (i’m sure it’s viable). I then found IndexedDB, which seemed pretty appropriate. I worked through the very dry but very enriching <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB">MDN IndexedDB guide</a>, and was able to implement what I wanted to do. The API is kind of odd due to it’s asynchronous approach, and returning a value from the database transaction required me to wrap the calls in a Promise. There’s a library that wraps the API in Promises which makes it wayy more intuitive to use. Fun that I find that out <em>after</em> I finish writing the code. yay.</p>
+
+<h2 id="giving-some-love-to-the-logger">Giving some love to the logger</h2>
+<figure>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/json.jpg" />
+    <figcaption>yooo isn't json like THE BEST one out there</figcaption>
+</figure>
+<p>At that point, all the initial features that I wanted to have in the reader was done. The last thing on my list was to properly finish the logger. The logger at the time was simply spewing out some information that could be useful into a text file - it wasn’t very readable and indexable, which was a clear problem. I thought of using some other file type/markup language to store the logs in. In my mind I had no doubt that JSON would be my way to go, but when I started implementing it I had 2 problems. Firstly, when adding a new log I was unsure what to do to maintain proper JSON syntax. For the log to be a proper object, it would have to be encapsulated with <code class="language-plaintext highlighter-rouge">[]</code>. This could not be done easily, because I was simply appending some text to the end of a file. So, my options to make this work are:</p>
+<ul>
+  <li>Read the file to a certain point - stop directly after a <code class="language-plaintext highlighter-rouge">[</code> or directly before a <code class="language-plaintext highlighter-rouge">]</code>. Then, append the text of the log and add back the square bracket, while making sure I have no trailing commas</li>
+  <li>Read the entire file into a JSON list object, append my item to the object, run a .to_string() on it and overwrite the whole file (ok but why would I)</li>
+</ul>
+
+<p>Any option would require me to manipulate/read the file more than I want to - I’d preferrably have a solution where I can simply keep appending text without worry of an ending delimiter. Secondly, I had trouble cramming a backtrace full of newlines and formatting into a JSON field - JSON doesn’t allow multiline strings.</p>
+
+<figure>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/yaml.jpg" />
+    <figcaption>yooo isn't yaml like THE BEST one out there</figcaption>
+</figure>
+<p>Then, I had a thought - I could use a more “loose” (for lack of better word) markup language that would not require me to add some ending delimiter AND would have support for multiline strings. I settled on YAML, but came into another problem. YAML was <em>almost</em> what I needed, but there was an issue regarding multiline strings - they’re supported, but there are certain patterns that are explicitly not allowed. Namely, a colon(:) followed by a space ( ). This was a pretty big problem because the backtrace was FULL of such patterns. Formatting the backtrace and manually escaping them was not an option due to the added overhead.</p>
+
+<p>So, back to the drawing board. Another language that would allow me to express all I needed - that allowed multiline strings with no strings attached - a language that was simple enough. I know, I’ll make my own language!</p>
+
+<figure>
+    <img class="blog-img" src="https://imgs.xkcd.com/comics/standards.png" />
+    <figcaption>I'll do it right this time.</figcaption>
+</figure>
+
+<p>Just kidding. The answer was in front of my eyes the whole time. XML. X (eXtreme) M (maximalistic) L (Language), baby. I’ve been working with it the whole time in RSS feeds and I hadn’t realised it’s <em>utility</em>. It’s <em>flexibility</em>. It’s <em>simplicity</em> 🤌. XML’s syntax needs no introduction, and it supports mulitiline text with no need for escape characters using the CDATA attribute. Perfect. Added bonus: I could now serve the log file through the API on the web, and have it be human-readable. Perrrfect.</p>
+<figure>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/xml.jpg" />
+    <figcaption>yooo isn't xml like THE BEST one out there</figcaption>
+</figure>
+<p>Buut not really perfect. That first problem I described with JSON, where I needed an ending delimiter, was still present in XML. XML requires a root node, so it means that everything needs to be encapsulated in this root node. But, at this point I was too tired to fight, and the pros of xml outweighed this con. I’m sure I’ll come up with a solution I like more soon.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/logs.png" />
+    <figcaption>my beautiful xml logs</figcaption>
+</figure>
+
+<h2 id="dockerizing">Dockerizing</h2>
+<p>I always hate this, it feels like a chore. I started work on getting the project ready for deployment, and I wanted it Dockerized so that I could run it anywhere easily. Created the Dockerfiles, which then took an annoyingly long time build - the unoptimized backend api image was <strong>6 (six)</strong> gigabytes, and took more than 5 minutes to build on my poor T495 ThinkPad.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/How.png" />
+    <figcaption>compilation pains</figcaption>
+</figure>
+
+<p>I was fixing the CORS configuration which was very fun because each time I wanted to set a new allow-origin value, it meant that I had to wait 5 minutes to see if it worked (I was unsure on which was the origin - the IP address of the app running INSIDE the container, or the address from which I was accessing it on the OUTSIDE. Turns out it was the outside.) AND THEN once I got CORS to work on the single-stage-6GB build, when I tried a multi-stage build to decrease the size of the final image, <strong>I GOT CORS ISSUES AGAIN!!!</strong> Skill issue. Well as it turned out I <em>thought</em> I had CORS issues again but it turns out that the container exited due to an issue, and if the fronted makes a cross domain request when the receiver is down, it shows a <code class="language-plaintext highlighter-rouge">Cors issue status null</code>. That false alarm side tracked me a little, because I had no indication from the docker-cli that the container exited. Oh well. yada yada got it to work yay!!! Overall, I can say that this experience was as pleasurable as falling down a flight of stairs.</p>
+
+<h2 id="choosing-a-name-and-a-logo">choosing a name and a logo</h2>
+<p>I finally picked a name for this app while Dockerizing everything. A very good name. Are you ready? Get ready. I don’t think you’re ready.</p>
+
+<p><strong>NewsPaper</strong></p>
+
+<p>Wow. Let that sink in for a moment. Just, wow. I chose this name because that’s essentially what I wanted this app to be - a one-stop place to get all of my news for the day. No fancy pantsy stuff, just black-on-grey text. Maybe an image or two. It’s a great name. Simple, descriptive, and even with a mysterious arbitrary captial letter (always A plus).</p>
+
+<p>Ok but if you’re blown away by the name, wait till you see the logo. Ok, you can see it now.</p>
+<figure>
+    <img class="blog-img" style="width:70%" src="/blog/assets/blog-images/2024-04-13/logo.png" />
+    <figcaption>some wonder how i'm such a multi-talented person</figcaption>
+</figure>
+
+<h2 id="cicd-ing-it">CI/CD-ing it</h2>
+<p>This was really important! I would need a CI/CD pipeline because I expect to update the reader here and there with new scraping instructions for new websites. I was going to be deploying it to my home NAS, because I don’t want to pay for hosting or deal with any subscriptions/services. So that meant that I couldn’t simply use some github action workflow to deploy, I sure as hell wasn’t going to be exposing my IP address like that. So what were my options? Off the top of my head,</p>
+<table>
+    <thead>
+        <td>Option</td>
+        <td>Pros</td>
+        <td>Cons</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">Git Server on NAS. Add server to git origins, push code to all origins</td>
+            <td>It works, probably</td>
+            <td>Overhead of running Git server? Unwanted.</td>
+        </tr>
+        <tr>
+            <td>Simple to do</td>
+            <td>I want to have as little services running on my NAS as possible</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Script that periodically runs `git pull` (essentially polling)</td>
+            <td>Cron is lightweight</td>
+            <td>It won't update immediately when I push a change</td>
+        </tr>
+        <tr>
+            <td>Git pull updating nothing probably is lightweight as well</td>
+            <td>Need to set reasonable period to run script. Hour? Day? Week?</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Note that my perceptions on how intensive some of these processes are are an <em>intuition</em> and not well-researched fact.</p>
+
+<p>I also found an app called Watchtower through my research. It watches docker image versioning, and automatically updates running containers. This means that I’d have to upload my images to a repository, then manage versioning. This probably means that I’d want to make a CI script that updates the version of the docker image on every push to the main branch (or manage versioning <em>manually</em>. blegh). For something that is probably (&lt;- I cannot say this is true), under the hood, running cron to trigger the container rebuilds, it is a lot of added overhead. I prefer my option 2 from above.</p>
+
+<p>As I was researching more, I found a Reddit post containing this:</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/reddit.png" />
+    <figcaption>thank you, venerable u/SUNx2YCH &amp; u/Angdrambor.</figcaption>
+</figure>
+<p>Validated by 2 strangers on a Reddit thread from 6 years ago. That’s all I ever needed. Option 2 it is.</p>
+
+<h2 id="deploying-on-my-nas">Deploying on my NAS</h2>
+<p>I created a very simple bash script that fulfilled my needs.</p>
+<ol>
+  <li>Run <code class="language-plaintext highlighter-rouge">git rev-parse HEAD</code> to get current commit hash</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">git pull</code></li>
+  <li>Run <code class="language-plaintext highlighter-rouge">git rev-parse HEAD</code> again</li>
+  <li>See if the commit hash changed. If so, run <code class="language-plaintext highlighter-rouge">docker compose up</code></li>
+</ol>
+
+<p>I had everything I needed. But then in my shortsightedness I failed to realize that I can’t just SSH into the NAS, pull the code and <em>run docker compose</em>. TrueNAS scale uses kubernetes under the hood to manage containers, and the recommended way to do what I intend to do is to use a virtual machine! Or docker-in-docker. Sheesh. Virtualization much. I mean, how virtual can we go? I have a theory.</p>
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/theory.png" style="width:70%" />
+    <figcaption>there's a case to be made that "some guy" is living in a simulation too</figcaption>
+</figure>
+
+<p>I end up running docker in a VM. As I pull the code onto the machine, I realise that I needed to tweak some of the details in the deployment configs. And everytime after I make the tweak and pull the new commit on the machine, I realise that I need to tweak it some more! This happened 7 times! This is really a reminder that I should use a <code class="language-plaintext highlighter-rouge">deploy-testing</code> branch or something to make all my changes and testing there, and then squash the commits and merge into main when I was <em>truly</em> complete. I did this once and that commit history was <em>clean</em>, but in my hubris I thought I didn’t need to here.</p>
+<figure style="margin-bottom:21px">
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/hubris.png" />
+    <figcaption>hubris</figcaption>
+</figure>
+
+<p>I haven’t fully set it up on my home yet. To be “done” I want to add a domain name &amp; use https. I was messing with my router settings all the way from Germany (thousands of kilometers away from my home) on a VPN. When I remotely restarted the router, it shitted itself and died, leaving my family wondering what the hell happened. It took about an hour for me to walk through my family on how to fix it, so I think I’m done messing with it from HERE.</p>
+
+<h2 id="https-on-a-home-network">HTTPS on a home network</h2>
+<p>So, back home, I finished up the deployment. My last snag was getting HTTPS working in my local network. I deployed the frontend to the url “home.news.com”, which would only be available in my home network - my router was acting as the DNS. So, I could not use a public certificate. I generated a self-signed certificate using OpenSSL. Then, of course, I had to make changes in the Docker Files to manage the SSL certificates as well. With all that done, I had HTTPS working for the app on my network. Buuuuut, Chrome does not allow you to install a PWA with self-signed certificates by default.
+The solution is pretty easy - I just installed the certificates on my PC and Phone. With that done, I got the app <strong>downloaded</strong> on my phone, and I gotta say: PWAs are sick. I haven’t harnessed their full potential yet, but maybe down the line I will.</p>
+
+<h1 id="show-off">Show off</h1>
+<p>Now is the time I show bits and pieces of what all of this amounts to.</p>
+
+<h2 id="ooo-infinite-scrolling">ooo infinite scrolling</h2>
+<figure>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/infinite.webm"></video>
+    <figcaption>the invention of infinite scrolling and its consequences have been a disaster for the human race - tad kazynki</figcaption>
+</figure>
+<p>Infinite scrolling, baby. Starts loading of new content when reaching close to the bottom of the page, and seamlessly inserts it.</p>
+
+<p><strong>Fact: nobody has ever done this before.</strong></p>
+
+<h2 id="oooo-loading-animations">oooo loading animations</h2>
+<figure>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/loading.webm"></video>
+    <figcaption>i call this: the skeleton loader. i added a delay to the app so that users can truly appreciate it.</figcaption>
+</figure>
+<p>Look at that loading animation. If that isn’t a loading animation, I don’t know what is. That is, without a doubt, one of the loading animations of all time.</p>
+
+<p><strong>Fact: The <em>second</em> I pushed the code containing these loaders to github, Google called me with a job offer. I declined.</strong></p>
+
+<h2 id="the-scrape-feature">The scrape feature</h2>
+<figure>
+    <video class="blog-img" autoplay="" loop="" muted="" playsinline="" src="/blog/assets/blog-images/2024-04-13/scrape.webm"></video>
+    <figcaption>the full article extraction in action</figcaption>
+</figure>
+<p>And the reason why I built this in the first place, full text extraction. It works!
+By the way, I recorded this video on my laptop with my phone’s hotspot which had 1 bar on 4G which is why it loads so long. No, I will not speed up the video.</p>
+
+<p><strong>Fact: Every important person in this world uses this app. <em>Are you important?</em></strong></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>So, yea I have an RSS reader that I’m happy with now. I really enjoyed this project! There’s still some minor things to do so I’ll still be working on it a little, but it’s more or less done. Now I’m thinking what to do next.</p>
+
+<p>This was a long-ass, meandering post. If you actually read all of this (who am I kidding?!), you deserve a cookie. Here.</p>
+
+<p style="color:#9D9B9B;">(If you have not actually read the whole post, you are required to not look at the cookie. If you have, please un-see it. If you decide not to, my legal team will contact you shortly. Have a good day.)</p>
+<figure style="margin-bottom:21px">
+    <img class="blog-img" src="/blog/assets/blog-images/2024-04-13/cookie.png" />
+</figure>]]></content><author><name></name></author><category term="computing" /><category term="software" /><summary type="html"><![CDATA[RSS PART 2: electric boogaloo I want to stop using dioxus for my frontend. Every stupid roadblock I meet, I have the urge to drown my laptop in a tub of soapy water. I hear whispers sometimes: “re-write the frontend in Vue… it wouldn’t take that long… you’d be more agile…”. I evaluate. I think. I ruminate. Sunken cost fallacy gets the best of me and I dismiss the thoughts. I’m getting really close though. Let me describe the issue that has gotten me here.]]></summary></entry></feed>
