@@ -16,8 +16,14 @@
     </head>
 
     <body>
-        {% include navigation.html %}
-        {{ content }}
-        {% include footer.html %}
+        <div id="nav-wrapper">
+            {% include navigation.html %}
+        </div>
+        <div id="content-wrapper">
+            {{ content }}
+        </div>
+        <div id="footer-wrapper">
+            {% include footer.html %}
+        </div>
     </body>
 </html>

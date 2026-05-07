@@ -5,3 +5,5 @@
 .bundle/
 vendor/
 _site/
+.idea
+docs/

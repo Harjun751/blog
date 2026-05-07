@@ -3,15 +3,29 @@ layout: default
 title: About
 ---
 
-<p id="about-text">
-    Hi. You've found my blog site. You can find me on other places as well.
-</p>
-<table id="about-table">
-    <tbody>
+<div id="about">
+    <p id="about-text">
+        Hi. You've found my blog site. You can find me on other places as well.
+    </p>
+    <div id="about-div">
+        <tbody>
         <tr>
-            <td><a href="https://harjun751.github.io/" target="_blank"><img src="{{ site.baseurl }}/assets/images/website.png" /></a></td>
-            <td><a href="https://github.com/Harjun751" target="_blank"><img src="{{ site.baseurl }}/assets/images/github-mark.png" /></a></td>
-            <td><a href="https://www.linkedin.com/in/harvinder-singh-77abb5185/" target="_blank"><img src="{{ site.baseurl }}/assets/images/linkedin.png" /></a></td>
+            <td>
+                <a href="https://harjun751.github.io/" target="_blank">
+                    {% include website.svg %}
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Harjun751" target="_blank">
+                    {% include github-mark.svg %}
+                </a>
+            </td>
+            <td>
+                <a href="https://www.linkedin.com/in/harvinder-singh-77abb5185/" target="_blank">
+                    {% include linkedin.svg %}
+                </a>
+            </td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </div>
+</div>

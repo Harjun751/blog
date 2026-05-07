@@ -107,6 +107,19 @@ footer span {
 }
 
 
+// ----- Body styles (to push footer to bottom) -------
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+#footer-wrapper {
+    margin-top: auto;
+}
+
+
 @media (prefers-color-scheme: dark) {
     :root:has([name="toggle-color-scheme"]:checked) {
         color-scheme: light;

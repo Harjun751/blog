@@ -422,24 +422,27 @@ nav header {
     display: none;
   }
 }
+#about {
+  padding: 2rem;
+}
+
 #about-text {
-  font-size: 30px;
-  margin-top: 150px;
-  margin-left: 50px;
+  font-size: 2rem;
 }
 
-#about-table {
-  border-spacing: 25px 0;
-  margin-left: 25px;
+#about-div {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-#about-table td,
-#about-table {
-  border: 0;
+#about-div svg {
+  width: 6rem;
+  height: 6rem;
+  margin-right: 1rem;
 }
 
-#about-table img {
-  width: 100px;
+#about svg > path {
+  fill: var(--accent);
 }
 
 :root {
@@ -537,6 +540,18 @@ footer {
 
 footer span {
   margin: 0 2rem;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#footer-wrapper {
+  margin-top: auto;
 }
 
 @media (prefers-color-scheme: dark) {

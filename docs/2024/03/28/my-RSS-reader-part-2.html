@@ -16,7 +16,8 @@
     </head>
 
     <body>
-        <div>
+        <div id="nav-wrapper">
+            <div>
     <input class="checkbox" type="checkbox" id="toggle" name="toggle-color-scheme"/>
     <input class="hamburg" type="checkbox" id="hamburger-toggle" name="toggle-panel"/>
     <nav>
@@ -63,7 +64,9 @@
     </div>
 </div>
 
-        <article class="blog-post">
+        </div>
+        <div id="content-wrapper">
+            <article class="blog-post">
     <h1 id="rss-part-2-electric-boogaloo">RSS PART 2: electric boogaloo</h1>
 <p>I want to stop using dioxus for my frontend. Every stupid roadblock I meet, I have the urge to drown my laptop in a tub of soapy water. I hear whispers sometimes: “re-write the frontend in Vue… it wouldn’t take that long… you’d be more <em>agile</em>…”. I evaluate. I think. I ruminate. Sunken cost fallacy gets the best of me and I dismiss the thoughts. I’m getting <em>really</em> close though. Let me describe the issue that has gotten me here.</p>
 
@@ -279,11 +282,14 @@ By the way, I recorded this video on my laptop with my phone’s hotspot which h
 
 </article>
 
-        <footer>
+        </div>
+        <div id="footer-wrapper">
+            <footer>
     <a href="mailto:harjun751@gmail.com"><span>email</span></a>
     <a href="/blog/feed.xml"><span>rss</span></a>
     <a href="https://github.com/Harjun751/"><span>github</span></a>
 </footer>
 
+        </div>
     </body>
 </html>
