@@ -131,6 +131,12 @@ ul {
   text-transform: uppercase;
 }
 
+.blog-post h3,
+.blog-post h1,
+.blog-post h2 {
+  margin-top: 2rem;
+}
+
 .blog-post .hero {
   width: calc(100% + 2 * var(--content-width-padding));
   position: relative;
@@ -153,17 +159,13 @@ ul {
   text-align: center;
 }
 
-.blog-post h1 {
-  margin-top: 0;
-}
-
 .blog-post p {
   line-height: var(--lineheight);
 }
 
 .blog-post a {
   color: var(--accent);
-  text-shadow: 0 0 4px var(--accent);
+  text-shadow: 0 0 2px var(--accent);
 }
 
 table {
@@ -190,6 +192,7 @@ code {
 pre {
   display: block;
   background-color: black;
+  color: #BABABA;
   padding: 10px;
   border-radius: 10px;
   overflow: scroll;
