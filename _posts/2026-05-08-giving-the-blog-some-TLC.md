@@ -1,6 +1,6 @@
 ---
 layout: post
-custom_excerpt: It's free!
+custom_excerpt: New year new theme
 excerpt_image: /assets/blog-images/2026-05-08/cover.png
 tags:
   - computing
