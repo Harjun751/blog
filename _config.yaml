@@ -1,6 +1,7 @@
 destination         : ./docs
 baseurl             : "/blog" # does not include hostname
 paginate: 5
+includes_dir: assets/blog-images/
 plugins:
   - jekyll-paginate
   - jekyll-feed

@@ -145,7 +145,17 @@ ul {
   border-radius: 10px 10px 0 0;
 }
 
-.blog-post .blog-img {
+.blog-post p {
+  line-height: var(--lineheight);
+}
+
+.blog-post a {
+  color: var(--accent);
+  text-shadow: 0 0 2px var(--accent);
+}
+
+.blog-post .blog-img,
+.blog-post svg {
   width: 100%;
   display: block;
   margin: 0 auto;
@@ -159,13 +169,8 @@ ul {
   text-align: center;
 }
 
-.blog-post p {
-  line-height: var(--lineheight);
-}
-
-.blog-post a {
-  color: var(--accent);
-  text-shadow: 0 0 2px var(--accent);
+.blog-post svg > path {
+  fill: var(--accent);
 }
 
 table {
@@ -192,7 +197,7 @@ code {
 pre {
   display: block;
   background-color: black;
-  color: #BABABA;
+  color: #bababa;
   padding: 10px;
   border-radius: 10px;
   overflow: scroll;

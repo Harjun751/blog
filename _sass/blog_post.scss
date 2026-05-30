@@ -11,13 +11,13 @@
   font-size: var(--body);
 }
 
-.blog-post h1{
+.blog-post h1 {
   text-transform: uppercase;
 }
 .blog-post h3,
 .blog-post h1,
-.blog-post h2{
-  margin-top:2rem;
+.blog-post h2 {
+  margin-top: 2rem;
 }
 
 .blog-post .hero {
@@ -28,7 +28,18 @@
   border-radius: 10px 10px 0 0;
 }
 
-.blog-post .blog-img {
+.blog-post p {
+  line-height: var(--lineheight);
+}
+
+.blog-post a {
+  color: var(--accent);
+  text-shadow: 0 0 2px var(--accent);
+}
+
+// --------------- Images/SVGs --------------
+.blog-post .blog-img,
+.blog-post svg {
   width: 100%;
   display: block;
   margin: 0 auto;
@@ -40,14 +51,8 @@
   margin-top: 5px;
   text-align: center;
 }
-
-.blog-post p {
-  line-height: var(--lineheight);
-}
-
-.blog-post a {
-  color: var(--accent);
-  text-shadow: 0 0 2px var(--accent);
+.blog-post svg > path {
+  fill: var(--accent);
 }
 
 // ------------ Table Stuff -------------
@@ -74,7 +79,7 @@ code {
 pre {
   display: block;
   background-color: black;
-  color: #BABABA;
+  color: #bababa;
   padding: 10px;
   border-radius: 10px;
   overflow: scroll;
