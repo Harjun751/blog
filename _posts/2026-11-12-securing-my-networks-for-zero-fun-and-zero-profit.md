@@ -293,6 +293,8 @@ They're:
    shame.
 2. Barring that, notifications for important updates (plex/nginx)
 3. Fail2Ban behind nginx - so bots just can't hammer at the server all day
+4. Better reporting - metrics on truenas aren't that great, grafana or something
+   to tie them together would be nice.
 
 There's probably more things I should do that I can't think of. But for now, I'd
 say this is better.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2026-11-14T13:57:11+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><entry><title type="html">Securing My Networks For Zero Fun And Zero Profit</title><link href="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html" rel="alternate" type="text/html" title="Securing My Networks For Zero Fun And Zero Profit" /><published>2026-11-12T00:00:00+08:00</published><updated>2026-11-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit</id><content type="html" xml:base="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html"><![CDATA[<figure>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2026-11-14T14:17:44+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><entry><title type="html">Securing My Networks For Zero Fun And Zero Profit</title><link href="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html" rel="alternate" type="text/html" title="Securing My Networks For Zero Fun And Zero Profit" /><published>2026-11-12T00:00:00+08:00</published><updated>2026-11-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit</id><content type="html" xml:base="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html"><![CDATA[<figure>
     <img class="hero" src="/blog/assets/blog-images/2026-11-14/cves.png" />
     <figcaption>Source: <a href="https://projectdiscovery.io/blog/the-vulnerability-curve-bent-with-the-ai-curve">ProjectDiscovery</a></figcaption>
 </figure>
@@ -280,6 +280,8 @@ They’re:</p>
 shame.</li>
   <li>Barring that, notifications for important updates (plex/nginx)</li>
   <li>Fail2Ban behind nginx - so bots just can’t hammer at the server all day</li>
+  <li>Better reporting - metrics on truenas aren’t that great, grafana or something
+to tie them together would be nice.</li>
 </ol>
 
 <p>There’s probably more things I should do that I can’t think of. But for now, I’d
