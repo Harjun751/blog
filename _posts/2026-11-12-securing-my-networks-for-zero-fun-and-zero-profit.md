@@ -51,7 +51,7 @@ having to configure anything or forward any ports. This is GREAT!!
 
 Except, the plex relay SUCKS. It's limited to 2Mbps, and a vast majority of my
 media items are more than 2Mbps. Even the music. This results in transcoding,
-which I'd rather keep my [NAS](insert-link-here) from doing if possible.
+which I'd rather keep my NAS from doing if possible.
 
 ### Options
 

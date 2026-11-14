@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2026-11-14T14:17:44+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><entry><title type="html">Securing My Networks For Zero Fun And Zero Profit</title><link href="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html" rel="alternate" type="text/html" title="Securing My Networks For Zero Fun And Zero Profit" /><published>2026-11-12T00:00:00+08:00</published><updated>2026-11-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit</id><content type="html" xml:base="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html"><![CDATA[<figure>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2026-11-14T14:19:56+08:00</updated><id>http://localhost:4000/blog/feed.xml</id><entry><title type="html">Securing My Networks For Zero Fun And Zero Profit</title><link href="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html" rel="alternate" type="text/html" title="Securing My Networks For Zero Fun And Zero Profit" /><published>2026-11-12T00:00:00+08:00</published><updated>2026-11-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit</id><content type="html" xml:base="http://localhost:4000/blog/2026/11/12/securing-my-networks-for-zero-fun-and-zero-profit.html"><![CDATA[<figure>
     <img class="hero" src="/blog/assets/blog-images/2026-11-14/cves.png" />
     <figcaption>Source: <a href="https://projectdiscovery.io/blog/the-vulnerability-curve-bent-with-the-ai-curve">ProjectDiscovery</a></figcaption>
 </figure>
@@ -41,7 +41,7 @@ having to configure anything or forward any ports. This is GREAT!!</p>
 
 <p>Except, the plex relay SUCKS. It’s limited to 2Mbps, and a vast majority of my
 media items are more than 2Mbps. Even the music. This results in transcoding,
-which I’d rather keep my <a href="insert-link-here">NAS</a> from doing if possible.</p>
+which I’d rather keep my NAS from doing if possible.</p>
 
 <h3 id="options">Options</h3>
 
