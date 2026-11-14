@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" />
+        <script src="/blog/assets/js/themeStorage.js" defer></script>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+
+        <title>👨‍💻 | Securing My Networks For Zero Fun And Zero Profit</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Single:wght@100..900&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/blog/assets/css/styles.css">
+    </head>
+
+    <body>
+        <div id="nav-wrapper">
+            <div>
+    <input class="checkbox" type="checkbox" id="toggle" name="toggle-color-scheme"/>
+    <input class="hamburg" type="checkbox" id="hamburger-toggle" name="toggle-panel"/>
+    <nav>
+        <div class="name">
+            <a href="/blog/">
+                <header>Arjun's Alcove</header>
+            </a>
+            <div class="subheader wrapper">
+                <div class="marquee">
+                    
+                    <p>
+                        computing / consumer electronics / stuff /
+                    </p>
+                    
+                    <p>
+                        computing / consumer electronics / stuff /
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="hamburg">
+            <label for="hamburger-toggle" class="hamburg-label">
+                <span class="line l1"></span>
+                <span class="line l2"></span>
+                <span class="line l3"></span>
+                <span class="line l4"></span>
+            </label>
+        </div>
+
+        <div class="links">
+            <a class="link" href="/blog/about">about</a>
+            <label for="toggle" class="checkbox-label">
+                <span class="ball"></span>
+            </label>
+        </div>
+    </nav>
+
+    <div class="links-standalone">
+        <a class="link" href="/blog/about">about</a>
+        <label for="toggle" class="checkbox-label">
+            <span class="ball"></span>
+        </label>
+    </div>
+</div>
+
+        </div>
+        <div id="content-wrapper">
+            <article class="blog-post">
+    <figure>
+    <img class="hero" src="/blog/assets/blog-images/2026-11-14/cves.png" />
+    <figcaption>Source: <a href="https://projectdiscovery.io/blog/the-vulnerability-curve-bent-with-the-ai-curve">ProjectDiscovery</a></figcaption>
+</figure>
+
+<h1 id="the-old-world-burns">The old world burns.</h1>
+
+<p>I unfortunately have a lifetime plex membership, which I let shackle me to this
+ecosystem I see less and less of a reason to stay on.</p>
+
+<p><a href="https://www.reddit.com/r/PleX/comments/1xbtkh8/another_layoff_round_player_team_laid_off/">Layoffs</a>
+happen.
+<a href="https://forums.plex.tv/t/important-security-update-for-plex-media-server-v1-43-2-and-earlier/942319">Shit hits the fan</a>.
+In fact, shit is hitting the fan at rates in which we’ve never seen shit hit fan
+before. But the one thing I can’t forgive, is the enshittification of the
+<a href="https://www.reddit.com/r/PleX/comments/1usbm28/what_the_absolute_hell_did_they_do_to_the_plex/">plex client</a>,
+the main thing that end-users USE!!! Additionally, plex is very obviously is
+distancing itself from homelab users, and positioning itself as a
+<a href="https://deadline.com/2026/10/plex-fandango-movie-ticket-sales-streaming-1237157045/">streaming service</a>.
+I don’t know which exec decided this, but it’s not good.</p>
+
+<p>All this is honestly an aside to the main topic, which is related to the huge
+CVE (plex2shell) that was discovered to allow remote code execution in
+vulnerable servers. It seems to be a lucrative time to be in cybersecurity. That
+<a href="https://sshhole.com/">alpine linux thing?</a> Yikes. 4? Wow.</p>
+
+<p>The flurry of bad news gave me bad vibes. My NAS services (plex, soulseek,
+minecraft) are honestly just port-forwarded and open to the internet. It was
+hard to not get uncomfortable anymore. The risk was probably always there, but
+it felt realer and realer now. So, I set out to secure my services.</p>
+
+<h2 id="we-retreat-into-caves">We retreat into caves</h2>
+
+<p>So I turned off all port forwarding.</p>
+
+<p>My main use-case was honestly plex, and since I am the owner of a LIFELONG
+membership, I am afforded the plex relay. This allows remote access without you
+having to configure anything or forward any ports. This is GREAT!!</p>
+
+<p>[ Insert image of plex relay sucking here ]</p>
+
+<p>Except, the plex relay SUCKS. It’s limited to 2Mbps, and a vast majority of my
+media items are more than 2Mbps. Even the music. This results in transcoding,
+which I’d rather keep my <a href="insert-link-here">NAS</a> from doing if possible.</p>
+
+<h3 id="options">Options</h3>
+
+<p>So I need to find a way to publicly expose my services in a safer manner than
+just opening ports.</p>
+
+<h4 id="vpn">VPN</h4>
+
+<figure>
+  <object class="blog-img" style="width:60%" data="/blog/assets/blog-images/2026-11-14/vpn.svg" type="image/svg+xml"></object>
+  <figcaption>Shoddy architecture diagram made with d2</figcaption>
+</figure>
+
+<p>This is the option that most reduces your attack surface.</p>
+
+<p>Tailscale/Wireguard/whatever tunnel direct into your local network, and your
+device will be treated as a first-class citizen to your NAS (and network).</p>
+
+<p>Sadly, this is cumbersome for the end user. I have external users for my NAS,
+trusted friends and family. I don’t mind giving them access to my home network,
+but the problem really is the user experience as a whole. Whenever users want to
+access your services, they’d have to consciously consider whether their VPN is
+turned on (it needs to be installed in the first place!).</p>
+
+<p>So, I won’t be doing it for my main purposes. However, I have been and will
+continue to use tailscale - it’s excellent software and is perfectly suited for
+situations in which I want to ssh/sftp some file in my home server. I use it on
+my laptop, along with [Unison] in order to sync files from my NAS to my laptop
+whenever I’m on the go. You can set up a cron job for the sync too!</p>
+
+<h4 id="cloudflare-tunnels">Cloudflare tunnels</h4>
+
+<p>Cloudflare tunnels are similar. However, the network is managed by Cloudflare,
+meaning that theoretically they could read unsecured packets (research more into
+this). Other than that, it genuinely seemed like a great option. Until I read
+the
+<a href="https://www.cloudflare.com/service-specific-terms-application-services/">TOS</a>.</p>
+
+<p>The TOS explicitly disallows the use of Cloudflare tunnels for serving videos -
+you’re supposed to use something else called streams. It’s not free. Womp womp.
+Not sure if they’d really notice (especially for small-scale volume), but you’d
+risk having your service terminated randomly.</p>
+
+<h4 id="vps-reverse-proxy">VPS Reverse Proxy</h4>
+
+<p>The last option is what I went with. Conceptually, you’d have a
+publicly-accessible instance somewhere in the cloud. Get a reverse proxy on it ,
+and expose only those ports to the internet. Create a host to route domains to
+your server’s service. The VPS reaches your private service via a tunnel.</p>
+
+<p>It’s basically Cloudflare tunnels but managed by you. You reduce your attack
+surface to just the VPS - the VPS is still vulnerable, of course, but it should
+have limited access to your actual home network. Your tunnels should have ACLs,
+and the VPS should not have subnet access to your home network. Nor should it
+have permissions to send packets over ports that you explicitly don’t need.</p>
+
+<h2 id="getting-the-vps-set-up">Getting the VPS set up</h2>
+
+<p>Ultimately, what I’ll be building is the following:</p>
+
+<figure>
+  <object class="blog-img" style="width:80%" data="/blog/assets/blog-images/2026-11-14/network.svg" type="image/svg+xml"></object>
+  <figcaption>Shoddy architecture diagram made with d2</figcaption>
+</figure>
+
+<p>External plex communications come through the domain (which plex can be
+configured to discover!), and get routed by nginx on the VPS to the actual plex
+instance in my internal network.</p>
+
+<p>I’m self-hosting my services because I don’t want to be paying for cloud
+instances. So what’d I do in this situation?</p>
+
+<h3 id="oracle">ORACLE.</h3>
+
+<p>Oracle’s free tier is quite generous. Especially if you upgrade to PAYG
+(Pay-as-you-go), your free tier limits increase further. Ultimately, you can get
+a 4 core ARM 24GB server for FREE, with 10TB of outbound data transfer per month
+(as of 2026).</p>
+
+<p>The big downside it’s that its oracle. Go on reddit and you can find endless
+reports of people saying their
+<a href="https://www.reddit.com/r/oraclecloud/comments/qgfjw4/i_created_a_free_tier_server_and_it_got_shut_down/">instance got shut down</a>
+(reclaimed) for no reason.</p>
+
+<p>That’s why, if you’re doing it this way, ensure that you’re creating your
+services in a way that can easily be re-created in another environment.</p>
+
+<p>Naturally, docker is quite useful for this.</p>
+
+<h3 id="vpn-tunnel">VPN Tunnel</h3>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-11-14/tailscale.png" />
+    <figcaption>Connect your internal server and your VPS to the tailnet</figcaption>
+</figure>
+
+<p>I was already using tailscale and I have an account, so I just
+<a href="https://tailscale.com/docs/install/linux">installed tailscale</a> on the server
+and logged in. Adding a new device to your tailnet is super simple!</p>
+
+<p>But securing it is a little more work. It’s still very doable though. Tailscale
+ships with permissive grants by default (it’s all wildcards), and since
+evaluation is done
+<a href="https://tailscale.com/docs/features/access-control/grants/grants-explained">top-to-bottom</a>,
+a permissive rule at the top allows everything through. Therefore, you’d likely
+want to scrap that wildcard rule and instead be a little more explicit.</p>
+
+<p>First, I restricted communications between the VPS and the internal network. The
+VPS is <strong>only</strong> allowed ingress to the NAS over the standard plex port. I tagged
+the VPS as the <code class="language-plaintext highlighter-rouge">public-proxy</code> and the NAS as the <code class="language-plaintext highlighter-rouge">internal-server</code>.</p>
+
+<pre><code class="language-JSON">// Plex proxy
+{
+  "src": ["tag:public-proxy"],
+  "dst": ["tag:internal-server"],
+  "ip":  ["tcp:32400"],
+}
+</code></pre>
+
+<p>Then, I allowed standard members the same permissive access that was present
+before:</p>
+
+<pre><code class="language-JSON">// User-owned devices access
+{
+  "src": ["autogroup:member"],
+  "dst": ["*"],
+  "ip":  ["*"],
+}
+</code></pre>
+
+<p>The <code class="language-plaintext highlighter-rouge">autogroup:member</code> is a group that <em>automatically groups all members</em>!!
+However, devices with a tag assigned to them are
+<a href="https://tailscale.com/docs/features/tags">no longer treated as users</a>, so
+<code class="language-plaintext highlighter-rouge">autogroup:member</code> doesn’t apply to them. It’s not very clear in the
+documentation (there is no one place that says it), but essentially
+autogroup:members are defined to include <em>devices that belong to users</em>, and the
+moment you tag a device it no longer belongs to the user.</p>
+
+<p>Lastly, I allowed standard members internet access:</p>
+
+<pre><code class="language-JSON">// User-owned devices exit node access
+{
+  "src": ["autogroup:member"],
+  "dst": ["autogroup:internet"],
+  "ip":  ["*"],
+},
+</code></pre>
+
+<p>This is because I <em>do</em> use tailscale as a standard VPN when I’m overseas or just
+want a little more security. I’m running a DNS server at home so I do have some
+additional adblock lists running (something like pihole, it’s called
+<a href="https://technitium.com/dns/">technitium</a>).</p>
+
+<h3 id="reverse-proxy">Reverse Proxy</h3>
+
+<p>For the reverse proxy, I used
+<a href="https://nginxproxymanager.com/">nginx proxy manager</a>. I’ve used it before, and
+I think it’s honestly a great abstraction of the underlying software. There
+<em>could</em> be more advanced controls in the GUI, but it’s still doable through just
+pasting your configuration into a textbox under the proxy settings. Bells and
+knobs would be nice for the specific settings, but they’re just that. Bells and
+knobs. I’d say in basic uses cases like this, NPM ships with sane defaults.</p>
+
+<p>I used this basic compose config:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="na">npm</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">jc21/nginx-proxy-manager:2.16.0</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">npm</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">443:443"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">127.0.0.1:81:81"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">./data:/data</span>
+      <span class="pi">-</span> <span class="s">./letsencrypt:/etc/letsencrypt</span>
+</code></pre></div></div>
+
+<p>You need to expose ports 80 and 443 for http/https traffic, as this’d be your
+ingress from the outside. The management interface itself should be accessible,
+but bind it to loopback so that other LAN devices won’t be able to reach it, and
+it’d only be reachable from the very same VPS.</p>
+
+<p>Binding the data &amp; letsencrypt directories in the same path as the compose file
+makes it easy to backup and restore the whole service, but this is completely
+optional. Bind it how you want!</p>
+
+<p>After that, just set up your proxy host:</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-11-14/npm.png" style="width:50%" />
+    <figcaption>A proxy host with your domain pointing to your server</figcaption>
+</figure>
+
+<p>Note that the forward IP must be the IP of your internal-server <strong>within the
+tailnet</strong>.</p>
+
+<h3 id="getting-a-domain">Getting a domain</h3>
+
+<p>In my <a href="http://localhost:4000/blog/2024/03/03/i-made-a-nas.html">I made a NAS</a>
+post, I talked about how I used to run dnsmasq on my router for custom domain
+names. I don’t really recommend that anymore, but it <em>is</em> a fun thing to do.
+Getting full control of your router is pretty cool.</p>
+
+<p>Now, I use <a href="https://www.duckdns.org/">duckdns</a> to get a free domain name. I have
+one existing domain that points to my local IP of my NAS to use domains/https
+within my internal network. Duckdns gives you 5 domains to play with, so I just
+created another domain:</p>
+
+<figure>
+    <img class="blog-img" src="/blog/assets/blog-images/2026-11-14/duckdns.png" />
+    <figcaption>My duckdns domains (not really)</figcaption>
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">mycooldomain</code> points to the public IP of the VPS.</p>
+
+<p>With that, hitting <code class="language-plaintext highlighter-rouge">plex.mycooldomain.duckdns.org</code> hits my VPS’s NGINX, which
+routes the request to the plex server in the tailnet.</p>
+
+<h3 id="oracle-set-up">Oracle set-up</h3>
+
+<p>Lastly, you should probably ensure that your instance isn’t accepting all
+traffic from all ports. Set up a firewall.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>With this, we have a public VPC that effectively routes plex traffic to my
+internal server in a manner that is more secure than just port forwarding.</p>
+
+<p>There are additional steps I’d like to do but won’t go over in detail now.
+They’re:</p>
+
+<ol>
+  <li>Auto-updating plex - this doesn’t seem to be trivial under truenas which is a
+shame.</li>
+  <li>Barring that, notifications for important updates (plex/nginx)</li>
+  <li>Fail2Ban behind nginx - so bots just can’t hammer at the server all day</li>
+</ol>
+
+<p>There’s probably more things I should do that I can’t think of. But for now, I’d
+say this is better.</p>
+
+<p>Thanks for reading!</p>
+
+</article>
+
+        </div>
+        <div id="footer-wrapper">
+            <footer>
+    <a href="mailto:harjun751@gmail.com"><span>email</span></a>
+    <a href="/blog/feed.xml"><span>rss</span></a>
+    <a href="https://github.com/Harjun751/"><span>github</span></a>
+</footer>
+
+        </div>
+    </body>
+</html>

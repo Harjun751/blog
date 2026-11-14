@@ -1,0 +1,41 @@
+title: |md
+  # Network diagram thing
+| {near: top-center}
+
+vars: {
+  d2-config: {
+    pad: 25
+    theme-id: 300
+  }
+}
+
+user: "External User" {
+  shape: person
+}
+
+VPS: {
+  nginx: {
+    shape: hexagon
+  }
+}
+
+VPN: "VPN Tunnel" {
+  shape: queue
+  tooltip: "Tunnel between VPS and internal server should only allow plex traffic"
+}
+
+network: "Internal Network" {
+  NAS
+
+  user2: "Internal User" {
+    shape: person
+  }
+
+  user2 -> NAS: "ip/32400"
+}
+
+user -> VPS: "plex.mycooldomain.duckdns.org"
+
+VPS.nginx -> VPN
+
+VPN -> network.nas

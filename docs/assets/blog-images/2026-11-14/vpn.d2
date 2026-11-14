@@ -1,0 +1,27 @@
+title: |md
+  # The wonderful world of VPNs
+| {near: top-center}
+
+vars: {
+  d2-config: {
+    pad: 25
+    theme-id: 300
+  }
+}
+
+user: "External User" {
+  shape: person
+}
+
+VPN: "VPN Tunnel" {
+  shape: queue
+  tooltip: "Tunnel makes the user a first-class LAN citizen."
+}
+
+network: "Internal Network" {
+  NAS
+}
+
+user -> VPN
+
+VPN -> network.nas
